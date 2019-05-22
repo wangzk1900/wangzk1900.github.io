@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="数组它用一组连续的内存空间，来存储一组具有相同类型的数据。 随机访问效率高根据下标随机访问效率高，根据下标和数据类型的长度很容易就能计算出相应元素的存储地址。 插入和删除效率低插入和删除元素比较低效，因为要保持内存数据的连续性。若在k位置插入元素，则需将k位置及其之后的所有元素后移。若要删除k位置上的元素，则该元素之后的所有元素都要向前移动一个位置。假如数组中的元素是无序的，我们可以改进插入和删除">
+  <meta name="description" content="数组它用一组连续的内存空间，来存储一组具有相同类型的数据。 随机访问效率高根据下标随机访问效率高，根据下标和数据类型的长度很容易就能计算出相应元素的存储地址。时间复杂度是O(1)。但是，若要查找指定的元素，则需要遍历数组，对应的时间复杂的是O(n)。 插入和删除效率低插入和删除元素比较低效，因为要保持内存数据的连续性。若在k位置插入元素，则需将k位置及其之后的所有元素后移。若要删除k位置上的元素，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="03_数组">
 <meta property="og:url" content="http://yoursite.com/2019/05/21/数据结构和算法_03_数组/index.html">
 <meta property="og:site_name" content="wangzk1900&#39;s site">
-<meta property="og:description" content="数组它用一组连续的内存空间，来存储一组具有相同类型的数据。 随机访问效率高根据下标随机访问效率高，根据下标和数据类型的长度很容易就能计算出相应元素的存储地址。 插入和删除效率低插入和删除元素比较低效，因为要保持内存数据的连续性。若在k位置插入元素，则需将k位置及其之后的所有元素后移。若要删除k位置上的元素，则该元素之后的所有元素都要向前移动一个位置。假如数组中的元素是无序的，我们可以改进插入和删除">
+<meta property="og:description" content="数组它用一组连续的内存空间，来存储一组具有相同类型的数据。 随机访问效率高根据下标随机访问效率高，根据下标和数据类型的长度很容易就能计算出相应元素的存储地址。时间复杂度是O(1)。但是，若要查找指定的元素，则需要遍历数组，对应的时间复杂的是O(n)。 插入和删除效率低插入和删除元素比较低效，因为要保持内存数据的连续性。若在k位置插入元素，则需将k位置及其之后的所有元素后移。若要删除k位置上的元素，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-21T09:18:07.923Z">
+<meta property="og:updated_time" content="2019-05-22T06:41:24.218Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="03_数组">
-<meta name="twitter:description" content="数组它用一组连续的内存空间，来存储一组具有相同类型的数据。 随机访问效率高根据下标随机访问效率高，根据下标和数据类型的长度很容易就能计算出相应元素的存储地址。 插入和删除效率低插入和删除元素比较低效，因为要保持内存数据的连续性。若在k位置插入元素，则需将k位置及其之后的所有元素后移。若要删除k位置上的元素，则该元素之后的所有元素都要向前移动一个位置。假如数组中的元素是无序的，我们可以改进插入和删除">
+<meta name="twitter:description" content="数组它用一组连续的内存空间，来存储一组具有相同类型的数据。 随机访问效率高根据下标随机访问效率高，根据下标和数据类型的长度很容易就能计算出相应元素的存储地址。时间复杂度是O(1)。但是，若要查找指定的元素，则需要遍历数组，对应的时间复杂的是O(n)。 插入和删除效率低插入和删除元素比较低效，因为要保持内存数据的连续性。若在k位置插入元素，则需将k位置及其之后的所有元素后移。若要删除k位置上的元素，">
 
 
 
@@ -370,12 +370,24 @@
                 
               
 
-              <time title="创建时间：2019-05-21 16:56:58 / 修改时间：17:18:07" itemprop="dateCreated datePublished" datetime="2019-05-21T16:56:58+08:00">2019-05-21</time>
+              <time title="创建时间：2019-05-21 00:00:00" itemprop="dateCreated datePublished" datetime="2019-05-21T00:00:00+08:00">2019-05-21</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-22 14:41:24" itemprop="dateModified" datetime="2019-05-22T14:41:24+08:00">2019-05-22</time>
               
             
           </span>
@@ -428,8 +440,9 @@
 
       
         <p>数组<br>它用一组连续的内存空间，来存储一组具有相同类型的数据。</p>
-<p><strong>随机访问效率高</strong><br>根据下标随机访问效率高，根据下标和数据类型的长度很容易就能计算出相应元素的存储地址。</p>
-<p><strong>插入和删除效率低</strong><br>插入和删除元素比较低效，因为要保持内存数据的连续性。若在k位置插入元素，则需将k位置及其之后的所有元素后移。若要删除k位置上的元素，则该元素之后的所有元素都要向前移动一个位置。<br>假如数组中的元素是无序的，我们可以改进插入和删除的方法：</p>
+<p><strong>随机访问效率高</strong><br>根据下标随机访问效率高，根据下标和数据类型的长度很容易就能计算出相应元素的存储地址。时间复杂度是O(1)。<br>但是，若要查找指定的元素，则需要遍历数组，对应的时间复杂的是O(n)。</p>
+<p><strong>插入和删除效率低</strong><br>插入和删除元素比较低效，因为要保持内存数据的连续性。若在k位置插入元素，则需将k位置及其之后的所有元素后移。若要删除k位置上的元素，则该元素之后的所有元素都要向前移动一个位置。</p>
+<p>假如数组中的元素是无序的，我们可以改进插入和删除的方法：</p>
 <ul>
 <li>在插入新元素时，只需将k位置的元素移动到数组的末尾，然后将新的元素插入就可以了。</li>
 <li>对于删除，可以采用滞后删除的方式。即：先标记被删的元素，然后找时机将它们一块删除。</li>
@@ -464,7 +477,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/21/数据结构和算法_02_算法分析/" rel="next" title="02_算法分析">
+              <a href="/2019/05/20/数据结构和算法_02_算法分析/" rel="next" title="02_算法分析">
                 <i class="fa fa-chevron-left"></i> 02_算法分析
               </a>
             
@@ -473,6 +486,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/22/数据结构和算法_04_链表/" rel="prev" title="04_链表">
+                04_链表 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -532,7 +549,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

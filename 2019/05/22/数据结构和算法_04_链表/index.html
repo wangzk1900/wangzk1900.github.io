@@ -96,17 +96,21 @@
 
 
 
-  <meta name="description" content="记录学习总结和思考">
+  <meta name="description" content="链表是一种链式存储的线性结构。 链表包括：单向链表、双向链表和循环链表。 和数组一样，链表也支持插入、删除和查找操作。 单向链表单向链表是最简单的链表，它的节点包含两部分：一部分存储数据，另一部分存储指向下一个节点的指针（地址）。单向链表中第一个和最后一个节点是两个特殊的节点，通常称为头节点和尾节点。没有任何节点指向头节点，而尾节点不指向任何节点。 插入插入操作，只需要修改前驱节点的指针，并将新节">
 <meta property="og:type" content="article">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://yoursite.com/2019/05/18/about/index.html">
+<meta property="og:title" content="04_链表">
+<meta property="og:url" content="http://yoursite.com/2019/05/22/数据结构和算法_04_链表/index.html">
 <meta property="og:site_name" content="wangzk1900&#39;s site">
-<meta property="og:description" content="记录学习总结和思考">
+<meta property="og:description" content="链表是一种链式存储的线性结构。 链表包括：单向链表、双向链表和循环链表。 和数组一样，链表也支持插入、删除和查找操作。 单向链表单向链表是最简单的链表，它的节点包含两部分：一部分存储数据，另一部分存储指向下一个节点的指针（地址）。单向链表中第一个和最后一个节点是两个特殊的节点，通常称为头节点和尾节点。没有任何节点指向头节点，而尾节点不指向任何节点。 插入插入操作，只需要修改前驱节点的指针，并将新节">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-18T09:18:41.366Z">
+<meta property="og:image" content="http://yoursite.com/images/612px-Singly-linked-list.svg.png">
+<meta property="og:image" content="http://yoursite.com/images/915px-Doubly-linked-list.svg.png">
+<meta property="og:image" content="http://yoursite.com/images/525px-Circularly-linked-list.svg.png">
+<meta property="og:updated_time" content="2019-05-22T06:41:36.546Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="记录学习总结和思考">
+<meta name="twitter:title" content="04_链表">
+<meta name="twitter:description" content="链表是一种链式存储的线性结构。 链表包括：单向链表、双向链表和循环链表。 和数组一样，链表也支持插入、删除和查找操作。 单向链表单向链表是最简单的链表，它的节点包含两部分：一部分存储数据，另一部分存储指向下一个节点的指针（地址）。单向链表中第一个和最后一个节点是两个特殊的节点，通常称为头节点和尾节点。没有任何节点指向头节点，而尾节点不指向任何节点。 插入插入操作，只需要修改前驱节点的指针，并将新节">
+<meta name="twitter:image" content="http://yoursite.com/images/612px-Singly-linked-list.svg.png">
 
 
 
@@ -114,7 +118,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/05/18/about/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/22/数据结构和算法_04_链表/">
 
 
 
@@ -124,7 +128,7 @@
   };
 </script>
 
-  <title>about | wangzk1900's site</title>
+  <title>04_链表 | wangzk1900's site</title>
   
 
 
@@ -231,7 +235,7 @@
         
         
           
-          <li class="menu-item menu-item-about menu-item-active">
+          <li class="menu-item menu-item-about">
 
     
     
@@ -327,7 +331,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/18/about/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/22/数据结构和算法_04_链表/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wangzk1900">
@@ -344,7 +348,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">about
+          <h1 class="post-title" itemprop="name headline">04_链表
 
               
             
@@ -370,12 +374,34 @@
                 
               
 
-              <time title="创建时间：2019-05-18 17:18:41" itemprop="dateCreated datePublished" datetime="2019-05-18T17:18:41+08:00">2019-05-18</time>
+              <time title="创建时间：2019-05-22 00:00:00 / 修改时间：14:41:36" itemprop="dateCreated datePublished" datetime="2019-05-22T00:00:00+08:00">2019-05-22</time>
             
 
+            
+              
+
+              
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构和算法/" itemprop="url" rel="index"><span itemprop="name">数据结构和算法</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -405,7 +431,24 @@
       
 
       
-        
+        <p>链表是一种链式存储的线性结构。</p>
+<p>链表包括：单向链表、双向链表和循环链表。</p>
+<p>和数组一样，链表也支持插入、删除和查找操作。</p>
+<h1 id="单向链表"><a href="#单向链表" class="headerlink" title="单向链表"></a>单向链表</h1><p>单向链表是最简单的链表，它的节点包含两部分：一部分存储数据，另一部分存储指向下一个节点的指针（地址）。<br><img src="/images/612px-Singly-linked-list.svg.png" alt="单向链表"><br>单向链表中第一个和最后一个节点是两个特殊的节点，通常称为<code>头节点</code>和<code>尾节点</code>。<br>没有任何节点指向<code>头节点</code>，而<code>尾节点</code>不指向任何节点。</p>
+<p><strong>插入</strong><br>插入操作，只需要修改前驱节点的指针，并将新节点指向后继节点，对应的时间复杂度是O(1)。<br>但是，若在指定的位置插入新的节点，则还需遍历链表找到相应的前驱节点。</p>
+<p><strong>删除</strong><br>删除操作，只需修改前驱节点的指针，对应的时间复杂度是O(1)。<br>但是不管是删除指定的节点或随机删除第k个节点，都需要遍历链表找到被删节点的前驱节点。</p>
+<p><strong>查找</strong><br>查找指定的节点或随机访问第k个节点，则需要遍历链表，对应的时间复杂度是O(n)。</p>
+<p><strong>遍历</strong><br>由于单向链表节点中只包含一个指针，因此只能按固定的方向（头节点–>尾节点）遍历链表中的节点。</p>
+<h1 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h1><p>双向链表的节点中不仅包含后继节点的指针，还包含前驱节点的指针。因此，相同长度的双向链表要比单向链表多占用1/2的存储空间。<br><img src="/images/915px-Doubly-linked-list.svg.png" alt="双向链表"><br>除了<code>头节点</code>的后继节点之外，没有任何节点指向<code>头节点</code>。<br>除了<code>尾节点</code>的前驱节点之外，<code>尾节点</code>不指向任何节点。</p>
+<p><strong>插入</strong><br>插入操作，只需要修改前驱节点和后继节点的指针，对应的时间复杂度是O(1)。<br>但是，若在指定的位置插入新的节点，则需遍历链表找到插入位置的前后节点。</p>
+<p><strong>删除</strong><br>删除操作，只需要修改前驱节点和后继节点的指针，对应的时间复杂度是O(1)。<br>若要删除指定的节点，则很简单，因为根据被删节点可以找到它的前驱节点和后继节点。<br>但是若要随机删除第k个节点，则需要先遍历链表找到被删节点。</p>
+<p><strong>查找</strong><br>查找指定的节点或随机访问第k个节点，也需要遍历链表。<br>随机访问第k个节点时，可以先判断这个节点离链表的哪头近，离哪头近就从哪头开始查找。</p>
+<p><strong>遍历</strong><br>支持双向遍历。</p>
+<h1 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h1><p>在单向链表的基础上，将尾节点指向头节点。<br><img src="/images/525px-Circularly-linked-list.svg.png" alt="循环链表"><br>和单向链表相比，循环链表的优点是从链尾到链头比较方便。当处理的数据具有环形结构特点，就特别适合使用循环链表。</p>
+<h1 id="双向循环链表"><a href="#双向循环链表" class="headerlink" title="双向循环链表"></a>双向循环链表</h1><p>在双向链表的基础上，将尾节点指向头节点。</p>
+<hr>
+<p><strong>参考资料：</strong><br><a href="https://time.geekbang.org/column/intro/126" target="_blank" rel="noopener">《数据结构与算法之美》–王争</a><br><a href="https://zh.wikipedia.org/wiki/%E9%93%BE%E8%A1%A8" target="_blank" rel="noopener">维基百科</a></p>
+
       
     </div>
 
@@ -435,15 +478,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/05/21/数据结构和算法_03_数组/" rel="next" title="03_数组">
+                <i class="fa fa-chevron-left"></i> 03_数组
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/19/数据结构和算法_01_概述/" rel="prev" title="01_概述">
-                01_概述 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -487,8 +530,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -551,6 +603,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单向链表"><span class="nav-number">1.</span> <span class="nav-text">单向链表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#双向链表"><span class="nav-number">2.</span> <span class="nav-text">双向链表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#循环链表"><span class="nav-number">3.</span> <span class="nav-text">循环链表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#双向循环链表"><span class="nav-number">4.</span> <span class="nav-text">双向循环链表</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
