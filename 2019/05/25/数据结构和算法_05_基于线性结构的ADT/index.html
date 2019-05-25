@@ -96,21 +96,17 @@
 
 
 
-  <meta name="description" content="链表是一种链式存储的线性结构。 链表包括：单向链表、双向链表和循环链表。 和数组一样，链表也支持插入、删除和查找操作。 单向链表单向链表是最简单的链表，它的节点包含两部分：一部分存储数据，另一部分存储指向下一个节点的指针（地址）。单向链表中第一个和最后一个节点是两个特殊的节点，通常称为头节点和尾节点。没有任何节点指向头节点，而尾节点不指向任何节点。 插入插入操作，只需要修改前驱节点的指针，并将新节">
+  <meta name="description" content="线性表（List）线性表ADT的定义ADT 线性表（List） Data  线性表的数据对象集合为{a1,a2,…,an}，每个元素的类型均为DataType。其中，除第一个元素a1外，每一个元素有且只有一个直接前驱元素，除了最后一个元素an外，每一个元素有且只有一个直接后继元素。数据元素之间的关系是一对一的关系。  Operation  判断List是否为空 获取表中元素的个数 访问第 k 个元">
 <meta property="og:type" content="article">
-<meta property="og:title" content="04_链表">
-<meta property="og:url" content="http://yoursite.com/2019/05/22/数据结构和算法_04_链表/index.html">
+<meta property="og:title" content="05_基于线性结构的ADT">
+<meta property="og:url" content="http://yoursite.com/2019/05/25/数据结构和算法_05_基于线性结构的ADT/index.html">
 <meta property="og:site_name" content="wangzk1900&#39;s site">
-<meta property="og:description" content="链表是一种链式存储的线性结构。 链表包括：单向链表、双向链表和循环链表。 和数组一样，链表也支持插入、删除和查找操作。 单向链表单向链表是最简单的链表，它的节点包含两部分：一部分存储数据，另一部分存储指向下一个节点的指针（地址）。单向链表中第一个和最后一个节点是两个特殊的节点，通常称为头节点和尾节点。没有任何节点指向头节点，而尾节点不指向任何节点。 插入插入操作，只需要修改前驱节点的指针，并将新节">
+<meta property="og:description" content="线性表（List）线性表ADT的定义ADT 线性表（List） Data  线性表的数据对象集合为{a1,a2,…,an}，每个元素的类型均为DataType。其中，除第一个元素a1外，每一个元素有且只有一个直接前驱元素，除了最后一个元素an外，每一个元素有且只有一个直接后继元素。数据元素之间的关系是一对一的关系。  Operation  判断List是否为空 获取表中元素的个数 访问第 k 个元">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/images/612px-Singly-linked-list.svg.png">
-<meta property="og:image" content="http://yoursite.com/images/915px-Doubly-linked-list.svg.png">
-<meta property="og:image" content="http://yoursite.com/images/525px-Circularly-linked-list.svg.png">
-<meta property="og:updated_time" content="2019-05-23T09:54:20.443Z">
+<meta property="og:updated_time" content="2019-05-25T14:30:53.359Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="04_链表">
-<meta name="twitter:description" content="链表是一种链式存储的线性结构。 链表包括：单向链表、双向链表和循环链表。 和数组一样，链表也支持插入、删除和查找操作。 单向链表单向链表是最简单的链表，它的节点包含两部分：一部分存储数据，另一部分存储指向下一个节点的指针（地址）。单向链表中第一个和最后一个节点是两个特殊的节点，通常称为头节点和尾节点。没有任何节点指向头节点，而尾节点不指向任何节点。 插入插入操作，只需要修改前驱节点的指针，并将新节">
-<meta name="twitter:image" content="http://yoursite.com/images/612px-Singly-linked-list.svg.png">
+<meta name="twitter:title" content="05_基于线性结构的ADT">
+<meta name="twitter:description" content="线性表（List）线性表ADT的定义ADT 线性表（List） Data  线性表的数据对象集合为{a1,a2,…,an}，每个元素的类型均为DataType。其中，除第一个元素a1外，每一个元素有且只有一个直接前驱元素，除了最后一个元素an外，每一个元素有且只有一个直接后继元素。数据元素之间的关系是一对一的关系。  Operation  判断List是否为空 获取表中元素的个数 访问第 k 个元">
 
 
 
@@ -118,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/05/22/数据结构和算法_04_链表/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/25/数据结构和算法_05_基于线性结构的ADT/">
 
 
 
@@ -128,7 +124,7 @@
   };
 </script>
 
-  <title>04_链表 | wangzk1900's site</title>
+  <title>05_基于线性结构的ADT | wangzk1900's site</title>
   
 
 
@@ -331,7 +327,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/22/数据结构和算法_04_链表/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/25/数据结构和算法_05_基于线性结构的ADT/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wangzk1900">
@@ -348,7 +344,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">04_链表
+          <h1 class="post-title" itemprop="name headline">05_基于线性结构的ADT
 
               
             
@@ -374,24 +370,12 @@
                 
               
 
-              <time title="创建时间：2019-05-22 00:00:00" itemprop="dateCreated datePublished" datetime="2019-05-22T00:00:00+08:00">2019-05-22</time>
+              <time title="创建时间：2019-05-25 00:00:00 / 修改时间：22:30:53" itemprop="dateCreated datePublished" datetime="2019-05-25T00:00:00+08:00">2019-05-25</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-05-23 17:54:20" itemprop="dateModified" datetime="2019-05-23T17:54:20+08:00">2019-05-23</time>
               
             
           </span>
@@ -443,24 +427,63 @@
       
 
       
-        <p>链表是一种链式存储的线性结构。</p>
-<p>链表包括：单向链表、双向链表和循环链表。</p>
-<p>和数组一样，链表也支持插入、删除和查找操作。</p>
-<h1 id="单向链表"><a href="#单向链表" class="headerlink" title="单向链表"></a>单向链表</h1><p>单向链表是最简单的链表，它的节点包含两部分：一部分存储数据，另一部分存储指向下一个节点的指针（地址）。<br><img src="/images/612px-Singly-linked-list.svg.png" alt="单向链表"><br>单向链表中第一个和最后一个节点是两个特殊的节点，通常称为<code>头节点</code>和<code>尾节点</code>。<br>没有任何节点指向<code>头节点</code>，而<code>尾节点</code>不指向任何节点。</p>
-<p><strong>插入</strong><br>插入操作，只需要修改前驱节点的指针，并将新节点指向后继节点，对应的时间复杂度是O(1)。<br>但是，若在指定的位置插入新的节点，则还需遍历链表找到相应的前驱节点。</p>
-<p><strong>删除</strong><br>删除操作，只需修改前驱节点的指针，对应的时间复杂度是O(1)。<br>但是不管是删除指定的节点或随机删除第k个节点，都需要遍历链表找到被删节点的前驱节点。</p>
-<p><strong>查找</strong><br>查找指定的节点或随机访问第k个节点，则需要遍历链表，对应的时间复杂度是O(n)。</p>
-<p><strong>遍历</strong><br>由于单向链表节点中只包含一个指针，因此只能按固定的方向（头节点–>尾节点）遍历链表中的节点。</p>
-<h1 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h1><p>双向链表的节点中不仅包含后继节点的指针，还包含前驱节点的指针。因此，相同长度的双向链表要比单向链表多占用1/2的存储空间。<br><img src="/images/915px-Doubly-linked-list.svg.png" alt="双向链表"><br>除了<code>头节点</code>的后继节点之外，没有任何节点指向<code>头节点</code>。<br>除了<code>尾节点</code>的前驱节点之外，<code>尾节点</code>不指向任何节点。</p>
-<p><strong>插入</strong><br>插入操作，只需要修改前驱节点和后继节点的指针，对应的时间复杂度是O(1)。<br>但是，若在指定的位置插入新的节点，则需遍历链表找到插入位置的前后节点。</p>
-<p><strong>删除</strong><br>删除操作，只需要修改前驱节点和后继节点的指针，对应的时间复杂度是O(1)。<br>若要删除指定的节点，则很简单，因为根据被删节点可以找到它的前驱节点和后继节点。<br>但是若要随机删除第k个节点，则需要先遍历链表找到被删节点。</p>
-<p><strong>查找</strong><br>查找指定的节点或随机访问第k个节点，也需要遍历链表。<br>随机访问第k个节点时，可以先判断这个节点离链表的哪头近，离哪头近就从哪头开始查找。</p>
-<p><strong>遍历</strong><br>支持双向遍历。</p>
-<h1 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h1><p>在单向链表的基础上，将尾节点指向头节点。<br><img src="/images/525px-Circularly-linked-list.svg.png" alt="循环链表"><br>和单向链表相比，循环链表的优点是从链尾到链头比较方便。当处理的数据具有环形结构特点，就特别适合使用循环链表。</p>
-<h1 id="双向循环链表"><a href="#双向循环链表" class="headerlink" title="双向循环链表"></a>双向循环链表</h1><p>在双向链表的基础上，将尾节点指向头节点。</p>
-<h1 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h1><p><a href="https://github.com/wangzk1900/Data-structures-and-algorithms/tree/master/list" target="_blank" rel="noopener">链表的一些练习</a></p>
-<hr>
-<p><strong>参考资料：</strong><br><a href="https://time.geekbang.org/column/intro/126" target="_blank" rel="noopener">《数据结构与算法之美》–王争</a><br><a href="https://zh.wikipedia.org/wiki/%E9%93%BE%E8%A1%A8" target="_blank" rel="noopener">维基百科</a></p>
+        <h1 id="线性表（List）"><a href="#线性表（List）" class="headerlink" title="线性表（List）"></a>线性表（List）</h1><h2 id="线性表ADT的定义"><a href="#线性表ADT的定义" class="headerlink" title="线性表ADT的定义"></a>线性表ADT的定义</h2><p><strong>ADT</strong> 线性表（List）</p>
+<p><strong>Data</strong></p>
+<ul>
+<li>线性表的数据对象集合为{a1,a2,…,an}，每个元素的类型均为<strong>Data</strong>Type。其中，除第一个元素a1外，每一个元素有且只有一个直接前驱元素，除了最后一个元素an外，每一个元素有且只有一个直接后继元素。数据元素之间的关系是一对一的关系。</li>
+</ul>
+<p><strong>Operation</strong></p>
+<ul>
+<li>判断List是否为空</li>
+<li>获取表中元素的个数</li>
+<li>访问第 k 个元素</li>
+<li>查找指定元素在表中的位置</li>
+<li>在第 k 个位置插入一个新元素</li>
+<li>追加一个元素</li>
+<li>删除第 k 个元素</li>
+<li>复制一个线性表</li>
+</ul>
+<p>这里只列举了一些基本的操作，在实际编程过程中，需要根据不同的业务需求选择合适的操作。</p>
+<h2 id="线性表ADT的实现"><a href="#线性表ADT的实现" class="headerlink" title="线性表ADT的实现"></a>线性表ADT的实现</h2><p>既可以用数组实现也可以使用链表实现。</p>
+<p>我的练习：<br><a href="https://github.com/wangzk1900/**Data**-structures-and-algorithms/tree/master/list" target="_blank" rel="noopener"></a></p>
+<h1 id="栈（Stack）"><a href="#栈（Stack）" class="headerlink" title="栈（Stack）"></a>栈（Stack）</h1><p>栈（Stack）是一个后进先出（Last in first out,LIFO）的线性表，它只允许在表的一端（栈顶）进行删除和插入操作。</p>
+<h2 id="栈ADT的定义"><a href="#栈ADT的定义" class="headerlink" title="栈ADT的定义"></a>栈ADT的定义</h2><p><strong>ADT</strong> 栈（Stack）</p>
+<p><strong>Data</strong></p>
+<ul>
+<li>与线性表相同</li>
+</ul>
+<p><strong>Operation</strong></p>
+<ul>
+<li>入栈——在栈顶插入一个元素</li>
+<li>出栈——在栈顶删除一个元素，并返回</li>
+</ul>
+<h2 id="栈ADT的实现"><a href="#栈ADT的实现" class="headerlink" title="栈ADT的实现"></a>栈ADT的实现</h2><p>我的练习：<br><a href="https://github.com/wangzk1900/**Data**-structures-and-algorithms/tree/master/list" target="_blank" rel="noopener"></a></p>
+<h2 id="栈的应用"><a href="#栈的应用" class="headerlink" title="栈的应用"></a>栈的应用</h2><h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><p>队列（Queue）是一种先进先出（First In First Out, FIFO）的线性表，它只允许在一端进行插入操作，而在另一端进行删除操作。</p>
+<h2 id="队列ADT的定义"><a href="#队列ADT的定义" class="headerlink" title="队列ADT的定义"></a>队列ADT的定义</h2><p><strong>ADT</strong> 队列（Queue）</p>
+<p><strong>Data</strong></p>
+<ul>
+<li>与线性表相同</li>
+</ul>
+<p><strong>Operation</strong></p>
+<ul>
+<li>入队——在表的一端插入一个元素</li>
+<li>出队——在表的另一端删除一个元素，并返回该元素</li>
+</ul>
+<h2 id="队列ADT的实现"><a href="#队列ADT的实现" class="headerlink" title="队列ADT的实现"></a>队列ADT的实现</h2><p>我的练习：<br><a href="https://github.com/wangzk1900/**Data**-structures-and-algorithms/tree/master/queue" target="_blank" rel="noopener"></a></p>
+<h1 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h1><p>双端队列（Deque）是一种前端和后端都支持插入和删除操作的队列。</p>
+<h2 id="双端队列ADT的定义"><a href="#双端队列ADT的定义" class="headerlink" title="双端队列ADT的定义"></a>双端队列ADT的定义</h2><p><strong>ADT</strong> 双端队列（Deque）</p>
+<p><strong>Data</strong></p>
+<ul>
+<li>与线性表相同</li>
+</ul>
+<p><strong>Operation</strong></p>
+<ul>
+<li>前端插入——在表的前端插入一个元素</li>
+<li>前端删除——在表的前端删除一个元素，并返回该元素</li>
+<li>后端插入——在表的后端插入一个元素</li>
+<li>后端删除——在表的后端删除一个元素，并返回该元素</li>
+</ul>
+<h2 id="双端队列ADT的实现"><a href="#双端队列ADT的实现" class="headerlink" title="双端队列ADT的实现"></a>双端队列ADT的实现</h2><p>我的练习：<br><a href="https://github.com/wangzk1900/**Data**-structures-and-algorithms/tree/master/deque" target="_blank" rel="noopener"></a></p>
 
       
     </div>
@@ -491,8 +514,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/21/数据结构和算法_03_数组/" rel="next" title="03_数组">
-                <i class="fa fa-chevron-left"></i> 03_数组
+              <a href="/2019/05/22/数据结构和算法_04_链表/" rel="next" title="04_链表">
+                <i class="fa fa-chevron-left"></i> 04_链表
               </a>
             
           </div>
@@ -500,10 +523,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/25/数据结构和算法_05_基于线性结构的ADT/" rel="prev" title="05_基于线性结构的ADT">
-                05_基于线性结构的ADT <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -657,7 +676,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单向链表"><span class="nav-number">1.</span> <span class="nav-text">单向链表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#双向链表"><span class="nav-number">2.</span> <span class="nav-text">双向链表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#循环链表"><span class="nav-number">3.</span> <span class="nav-text">循环链表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#双向循环链表"><span class="nav-number">4.</span> <span class="nav-text">双向循环链表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#练习"><span class="nav-number">5.</span> <span class="nav-text">练习</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线性表（List）"><span class="nav-number">1.</span> <span class="nav-text">线性表（List）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性表ADT的定义"><span class="nav-number">1.1.</span> <span class="nav-text">线性表ADT的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性表ADT的实现"><span class="nav-number">1.2.</span> <span class="nav-text">线性表ADT的实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#栈（Stack）"><span class="nav-number">2.</span> <span class="nav-text">栈（Stack）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#栈ADT的定义"><span class="nav-number">2.1.</span> <span class="nav-text">栈ADT的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈ADT的实现"><span class="nav-number">2.2.</span> <span class="nav-text">栈ADT的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈的应用"><span class="nav-number">2.3.</span> <span class="nav-text">栈的应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#队列"><span class="nav-number">3.</span> <span class="nav-text">队列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#队列ADT的定义"><span class="nav-number">3.1.</span> <span class="nav-text">队列ADT的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#队列ADT的实现"><span class="nav-number">3.2.</span> <span class="nav-text">队列ADT的实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#双端队列"><span class="nav-number">4.</span> <span class="nav-text">双端队列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#双端队列ADT的定义"><span class="nav-number">4.1.</span> <span class="nav-text">双端队列ADT的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双端队列ADT的实现"><span class="nav-number">4.2.</span> <span class="nav-text">双端队列ADT的实现</span></a></li></ol></li></ol></div>
             
 
           </div>

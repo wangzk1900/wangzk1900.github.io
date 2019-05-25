@@ -327,6 +327,223 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/25/数据结构和算法_05_基于线性结构的ADT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangzk1900">
+      <meta itemprop="description" content="记录学习总结和思考">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangzk1900's site">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/25/数据结构和算法_05_基于线性结构的ADT/" class="post-title-link" itemprop="url">05_基于线性结构的ADT</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-25 00:00:00 / 修改时间：22:30:53" itemprop="dateCreated datePublished" datetime="2019-05-25T00:00:00+08:00">2019-05-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构和算法/" itemprop="url" rel="index"><span itemprop="name">数据结构和算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="线性表（List）"><a href="#线性表（List）" class="headerlink" title="线性表（List）"></a>线性表（List）</h1><h2 id="线性表ADT的定义"><a href="#线性表ADT的定义" class="headerlink" title="线性表ADT的定义"></a>线性表ADT的定义</h2><p><strong>ADT</strong> 线性表（List）</p>
+<p><strong>Data</strong></p>
+<ul>
+<li>线性表的数据对象集合为{a1,a2,…,an}，每个元素的类型均为<strong>Data</strong>Type。其中，除第一个元素a1外，每一个元素有且只有一个直接前驱元素，除了最后一个元素an外，每一个元素有且只有一个直接后继元素。数据元素之间的关系是一对一的关系。</li>
+</ul>
+<p><strong>Operation</strong></p>
+<ul>
+<li>判断List是否为空</li>
+<li>获取表中元素的个数</li>
+<li>访问第 k 个元素</li>
+<li>查找指定元素在表中的位置</li>
+<li>在第 k 个位置插入一个新元素</li>
+<li>追加一个元素</li>
+<li>删除第 k 个元素</li>
+<li>复制一个线性表</li>
+</ul>
+<p>这里只列举了一些基本的操作，在实际编程过程中，需要根据不同的业务需求选择合适的操作。</p>
+<h2 id="线性表ADT的实现"><a href="#线性表ADT的实现" class="headerlink" title="线性表ADT的实现"></a>线性表ADT的实现</h2><p>既可以用数组实现也可以使用链表实现。</p>
+<p>我的练习：<br><a href="https://github.com/wangzk1900/**Data**-structures-and-algorithms/tree/master/list" target="_blank" rel="noopener"></a></p>
+<h1 id="栈（Stack）"><a href="#栈（Stack）" class="headerlink" title="栈（Stack）"></a>栈（Stack）</h1><p>栈（Stack）是一个后进先出（Last in first out,LIFO）的线性表，它只允许在表的一端（栈顶）进行删除和插入操作。</p>
+<h2 id="栈ADT的定义"><a href="#栈ADT的定义" class="headerlink" title="栈ADT的定义"></a>栈ADT的定义</h2><p><strong>ADT</strong> 栈（Stack）</p>
+<p><strong>Data</strong></p>
+<ul>
+<li>与线性表相同</li>
+</ul>
+<p><strong>Operation</strong></p>
+<ul>
+<li>入栈——在栈顶插入一个元素</li>
+<li>出栈——在栈顶删除一个元素，并返回</li>
+</ul>
+<h2 id="栈ADT的实现"><a href="#栈ADT的实现" class="headerlink" title="栈ADT的实现"></a>栈ADT的实现</h2><p>我的练习：<br><a href="https://github.com/wangzk1900/**Data**-structures-and-algorithms/tree/master/list" target="_blank" rel="noopener"></a></p>
+<h2 id="栈的应用"><a href="#栈的应用" class="headerlink" title="栈的应用"></a>栈的应用</h2><h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><p>队列（Queue）是一种先进先出（First In First Out, FIFO）的线性表，它只允许在一端进行插入操作，而在另一端进行删除操作。</p>
+<h2 id="队列ADT的定义"><a href="#队列ADT的定义" class="headerlink" title="队列ADT的定义"></a>队列ADT的定义</h2><p><strong>ADT</strong> 队列（Queue）</p>
+<p><strong>Data</strong></p>
+<ul>
+<li>与线性表相同</li>
+</ul>
+<p><strong>Operation</strong></p>
+<ul>
+<li>入队——在表的一端插入一个元素</li>
+<li>出队——在表的另一端删除一个元素，并返回该元素</li>
+</ul>
+<h2 id="队列ADT的实现"><a href="#队列ADT的实现" class="headerlink" title="队列ADT的实现"></a>队列ADT的实现</h2><p>我的练习：<br><a href="https://github.com/wangzk1900/**Data**-structures-and-algorithms/tree/master/queue" target="_blank" rel="noopener"></a></p>
+<h1 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h1><p>双端队列（Deque）是一种前端和后端都支持插入和删除操作的队列。</p>
+<h2 id="双端队列ADT的定义"><a href="#双端队列ADT的定义" class="headerlink" title="双端队列ADT的定义"></a>双端队列ADT的定义</h2><p><strong>ADT</strong> 双端队列（Deque）</p>
+<p><strong>Data</strong></p>
+<ul>
+<li>与线性表相同</li>
+</ul>
+<p><strong>Operation</strong></p>
+<ul>
+<li>前端插入——在表的前端插入一个元素</li>
+<li>前端删除——在表的前端删除一个元素，并返回该元素</li>
+<li>后端插入——在表的后端插入一个元素</li>
+<li>后端删除——在表的后端删除一个元素，并返回该元素</li>
+</ul>
+<h2 id="双端队列ADT的实现"><a href="#双端队列ADT的实现" class="headerlink" title="双端队列ADT的实现"></a>双端队列ADT的实现</h2><p>我的练习：<br><a href="https://github.com/wangzk1900/**Data**-structures-and-algorithms/tree/master/deque" target="_blank" rel="noopener"></a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/22/数据结构和算法_04_链表/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -973,7 +1190,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-22 14:40:57" itemprop="dateModified" datetime="2019-05-22T14:40:57+08:00">2019-05-22</time>
+                <time title="修改时间：2019-05-25 15:41:44" itemprop="dateModified" datetime="2019-05-25T15:41:44+08:00">2019-05-25</time>
               
             
           </span>
@@ -1034,7 +1251,7 @@
 <p><strong>抽象数据类型（ADT）</strong><br>抽象数据类型（ADT）是一种能够对使用者隐藏数据表示的数据类型。用 Java 类来实现抽象数据类型和用一组静态方法实现一个函数库并没有什么不同。抽象数据类型的主要不同之处在于它将数据和函数的实现关联，并将数据的表示方式隐藏起来。在使用抽象数据类型时，我们的注意力集中在 API 描述的操作上而不会去关心数据的表示；在实现抽象数据类型时，我们的注意力集中在数据本身并将实现对该数据的各种操作。（<a href="https://book.douban.com/subject/19952400/" target="_blank" rel="noopener">《算法（第4版）》</a>，第38页）</p>
 <p>抽象数据类型（abstract data type，ADT）是一些操作的集合。抽象数据类型是数学的抽象；在ADT的定义中根本没有涉及如何实现操作的集合。这可以看做是模块化设计的扩充。对诸如表、集合、图和它们的操作一起可以看作是抽象数据类型，就像整数、实数和布尔量是数据类型一样。整数、实数及布尔量有与它们相关的操作，而抽象数据类型也有与它们自己相关的操作。（<a href="https://book.douban.com/subject/1139426/" target="_blank" rel="noopener">《数据结构与算法分析 C语言描述（原书第2版）》</a>，第31页）</p>
 <p>什么是ADT？简单说来，他是一种考虑数据结构的方式：着重于它做了什么，而忽略它是怎么做的。（<a href="https://book.douban.com/subject/1144007/" target="_blank" rel="noopener">《Java数据结构和算法》</a>，第150页）</p>
-<p><strong>我的理解</strong><br>算法应该是与编程语言无关的，是一种解决某种问题的方法，我们可以用自然语言、数学公式或者编程语言来描述其具体的实现步骤。<br>数据结构包括逻辑结构和物理结构（存储结构），不同的数据结构支持不同的操作。我们主要研究不同数据操作的效率，以便在编程时选择合适的数据结构。<br>抽象数据类型是一种自定义的数据类型，应该相当于Java中的接口，可以用不同的数据结构和算法来实现。例如：栈ADT既可以用数组实现也可以用链表实现。</p>
+<p><strong>我的理解</strong><br>算法应该是与编程语言无关的，是一种解决某种问题的方法，我们可以用自然语言、数学公式或者编程语言来描述其具体的实现步骤。<br>数据结构包括逻辑结构和物理结构（存储结构），不同的数据结构支持不同的操作。我们主要研究不同数据操作的效率，以便在编程时选择合适的数据结构。<br>抽象数据类型（ADT）是一种自定义的数据类型，它应该包括对数据和操作的描述。<br>ADT应该相当于Java中的接口，可以用不同的数据结构和算法来实现。例如：栈ADT既可以用数组实现也可以用链表实现。</p>
 <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><p>数据结构分为：</p>
 <ul>
 <li>逻辑结构 – 是指数据对象中数据元素之间的相互关系。</li>
@@ -1364,7 +1581,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1600,6 +1817,8 @@
 
   
   
+    
+      
     
       
     
