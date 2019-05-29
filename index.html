@@ -327,6 +327,259 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/28/数据结构和算法_08_二叉查找树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangzk1900">
+      <meta itemprop="description" content="记录学习总结和思考">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangzk1900's site">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/28/数据结构和算法_08_二叉查找树/" class="post-title-link" itemprop="url">08_二叉查找树</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-28 00:00:00" itemprop="dateCreated datePublished" datetime="2019-05-28T00:00:00+08:00">2019-05-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-29 09:54:06" itemprop="dateModified" datetime="2019-05-29T09:54:06+08:00">2019-05-29</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构和算法/" itemprop="url" rel="index"><span itemprop="name">数据结构和算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>二叉查找树，也叫二叉搜索树，其特点是：<br>对于树中的任意一个节点，其左子树中每个节点的值，都要小于这个节点的值；而其右子树所有节点的值都大于这个节点的值。</p>
+<h1 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h1><p>支持快速查找、插入、删除操作。</p>
+<p><strong>查找</strong><br>从根节点开始，如果要查找的数据比根节点的值小，那就在左子树中递归查找；如果要查找的数据比根节点的值大，那就在右子树中递归查找。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">find</span><span class="params">(<span class="keyword">int</span> data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Node node = root;</span><br><span class="line">    <span class="keyword">while</span> (node != <span class="keyword">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (data &lt; node.data)</span><br><span class="line">        &#123;</span><br><span class="line">            node = node.leftChild;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (data &gt; node.data)</span><br><span class="line">        &#123;</span><br><span class="line">            node = node.rightChild;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> node;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>插入</strong><br>和查找过程类似，首先查找出插入位置，然后将新节点插入。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Node newNode = <span class="keyword">new</span> Node(data);</span><br><span class="line">    <span class="keyword">if</span> (isEmpty())</span><br><span class="line">    &#123;</span><br><span class="line">        root = newNode;</span><br><span class="line">        size++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        Node node = root;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 向左查找插入位置</span></span><br><span class="line">            <span class="keyword">if</span> (data &lt; node.data)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (node.leftChild == <span class="keyword">null</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    node.leftChild = newNode;</span><br><span class="line">                    size++;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    node = node.leftChild;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 向右查找插入位置</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (data &gt; node.data)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (node.rightChild == <span class="keyword">null</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    node.rightChild = newNode;</span><br><span class="line">                    size++;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    node = node.rightChild;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123; <span class="comment">// 重复数据不允许插入</span></span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>删除</strong><br>删除操作就比较麻烦了，分三种情况：</p>
+<ol>
+<li>被删节点没有子节点，只需将其父节点中指向该节点的指针置空（root节点需另外处理）。</li>
+<li>被删节点有一个子节点，只需将其父节点指向该节点的指针改为指向其子节点。</li>
+<li>被删节点有两个子节点，首先需要找出其右子树中最小的节点，然后把这个最小节点放到被删节点的位置上。</li>
+</ol>
+<p><code>`java
+public void delete(int data)
+{
+    Node delNode = root;
+    // 被删节点的父节点
+    Node delPNode = null;
+    while (delNode != null &amp;&amp; delNode.data != data)
+    {
+        delPNode = delNode;
+        if (data &lt; delNode.data)
+        {
+            delNode = delNode.leftChild;
+        }
+        else if (data &gt; delNode.data)
+        {
+            delNode = delNode.rightChild;
+        }
+    }
+    // 没找到
+    if (delNode == null)
+    {
+        return;
+    }
+    // 1. 待删节点有两个子节点
+    if (delNode.leftChild != null &amp;&amp; delNode.rightChild !=
+    {
+        // 右子树中的最小节点
+        Node minNode = delNode.rightChild;
+        // 最小节点的父节点
+        Node minPNode = delNode;
+        // 找出右子树中的最小节点
+        while (minNode.leftChild != null)
+        {
+            minPNode = minNode;
+            minNode = minNode.leftChild;
+        }
+        // 最小节点的数据放到被删节点中
+        delNode.data = minNode.data;
+        // 更新被删节点，及其父节点
+        delPNode = minPNode;
+        delNode = minNode;
+    }
+    // 2. 待删节点没有子节点或者只有一个子节点
+    Node cNode = delNode.leftChild != null ? delNode.leftC
+    // 被删节点是 root 节点
+    if (delPNode == null)
+    {
+        root = cNode;
+    }
+    // 更新父节点的指针
+    else if (delPNode.leftChild == delNode)
+    {
+        delPNode.leftChild = cNode;
+    }
+    else
+    {
+        delPNode.rightChild = cNode;
+    }
+    size--;
+}</code></p>
+<p><strong>遍历</strong><br>中序遍历二叉查找树，可以输出有序的数据序列，时间复杂度是O(n)。</p>
+<p><strong>完整练习代码：</strong><br><a href="https://github.com/wangzk1900/Data-structures-and-algorithms/blob/master/binarysearchtree/BinarySearchTree1.java" target="_blank" rel="noopener">二叉查找树</a></p>
+<h1 id="支持重复数据"><a href="#支持重复数据" class="headerlink" title="支持重复数据"></a>支持重复数据</h1><p>如果允许在二叉查找树中存放重复数据，这里有两种方法：</p>
+<ol>
+<li>将数据存放在链表中，然后将链表存放到二叉树的节点中（除了链表，也可以使用支持动态扩容的数组等结构）。</li>
+<li>若插入的数据与现有节点的值相同，则将其按大于这个节点的值来处理，也就是将数据放到该节点的右子树中。</li>
+</ol>
+<p><strong>完整练习代码：</strong><br><a href="https://github.com/wangzk1900/Data-structures-and-algorithms/blob/master/binarysearchtree/BinarySearchTree2.java" target="_blank" rel="noopener">支持重复数据的二叉查找树</a></p>
+<h1 id="时间复杂度分析"><a href="#时间复杂度分析" class="headerlink" title="时间复杂度分析"></a>时间复杂度分析</h1><p>插入、删除和查找操作的时间复杂度都跟树的高度成正比。</p>
+<hr>
+<p>参考资料：<br><a href="https://time.geekbang.org/column/intro/126" target="_blank" rel="noopener">《数据结构与算法之美》–王争</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/27/数据结构和算法_07_二叉树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1989,7 +2242,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2225,6 +2478,8 @@
 
   
   
+    
+      
     
       
     
