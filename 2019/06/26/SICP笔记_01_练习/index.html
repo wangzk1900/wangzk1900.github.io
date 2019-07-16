@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="程序设计的基本元素(1.1 The Elements of Programming) 条件表达式和谓词(1.1.6 Conditional Expressions and Predicates) Exercise 1.1:Below is a sequence of expressions. What is the result printed by the interpreter in resp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SICP练习_01">
+<meta property="og:url" content="http://yoursite.com/2019/06/26/SICP笔记_01_练习/index.html">
+<meta property="og:site_name" content="wangzk1900&#39;s site">
+<meta property="og:description" content="程序设计的基本元素(1.1 The Elements of Programming) 条件表达式和谓词(1.1.6 Conditional Expressions and Predicates) Exercise 1.1:Below is a sequence of expressions. What is the result printed by the interpreter in resp">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-28T06:45:32.508Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SICP练习_01">
+<meta name="twitter:description" content="程序设计的基本元素(1.1 The Elements of Programming) 条件表达式和谓词(1.1.6 Conditional Expressions and Predicates) Exercise 1.1:Below is a sequence of expressions. What is the result printed by the interpreter in resp">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/06/26/SICP笔记_01_练习/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>SICP练习_01 | wangzk1900's site</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wangzk1900's site</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">我的小站</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/26/SICP笔记_01_练习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangzk1900">
+      <meta itemprop="description" content="记录学习总结和思考">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangzk1900's site">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SICP练习_01
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-26 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-26T00:00:00+08:00">2019-06-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-28 14:45:32" itemprop="dateModified" datetime="2019-06-28T14:45:32+08:00">2019-06-28</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SICP笔记/" itemprop="url" rel="index"><span itemprop="name">SICP笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="程序设计的基本元素"><a href="#程序设计的基本元素" class="headerlink" title="程序设计的基本元素"></a>程序设计的基本元素</h1><p>(1.1 The Elements of Programming)</p>
+<h2 id="条件表达式和谓词"><a href="#条件表达式和谓词" class="headerlink" title="条件表达式和谓词"></a>条件表达式和谓词</h2><p>(1.1.6 Conditional Expressions and Predicates)</p>
+<h3 id="Exercise-1-1"><a href="#Exercise-1-1" class="headerlink" title="Exercise 1.1:"></a>Exercise 1.1:</h3><p>Below is a sequence of expressions. What is the result printed by the interpreter in response to each expression? Assume that the sequence is to be evaluated in the order in which it is presented.<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span>    <span class="comment">;10</span></span><br><span class="line">(<span class="name"><span class="builtin-name">+</span></span> <span class="number">5</span> <span class="number">3</span> <span class="number">4</span>)    <span class="comment">;12</span></span><br><span class="line">(<span class="name"><span class="builtin-name">-</span></span> <span class="number">9</span> <span class="number">1</span>)    <span class="comment">;8</span></span><br><span class="line">(<span class="name"><span class="builtin-name">/</span></span> <span class="number">6</span> <span class="number">2</span>)    <span class="comment">;3</span></span><br><span class="line">(<span class="name"><span class="builtin-name">+</span></span> (<span class="name"><span class="builtin-name">*</span></span> <span class="number">2</span> <span class="number">4</span>) (<span class="name"><span class="builtin-name">-</span></span> <span class="number">4</span> <span class="number">6</span>))    <span class="comment">;6</span></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> a <span class="number">3</span>)</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> b (<span class="name"><span class="builtin-name">+</span></span> a <span class="number">1</span>))</span><br><span class="line">(<span class="name"><span class="builtin-name">+</span></span> a b (<span class="name"><span class="builtin-name">*</span></span> a b))    <span class="comment">;19</span></span><br><span class="line">(<span class="name"><span class="builtin-name">=</span></span> a b)    <span class="comment">;#f</span></span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">and</span></span> (<span class="name"><span class="builtin-name">&gt;</span></span> b a) (<span class="name"><span class="builtin-name">&lt;</span></span> b (<span class="name"><span class="builtin-name">*</span></span> a b)))</span><br><span class="line">    b</span><br><span class="line">    a)    <span class="comment">;4</span></span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">cond</span></span> ((<span class="name"><span class="builtin-name">=</span></span> a <span class="number">4</span>) <span class="number">6</span>)</span><br><span class="line">      ((<span class="name"><span class="builtin-name">=</span></span> b <span class="number">4</span>) (<span class="name"><span class="builtin-name">+</span></span> <span class="number">6</span> <span class="number">7</span> a))</span><br><span class="line">      (<span class="name"><span class="builtin-name">else</span></span> <span class="number">25</span>))    <span class="comment">;16</span></span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">+</span></span> <span class="number">2</span> (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">&gt;</span></span> b a) b a))    <span class="comment">;6</span></span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">*</span></span> (<span class="name"><span class="builtin-name">cond</span></span> ((<span class="name"><span class="builtin-name">&gt;</span></span> a b) a)</span><br><span class="line">         ((<span class="name"><span class="builtin-name">&lt;</span></span> a b) b)</span><br><span class="line">         (<span class="name"><span class="builtin-name">else</span></span> <span class="number">-1</span>))</span><br><span class="line">    (<span class="name"><span class="builtin-name">+</span></span> a <span class="number">1</span>))    <span class="comment">;16</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Exercise-1-2"><a href="#Exercise-1-2" class="headerlink" title="Exercise 1.2:"></a>Exercise 1.2:</h3><p>Translate the following expression into prefix form:<br>$\frac{5+4+(2-(3-(6+\frac{4}{5})))}{3(6-2)(2-7)}$</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">/</span></span> (<span class="name"><span class="builtin-name">+</span></span> <span class="number">5</span> <span class="number">4</span> (<span class="name"><span class="builtin-name">-</span></span> <span class="number">2</span> (<span class="name"><span class="builtin-name">-</span></span> <span class="number">3</span> (<span class="name"><span class="builtin-name">+</span></span> <span class="number">6</span> (<span class="name"><span class="builtin-name">/</span></span> <span class="number">4</span> <span class="number">5</span>)))))</span><br><span class="line">   (<span class="name"><span class="builtin-name">*</span></span> <span class="number">3</span> (<span class="name"><span class="builtin-name">-</span></span> <span class="number">6</span> <span class="number">2</span>) (<span class="name"><span class="builtin-name">-</span></span> <span class="number">2</span> <span class="number">7</span>)))</span><br></pre></td></tr></table></figure>
+<h3 id="Exercise-1-3"><a href="#Exercise-1-3" class="headerlink" title="Exercise 1.3:"></a>Exercise 1.3:</h3><p>Define a procedure that takes three numbers as arguments and returns the sum of the squares of the two larger numbers.</p>
+<p>思路一：<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">sum-of-bigger-squares</span> x y z)</span><br><span class="line">        (<span class="name"><span class="builtin-name">cond</span></span> ((<span class="name"><span class="builtin-name">&gt;</span></span> x y) (<span class="name"><span class="builtin-name">+</span></span> (<span class="name"><span class="builtin-name">*</span></span> x x) (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">&gt;</span></span> y z) (<span class="name"><span class="builtin-name">*</span></span> y y) (<span class="name"><span class="builtin-name">*</span></span> z z))))</span><br><span class="line">              (<span class="name"><span class="builtin-name">else</span></span> (<span class="name"><span class="builtin-name">+</span></span> (<span class="name"><span class="builtin-name">*</span></span> y y) (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">&gt;</span></span> x z) (<span class="name"><span class="builtin-name">*</span></span> x x) (<span class="name"><span class="builtin-name">*</span></span> z z))))))</span><br></pre></td></tr></table></figure></p>
+<p>思路二：利用已有的过程sum-of-squares(1.1.4)<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">sum-of-squares</span> x y)</span><br><span class="line">  (<span class="name"><span class="builtin-name">+</span></span> (<span class="name">square</span> x) (<span class="name">square</span> y)))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">sum-of-bigger-squares</span> x y z)</span><br><span class="line">        (<span class="name"><span class="builtin-name">cond</span></span> ((<span class="name"><span class="builtin-name">&gt;</span></span> x y) (<span class="name">sum-of-squares</span> x (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">&gt;</span></span> y z) y z)))</span><br><span class="line">              (<span class="name"><span class="builtin-name">else</span></span> (<span class="name">sum-of-squares</span> y (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">&gt;</span></span> x z) x z)))))</span><br></pre></td></tr></table></figure></p>
+<p>思路三：首先定义bigger和smaller过程，分别返回两数中的较大者和较小者<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">bigger</span> x y)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">&gt;</span></span> x y) x y))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">smaller</span> x y)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">&gt;</span></span> x y) y x))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">sum-of-squares</span> x y)</span><br><span class="line">  (<span class="name"><span class="builtin-name">+</span></span> (<span class="name">square</span> x) (<span class="name">square</span> y)))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">sum-of-bigger-squares</span> x y z)</span><br><span class="line">  (<span class="name">sum-of-squares</span> (<span class="name">bigger</span> x y) <span class="comment">; 首先找出x和y中较大的数</span></span><br><span class="line">                  (<span class="name">bigger</span> (<span class="name">smaller</span> x y) z))) <span class="comment">; 另一个较大的数</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Exercise-1-4"><a href="#Exercise-1-4" class="headerlink" title="Exercise 1.4:"></a>Exercise 1.4:</h3><p>Observe that our model of evaluation allows for combinations whose operators are compound expressions. Use this observation to describe the behavior of the following procedure:<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">a-plus-abs-b</span> a b)</span><br><span class="line">    ((<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">&gt;</span></span> b <span class="number">0</span>) + -) a b))</span><br></pre></td></tr></table></figure></p>
+<p>计算a加上b的绝对值的和。</p>
+<h3 id="Exercise-1-5"><a href="#Exercise-1-5" class="headerlink" title="Exercise 1.5:"></a>Exercise 1.5:</h3><p>Ben Bitdiddle has invented a test to determine whether the interpreter he is faced with is using applicative-order evaluation or normal-order evaluation. He defines the following two procedures:<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">p</span>) (<span class="name">p</span>))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">test</span> x y)</span><br><span class="line">    (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">=</span></span> x <span class="number">0</span>) <span class="number">0</span> y))</span><br></pre></td></tr></table></figure></p>
+<p>Then he evaluates the expression<br><code>(test 0 (p))</code><br>What behavior will Ben observe with an interpreter that uses applicative-order evaluation? What behavior will he observe with an interpreter that uses normal-order evaluation?<br>Explain your answer. (Assume that the evaluation rule for the special form if is the same whether the interpreter is using normal or applicative order: the predicate expression is evaluated first, and the result determines whether to evaluate the consequent or the alternative expression.)<br>若解释器使用应用序(applicative-order)，则(test 0 (p))不会停止。<br>解释器首先会对(p)求值，而(p)将扩展为(p)，然后(p)又扩展为(p)，就这样没完没了……<br>(test 0 (p))<br>(test 0 (p))<br>(test 0 (p))<br>…<br>若解释器使用正则序(normal-order)，最终的结果是0。<br>解释器首先将表达式全部展开，再求值。<br>(test 0 (p))<br>(if (= 0 0) 0 (p))<br>(if #t 0 (p))<br>0</p>
+<h2 id="实例：采用牛顿法求平方根"><a href="#实例：采用牛顿法求平方根" class="headerlink" title="实例：采用牛顿法求平方根"></a>实例：采用牛顿法求平方根</h2><p>(1.1.7 Example: Square Roots by Newton’s Method)</p>
+<h3 id="Exercise-1-6"><a href="#Exercise-1-6" class="headerlink" title="Exercise 1.6:"></a>Exercise 1.6:</h3><p>Alyssa P. Hacker doesn’t see why if needs to be provided as a special form. “Why can’t I just define it as an ordinary procedure in terms of cond?” she asks. Alyssa’s friend Eva Lu Ator claims this can indeed be done, and she defines a new version of if:<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">new-if</span> predicate then-clause else-clause)</span><br><span class="line">    (<span class="name"><span class="builtin-name">cond</span></span> (<span class="name">predicate</span> then-clause)</span><br><span class="line">          (<span class="name"><span class="builtin-name">else</span></span> else-clause)))</span><br></pre></td></tr></table></figure></p>
+<p>Eva demonstrates the program for Alyssa:<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name">new-if</span> (<span class="name"><span class="builtin-name">=</span></span> <span class="number">2</span> <span class="number">3</span>) <span class="number">0</span> <span class="number">5</span>)</span><br><span class="line"><span class="number">5</span></span><br><span class="line">(<span class="name">new-if</span> (<span class="name"><span class="builtin-name">=</span></span> <span class="number">1</span> <span class="number">1</span>) <span class="number">0</span> <span class="number">5</span>)</span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure></p>
+<p>Delighted, Alyssa uses new-if to rewrite the square-root program:<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">sqrt-iter</span> guess x)</span><br><span class="line">    (<span class="name">new-if</span> (<span class="name">good-enough?</span> guess x)</span><br><span class="line">    guess</span><br><span class="line">    (<span class="name">sqrt-iter</span> (<span class="name">improve</span> guess x) x)))</span><br></pre></td></tr></table></figure></p>
+<p>What happens when Alyssa aempts to use this to compute square roots? Explain.</p>
+<p>(sqrt 2)<br>;Aborting!: maximum recursion depth exceeded</p>
+<p>新定义的 new-if 只是一个普通过程，它没有 if 所具有的特殊形式，根据解释器所使用的应用序求值规则，每个过程的实际参数在传入的时候都会被求值。因此，当使用 new-if 函数时，无论 predicate 是真还是假， then-clause 和 else-clause 两个分支都会被求值。<br>可通过下面的表达式进行验证：<br>(if #t (display “good”) (display “bad”))<br>(new-if #t (display “good”) (display “bad”))</p>
+<h3 id="Exercise-1-7"><a href="#Exercise-1-7" class="headerlink" title="Exercise 1.7:"></a>Exercise 1.7:</h3><p>The good-enough? test used in computing square roots will not be very effective for finding the square roots of very small numbers. Also, in real computers, arithmetic operations are almost always performed with limited precision. This makes our test inadequate for very large numbers. Explain these statements, with examples showing how the test fails for small and large numbers. An alternative strategy for implementing good-enough? is to watch how guess changes from one iteration to the next and to stop when the change is a very small fraction of the guess. Design a square-root procedure that uses this kind of end test. Does this work better for small and large numbers?<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">good-enough?</span> guess x)</span><br><span class="line">    (<span class="name"><span class="builtin-name">&lt;</span></span> (<span class="name"><span class="builtin-name">abs</span></span> (<span class="name"><span class="builtin-name">-</span></span> (<span class="name">improve</span> guess x) guess)) (<span class="name"><span class="builtin-name">*</span></span> guess <span class="number">0.01</span>)))</span><br></pre></td></tr></table></figure></p>
+<h3 id="Exercise-1-8"><a href="#Exercise-1-8" class="headerlink" title="Exercise 1.8:"></a>Exercise 1.8:</h3><p>Newton’s method for cube roots is based on the fact that if y is an approximation to the cube root of x, then a better approximation is given by the value<br><code>(x=y2 + 2y)/3</code><br>Use this formula to implement a cube-root procedure analogous to the square-root procedure. (In Section 1.3.4 we will see how to implement Newton’s method in general as an abstraction of these square-root and cube-root procedures.)</p>
+<h3 id="Exercise-1-9"><a href="#Exercise-1-9" class="headerlink" title="Exercise 1.9:"></a>Exercise 1.9:</h3><p>Each of the following two procedures defines a method for adding two positive integers in terms of the procedures inc, which increments its argument by 1, and dec, which decrements its argument by 1.<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name"><span class="builtin-name">+</span></span> a b)</span><br><span class="line">    (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">=</span></span> a <span class="number">0</span>) b (<span class="name">inc</span> (<span class="name"><span class="builtin-name">+</span></span> (<span class="name">dec</span> a) b))))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name"><span class="builtin-name">+</span></span> a b)</span><br><span class="line">    (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">=</span></span> a <span class="number">0</span>) b (<span class="name"><span class="builtin-name">+</span></span> (<span class="name">dec</span> a) (<span class="name">inc</span> b))))</span><br></pre></td></tr></table></figure></p>
+<p>Using the substitution model, illustrate the process generated by each procedure in evaluating (+ 4 5). Are these processes iterative or recursive?</p>
+<p>答案：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">(+ 4 5)</span><br><span class="line">(inc (+ 3 5))</span><br><span class="line">(inc (inc (+ 2 5)))</span><br><span class="line">(inc (inc (inc (+ 1 5))))</span><br><span class="line">(inc (inc (inc (inc (+ 0 5)))))</span><br><span class="line">(inc (inc (inc (inc 5))))</span><br><span class="line">(inc (inc (inc 6)))</span><br><span class="line">(inc (inc 7))</span><br><span class="line">(inc 8)</span><br><span class="line">9</span><br><span class="line"></span><br><span class="line">(+ 4 5)</span><br><span class="line">(+ 3 6)</span><br><span class="line">(+ 2 7)</span><br><span class="line">(+ 1 8)</span><br><span class="line">(+ 0 9)</span><br><span class="line">9</span><br></pre></td></tr></table></figure></p>
+<h3 id="Exercise-1-10"><a href="#Exercise-1-10" class="headerlink" title="Exercise 1.10:"></a>Exercise 1.10:</h3><p>The following procedure computes a mathematical function called Ackermann’s function.<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">A</span> x y)</span><br><span class="line">    (<span class="name"><span class="builtin-name">cond</span></span> ((<span class="name"><span class="builtin-name">=</span></span> y <span class="number">0</span>) <span class="number">0</span>)</span><br><span class="line">          ((<span class="name"><span class="builtin-name">=</span></span> x <span class="number">0</span>) (<span class="name"><span class="builtin-name">*</span></span> <span class="number">2</span> y))</span><br><span class="line">          ((<span class="name"><span class="builtin-name">=</span></span> y <span class="number">1</span>) <span class="number">2</span>)</span><br><span class="line">          (<span class="name"><span class="builtin-name">else</span></span> (<span class="name">A</span> (<span class="name"><span class="builtin-name">-</span></span> x <span class="number">1</span>) (<span class="name">A</span> x (<span class="name"><span class="builtin-name">-</span></span> y <span class="number">1</span>))))))</span><br></pre></td></tr></table></figure></p>
+<p>What are the values of the following expressions?<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name">A</span> <span class="number">1</span> <span class="number">10</span>)    <span class="comment">;1024</span></span><br><span class="line">(<span class="name">A</span> <span class="number">2</span> <span class="number">4</span>)    <span class="comment">;65536</span></span><br><span class="line">(<span class="name">A</span> <span class="number">3</span> <span class="number">3</span>)    <span class="comment">;65536</span></span><br></pre></td></tr></table></figure></p>
+<p>Consider the following procedures, where A is the procedure defined above:<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">f</span> n) (<span class="name">A</span> <span class="number">0</span> n))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">g</span> n) (<span class="name">A</span> <span class="number">1</span> n))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">h</span> n) (<span class="name">A</span> <span class="number">2</span> n))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">k</span> n) (<span class="name"><span class="builtin-name">*</span></span> <span class="number">5</span> n n))</span><br></pre></td></tr></table></figure></p>
+<p>Give concise mathematical definitions for the functions computed by the procedures f, g, and h for positive integer values of n. For example, (k n) computes 5n2.</p>
+<p>(f n)=2*n<br>0  1  2  3  4  5<br>0  2  4  6  8  10</p>
+<p>(g n)=2^n<br>0  1  2  3  4  5<br>0  2  4  8  16 32</p>
+<p>(h n)=???<br>0  1  2  3  4<br>0  2  4  16 65536</p>
+<h3 id="Exercise-1-11"><a href="#Exercise-1-11" class="headerlink" title="Exercise 1.11:"></a>Exercise 1.11:</h3><p>A function f is defined by the rule that<br>f (n) =<br>n if n &lt; 3,<br>f(n-1) + 2f(n-2) + 3f(n-3) if n &gt;= 3.<br>Write a procedure that computes f by means of a recursive process. Write a procedure that computes f by means of an iterative process.</p>
+<p>答案：<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">f</span> n)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">&lt;</span></span> n <span class="number">3</span>)</span><br><span class="line">      n</span><br><span class="line">      (<span class="name"><span class="builtin-name">+</span></span> (<span class="name">f</span> (<span class="name"><span class="builtin-name">-</span></span> n <span class="number">1</span>))</span><br><span class="line">         (<span class="name"><span class="builtin-name">*</span></span> <span class="number">2</span> (<span class="name">f</span> (<span class="name"><span class="builtin-name">-</span></span> n <span class="number">2</span>)))</span><br><span class="line">         (<span class="name"><span class="builtin-name">*</span></span> <span class="number">3</span> (<span class="name">f</span> (<span class="name"><span class="builtin-name">-</span></span> n <span class="number">3</span>))))))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">f</span> n)</span><br><span class="line">  (<span class="name">f-iter</span> <span class="number">2</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> n))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">f-iter</span> a b c count n)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">=</span></span> count n)</span><br><span class="line">      c</span><br><span class="line">      (<span class="name">f-iter</span> (<span class="name"><span class="builtin-name">+</span></span> a (<span class="name"><span class="builtin-name">*</span></span> <span class="number">2</span> b) (<span class="name"><span class="builtin-name">*</span></span> <span class="number">3</span> c))</span><br><span class="line">              a</span><br><span class="line">              b</span><br><span class="line">              (<span class="name"><span class="builtin-name">+</span></span> count <span class="number">1</span>)</span><br><span class="line">              n)))</span><br></pre></td></tr></table></figure></p>
+<h3 id="Exercise-1-12"><a href="#Exercise-1-12" class="headerlink" title="Exercise 1.12:"></a>Exercise 1.12:</h3><p>The following paern of numbers is called Pascal’s triangle.<br>    1<br>   1 1<br>  1 2 1<br> 1 3 3 1<br>1 4 6 4 1<br>   …<br>The numbers at the edge of the triangle are all 1, and each number inside the triangle is the sum of the two numbers above it.35 Write a procedure that computes elements of Pascal’s triangle by means of a recursive process.</p>
+<p>答案：<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">pascal</span> row col)</span><br><span class="line">    (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">or</span></span> (<span class="name"><span class="builtin-name">=</span></span> col <span class="number">1</span>) (<span class="name"><span class="builtin-name">=</span></span> col row)) <span class="comment">; 每行的首位和末位都是1</span></span><br><span class="line">         <span class="number">1</span></span><br><span class="line">         (<span class="name"><span class="builtin-name">+</span></span> (<span class="name">pascal</span> (<span class="name"><span class="builtin-name">-</span></span> row <span class="number">1</span>) (<span class="name"><span class="builtin-name">-</span></span> col <span class="number">1</span>))</span><br><span class="line">            (<span class="name">pascal</span> (<span class="name"><span class="builtin-name">-</span></span> row <span class="number">1</span>) col)))) <span class="comment">;除首位和末位以外的数字是其上方两个数字之和</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Exercise-1-13"><a href="#Exercise-1-13" class="headerlink" title="Exercise 1.13:"></a>Exercise 1.13:</h3><h1 id="过程与它们所产生的计算步骤"><a href="#过程与它们所产生的计算步骤" class="headerlink" title="过程与它们所产生的计算步骤"></a>过程与它们所产生的计算步骤</h1><p>(1.2 Procedures and the Processes They Generate)</p>
+<h2 id="增长的阶"><a href="#增长的阶" class="headerlink" title="增长的阶"></a>增长的阶</h2><p>(1.2.3 Orders of Growth)</p>
+<h3 id="Exercise-1-14"><a href="#Exercise-1-14" class="headerlink" title="Exercise 1.14:"></a>Exercise 1.14:</h3><p>Draw the tree illustrating the process generated by the count-change procedure of Section 1.2.2 in making change for 11 cents. What are the orders of growth of the space and number of steps used by this process as the amount to be changed increases?</p>
+<h3 id="Exercise-1-15"><a href="#Exercise-1-15" class="headerlink" title="Exercise 1.15:"></a>Exercise 1.15:</h3><p>The sine of an angle (specified in radians) can be computed by making use of the approximation sin x ≈ x if x is sufficiently small, and the trigonometric identity<br>sin x = 3 <em> sin(x/3) - 4 </em> sin^3(x/3)</p>
+<p>to reduce the size of the argument of sin. (For purposes of this exercise an angle is considered “sufficiently small” if its magnitude is not greater than 0.1 radians.) These ideas are incorporated in the following procedures:<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">cube</span> x) (<span class="name"><span class="builtin-name">*</span></span> x x x))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">p</span> x) (<span class="name"><span class="builtin-name">-</span></span> (<span class="name"><span class="builtin-name">*</span></span> <span class="number">3</span> x) (<span class="name"><span class="builtin-name">*</span></span> <span class="number">4</span> (<span class="name">cube</span> x))))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">sine</span> angle)</span><br><span class="line">    (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">not</span></span> (<span class="name"><span class="builtin-name">&gt;</span></span> (<span class="name"><span class="builtin-name">abs</span></span> angle) <span class="number">0.1</span>))</span><br><span class="line">        angle</span><br><span class="line">        (<span class="name">p</span> (<span class="name">sine</span> (<span class="name"><span class="builtin-name">/</span></span> angle <span class="number">3.0</span>)))))</span><br></pre></td></tr></table></figure></p>
+<p>a. How many times is the procedure p applied when (sine 12.15) is evaluated?<br>b. What is the order of growth in space and number of steps (as a function of a) used by the process generated by the sine procedure when (sine a) is evaluated?</p>
+<h2 id="求幂"><a href="#求幂" class="headerlink" title="求幂"></a>求幂</h2><p>(1.2.4 Exponentiation)</p>
+<h3 id="Exercise-1-16"><a href="#Exercise-1-16" class="headerlink" title="Exercise 1.16:"></a>Exercise 1.16:</h3><p>Design a procedure that evolves an iterative exponentiation process that uses successive squaring and uses a logarithmic number of steps, as does fast-expt. (Hint: Using the observation that (bn=2)2 = (b2)n=2, keep, along with the exponent n and the base b, an additional state variable a, and define the state transformation in such a way that the product abn is unchanged from state to state. At the beginning of the process a is taken to be 1, and the answer is given by the value of a at the end of the process. In general, the technique of defining an invariant quantity that remains unchanged from state to state is a powerful way to think about the design of iterative algorithms.)</p>
+<h3 id="Exercise-1-17"><a href="#Exercise-1-17" class="headerlink" title="Exercise 1.17:"></a>Exercise 1.17:</h3><p>The exponentiation algorithms in this section are based on performing exponentiation by means of repeated multiplication. In a similar way, one can perform integer multiplication by means of repeated addition. The following multiplication procedure (in which it is assumed that our language can only add, not multiply) is analogous to the expt procedure:<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name"><span class="builtin-name">*</span></span> a b)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">=</span></span> b <span class="number">0</span>)</span><br><span class="line">      <span class="number">0</span></span><br><span class="line">      (<span class="name"><span class="builtin-name">+</span></span> a (<span class="name"><span class="builtin-name">*</span></span> a (<span class="name"><span class="builtin-name">-</span></span> b <span class="number">1</span>)))))</span><br></pre></td></tr></table></figure></p>
+<p>This algorithm takes a number of steps that is linear in b. Now suppose we include, together with addition, operations double, which doubles an integer, and halve, which divides an (even) integer by 2. Using these, design a multiplication procedure analogous to fast-expt that uses a logarithmic number of steps.</p>
+<h3 id="Exercise-1-18"><a href="#Exercise-1-18" class="headerlink" title="Exercise 1.18:"></a>Exercise 1.18:</h3><p>Using the results of Exercise 1.16 and Exercise 1.17, devise a procedure that generates an iterative process for multiplying two integers in terms of adding, doubling, and halving and uses a logarithmic number of steps.</p>
+<h3 id="Exercise-1-19"><a href="#Exercise-1-19" class="headerlink" title="Exercise 1.19:"></a>Exercise 1.19:</h3><p>There is a clever algorithm for computing the Fibonacci numbers in a logarithmic number of steps. Recall the transformation of the state variables a and b in the fib-iter process of Section 1.2.2: a   a +b and b   a. Call this transformation T , and observe that applying T over and over again n times, starting with 1 and 0, produces the pair Fib(n + 1) and Fib(n). In other words, the Fibonacci numbers are produced by applyingTn, the nth power of the transformationT , starting with the pair (1, 0). Now consider T to be the special case of p = 0 and q = 1 in a family of transformations Tpq , where Tpq transforms the pair (a; b) according to a   bq + aq + ap and b   bp + aq. Show that if we apply such a transformation Tpq twice, the effect is the same as using a single transformation Tp′q′ of the same form, and compute p′ and q′ in terms of p and q. This gives us an explicit way to square these transformations, and thus we can compute Tn using successive squaring, as in the fast-expt procedure. Put this all together to complete the following procedure, which runs in a logarithmic number of steps:<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">fib</span> n)</span><br><span class="line">  (<span class="name">fib-iter</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> n))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">fib-iter</span> a b p q count)</span><br><span class="line">  (<span class="name"><span class="builtin-name">cond</span></span> ((<span class="name"><span class="builtin-name">=</span></span> count <span class="number">0</span>) b)</span><br><span class="line">  ((<span class="name"><span class="builtin-name">even?</span></span> count)</span><br><span class="line">  (<span class="name">fib-iter</span> a</span><br><span class="line">            b</span><br><span class="line">            &lt;??&gt; <span class="comment">; compute p′</span></span><br><span class="line">            &lt;??&gt; <span class="comment">; compute q′</span></span><br><span class="line">            (<span class="name"><span class="builtin-name">/</span></span> count <span class="number">2</span>)))</span><br><span class="line">(<span class="name"><span class="builtin-name">else</span></span> (<span class="name">fib-iter</span> (<span class="name"><span class="builtin-name">+</span></span> (<span class="name"><span class="builtin-name">*</span></span> b q) (<span class="name"><span class="builtin-name">*</span></span> a q) (<span class="name"><span class="builtin-name">*</span></span> a p))</span><br><span class="line">                (<span class="name"><span class="builtin-name">+</span></span> (<span class="name"><span class="builtin-name">*</span></span> b p) (<span class="name"><span class="builtin-name">*</span></span> a q))</span><br><span class="line">                p</span><br><span class="line">                q</span><br><span class="line">                (<span class="name"><span class="builtin-name">-</span></span> count <span class="number">1</span>)))))</span><br></pre></td></tr></table></figure></p>
+<h2 id="最大公约数"><a href="#最大公约数" class="headerlink" title="最大公约数"></a>最大公约数</h2><p>(1.2.5 Greatest Common Divisors)</p>
+<h3 id="Exercise-1-20"><a href="#Exercise-1-20" class="headerlink" title="Exercise 1.20:"></a>Exercise 1.20:</h3><p>The process that a procedure generates is of course dependent on the rules used by the interpreter. As an example, consider the iterative gcd procedure given above. Suppose we were to interpret this procedure using normal-order evaluation, as discussed in Section 1.1.5. (e normal-order-evaluation rule for if is described in Exercise 1.5.) Using the substitution method (for normal order), illustrate the process generated in evaluating (gcd 206 40) and indicate the remainder operations that are actually performed. How many remainder operations are actually performed in the normal-order evaluation of (gcd 206 40)? In the applicative-order evaluation?</p>
+<p>正则序：<br>(gcd 206 40)<br>(gcd 40 (remainder 206 40))</p>
+<p>应用序：<br>(gcd 206 40)<br>(gcd 40 6)  ; (gcd 40 (remainder 206 40))<br>(gcd 6 4)  ; (gcd 6 (remainder 40 6))<br>(gcd 4 2)  ; (gcd 4 (remainder 6 4))<br>(gcd 2 0)  ; (gcd 2 (remainder 4 2))<br>2</p>
+<h3 id="Exercise-1-21"><a href="#Exercise-1-21" class="headerlink" title="Exercise 1.21:"></a>Exercise 1.21:</h3><p>Use the smallest-divisor procedure to find the smallest divisor of each of the following numbers: 199, 1999, 19999.</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">smallest-divisor</span> n) (<span class="name">find-divisor</span> n <span class="number">2</span>))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">find-divisor</span> n test-divisor)</span><br><span class="line">  (<span class="name"><span class="builtin-name">cond</span></span> ((<span class="name"><span class="builtin-name">&gt;</span></span> (<span class="name">square</span> test-divisor) n) n)</span><br><span class="line">        ((<span class="name">divides?</span> test-divisor n) test-divisor)</span><br><span class="line">        (<span class="name"><span class="builtin-name">else</span></span> (<span class="name">find-divisor</span> n (<span class="name"><span class="builtin-name">+</span></span> test-divisor <span class="number">1</span>)))))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">divides?</span> a b) (<span class="name"><span class="builtin-name">=</span></span> (<span class="name"><span class="builtin-name">remainder</span></span> b a) <span class="number">0</span>))</span><br><span class="line"></span><br><span class="line">1 ]=&gt; (smallest-divisor 199)</span><br><span class="line"></span><br><span class="line"><span class="comment">;Value: 199</span></span><br><span class="line"></span><br><span class="line">1 ]=&gt; (smallest-divisor 1999)</span><br><span class="line"></span><br><span class="line"><span class="comment">;Value: 1999</span></span><br><span class="line"></span><br><span class="line">1 ]=&gt; (smallest-divisor 19999)</span><br><span class="line"></span><br><span class="line"><span class="comment">;Value: 7</span></span><br></pre></td></tr></table></figure>
+<h3 id="Exercise-1-22"><a href="#Exercise-1-22" class="headerlink" title="Exercise 1.22:"></a>Exercise 1.22:</h3><p>Most Lisp implementations include a primitive called runtime that returns an integer that specifies the amount of time the system has been running (measured, for example, in microseconds). The following timedprime-test procedure, when called with an integern, prints n and checks to see if n is prime. If n is prime, the procedure prints three asterisks followed by the amount of time used in performing the test.</p>
+<p>答案：<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">timed-prime-test</span> n)</span><br><span class="line">  (<span class="name"><span class="builtin-name">newline</span></span>)</span><br><span class="line">  (<span class="name"><span class="builtin-name">display</span></span> n)</span><br><span class="line">  (<span class="name">start-prime-test</span> n (<span class="name">runtime</span>)))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">start-prime-test</span> n start-time)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name">prime?</span> n)</span><br><span class="line">      (<span class="name">report-prime</span> (<span class="name"><span class="builtin-name">-</span></span> (<span class="name">runtime</span>) start-time))))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">report-prime</span> elapsed-time)</span><br><span class="line">  (<span class="name"><span class="builtin-name">display</span></span> <span class="string">" *** "</span>)</span><br><span class="line">  (<span class="name"><span class="builtin-name">display</span></span> elapsed-time))</span><br></pre></td></tr></table></figure></p>
+<p>Using this procedure, write a procedure search-for-primes that checks the primality of consecutive odd integers in a specified range. Use your procedure to find the three smallest primes larger than 1000; larger than 10,000; larger than 100,000; larger than 1,000,000. Note the time needed to test each prime. Since the testing algorithm has order of growth of Θ(√n), you should expect that testing for primes around 10,000 should take about √10 times as long as testing for primes around 1000. Do your timing data bear this out? How well do the data for 100,000 and 1,000,000 support the Θ(√n) prediction? Is your result compatible with the notion that programs on your machine run in time proportional to the number of steps required for the computation?</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">search-for-primes</span> odd m)</span><br><span class="line">  (<span class="name"><span class="builtin-name">newline</span></span>)</span><br><span class="line">  (<span class="name">start-prime-test</span> odd m (<span class="name">runtime</span>)))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">start-prime-test</span> n m start-time)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">and</span></span> (<span class="name">prime?</span> n) (<span class="name"><span class="builtin-name">&gt;</span></span> n m))</span><br><span class="line">      (<span class="name">report-prime</span> n (<span class="name"><span class="builtin-name">-</span></span> (<span class="name">runtime</span>) start-time))</span><br><span class="line">      (<span class="name">start-prime-test</span> (<span class="name"><span class="builtin-name">+</span></span> n <span class="number">2</span>) m start-time)))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">report-prime</span> n elapsed-time)</span><br><span class="line">  (<span class="name"><span class="builtin-name">display</span></span> n)</span><br><span class="line">  (<span class="name"><span class="builtin-name">display</span></span> <span class="string">" *** "</span>)</span><br><span class="line">  (<span class="name"><span class="builtin-name">display</span></span> elapsed-time))</span><br></pre></td></tr></table></figure>
+<h3 id="Exercise-1-23"><a href="#Exercise-1-23" class="headerlink" title="Exercise 1.23:"></a>Exercise 1.23:</h3><p>The smallest-divisor procedure shown at the start of this section does lots of needless testing: After it checks to see if the number is divisible by 2 there is no point in checking to see if it is divisible by any larger even numbers. This suggests that the values used for test-divisor should not be 2, 3, 4, 5, 6, …, but rather 2, 3, 5, 7, 9, ….<br>To implement this change, define a procedure next that returns 3 if its input is equal to 2 and otherwise returns its input plus 2. Modify the smallest-divisor procedure to use (next test-divisor) instead of (+ test-divisor 1). With timed-prime-test incorporating this modified version of smallest-divisor, run the test for each of the 12 primes found in Exercise 1.22. Since this modification halves<br>the number of test steps, you should expect it to run about twice as fast. Is this expectation confirmed? If not, what is the observed ratio of the speeds of the two algorithms, and how do you explain the fact that it is different from 2?</p>
+<h3 id="Exercise-1-24"><a href="#Exercise-1-24" class="headerlink" title="Exercise 1.24:"></a>Exercise 1.24:</h3><p>Modify the timed-prime-test procedure of Exercise 1.22 to use fast-prime? (the Fermat method), and test each of the 12 primes you found in that exercise. Since the Fermat test has Θ(logn) growth, how would you expect the time to test primes near 1,000,000 to compare with the time needed to test primes near 1000? Do your data bear this out? Can you explain any discrepancy you find?</p>
+<h3 id="Exercise-1-25"><a href="#Exercise-1-25" class="headerlink" title="Exercise 1.25:"></a>Exercise 1.25:</h3><p>Alyssa P. Hacker complains that we went to a lot of extra work in writing expmod. Aer all, she says, since we already know how to compute exponentials, we could have simply written<br>(define (expmod base exp m)<br>  (remainder (fast-expt base exp) m))<br>Is she correct? Would this procedure serve as well for our fast prime tester? Explain.</p>
+<h3 id="Exercise-1-26"><a href="#Exercise-1-26" class="headerlink" title="Exercise 1.26:"></a>Exercise 1.26:</h3><p>Louis Reasoner is having great difficulty doing Exercise 1.24. His fast-prime? test seems to run more slowly than his prime? test. Louis calls his friend Eva Lu Ator over to help. When they examine Louis’s code, they find that he has rewritten the expmod procedure to use an<br>explicit multiplication, rather than calling square:<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">expmod</span> base exp m)</span><br><span class="line">  (<span class="name"><span class="builtin-name">cond</span></span> ((<span class="name"><span class="builtin-name">=</span></span> exp <span class="number">0</span>) <span class="number">1</span>)</span><br><span class="line">        ((<span class="name"><span class="builtin-name">even?</span></span> exp)</span><br><span class="line">        (<span class="name"><span class="builtin-name">remainder</span></span> (<span class="name"><span class="builtin-name">*</span></span> (<span class="name">expmod</span> base (<span class="name"><span class="builtin-name">/</span></span> exp <span class="number">2</span>) m)</span><br><span class="line">                      (<span class="name">expmod</span> base (<span class="name"><span class="builtin-name">/</span></span> exp <span class="number">2</span>) m))</span><br><span class="line">                    m))</span><br><span class="line">  (<span class="name"><span class="builtin-name">else</span></span></span><br><span class="line">    (<span class="name"><span class="builtin-name">remainder</span></span> (<span class="name"><span class="builtin-name">*</span></span> base</span><br><span class="line">                 (<span class="name">expmod</span> base (<span class="name"><span class="builtin-name">-</span></span> exp <span class="number">1</span>) m))</span><br><span class="line">               m))))</span><br></pre></td></tr></table></figure></p>
+<p>“I don’t see what difference that could make,” says Louis. “I do.” says Eva. “By writing the procedure like that, you have transformed the Θ(logn) process into a Θ(n) process.” Explain.</p>
+<h3 id="Exercise-1-27"><a href="#Exercise-1-27" class="headerlink" title="Exercise 1.27:"></a>Exercise 1.27:</h3><p>Demonstrate that the Carmichael numbers listed in Footnote 1.47 really do fool the Fermat test. That is, write a procedure that takes an integer n and tests whether a^n is congruent to a modulo n for every a &lt; n, and try your procedure on the given Carmichael numbers.</p>
+<h3 id="Exercise-1-28"><a href="#Exercise-1-28" class="headerlink" title="Exercise 1.28:"></a>Exercise 1.28:</h3><p>One variant of the Fermat test that cannot be fooled is called the Miller-Rabin test (Miller 1976; Rabin 1980). This starts from an alternate form of Fermat’s Little eorem, which states that if n is a prime number and a is any positive integer less thann, then a raised to the (n-1)-st power is congruent to 1 modulo n. To test the primality of a number n by the Miller-Rabin test, we pick a random number a &lt; n and raise a to the (n-1)-st power modulo n using the expmod procedure. However, whenever we perform the squaring step in expmod, we check to see if we have discovered a “nontrivial square root of 1 modulo n,” that is, a number not equal to 1 or n-1 whose square is equal to 1 modulo n. It is possible to prove that if such a nontrivial square root of 1 exists, then n is not prime. It is also possible to prove that if n is an odd number that is not prime, then, for at least half the numbers a &lt; n, computing a^(n-1) in this way will reveal a nontrivial square root of 1 modulo n. (This is why the Miller-Rabin test cannot be fooled.) Modify the expmod procedure to signal if it discovers a nontrivial square root of 1, and use this to implement the Miller-Rabin test with a procedure analogous to fermat-test. Check your procedure by testing various known primes and non-primes. Hint: One convenient way to make expmod signal is to have it return 0.</p>
+<h1 id="用高阶函数做抽象"><a href="#用高阶函数做抽象" class="headerlink" title="用高阶函数做抽象"></a>用高阶函数做抽象</h1><p>(1.3 Formulating Abstractions with Higher-Order Procedures)</p>
+<h2 id="过程作为参数"><a href="#过程作为参数" class="headerlink" title="过程作为参数"></a>过程作为参数</h2><p>(1.3.1 Procedures as Arguments)</p>
+<h3 id="Exercise-1-29"><a href="#Exercise-1-29" class="headerlink" title="Exercise 1.29:"></a>Exercise 1.29:</h3><p>Simpson’s Rule is a more accurate method of numerical integration than the method illustrated above. Using Simpson’s Rule, the integral of a function f between a and b is approximated as<br>h/3<br>(y0 + 4y1 + 2y2 + 4y3 + 2y4 + … + 2yn-2 + 4yn-1 + yn);<br>where h = (b-a)/n, for some even integer n, and yk = f(a + kh). (Increasing n increases the accuracy of the approximation.) Define a procedure that takes as arguments f, a, b, and n and returns the value of the integral, computed using Simpson’s Rule. Use your procedure to integrate cube between 0 and 1 (with n = 100 and n = 1000), and compare the results to those of the integral procedure shown above.</p>
+<h3 id="Exercise-1-30"><a href="#Exercise-1-30" class="headerlink" title="Exercise 1.30:"></a>Exercise 1.30:</h3><p>The sum procedure above generates a linear recursion. The procedure can be rewrien so that the sum is performed iteratively. Show how to do this by filling in the missing expressions in the following definition:<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">sum</span> term a next b)</span><br><span class="line">  (<span class="name"><span class="builtin-name">define</span></span> (<span class="name">iter</span> a result)</span><br><span class="line">    (<span class="name"><span class="builtin-name">if</span></span> &lt;??&gt;</span><br><span class="line">        &lt;??&gt;</span><br><span class="line">    (<span class="name">iter</span> &lt;??&gt; &lt;??&gt;)))</span><br><span class="line">  (<span class="name">iter</span> &lt;??&gt; &lt;??&gt;))</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">sum-integers</span> a b)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">&gt;</span></span> a b)</span><br><span class="line">      <span class="number">0</span></span><br><span class="line">      (<span class="name"><span class="builtin-name">+</span></span> a (<span class="name">sum-integers</span> (<span class="name"><span class="builtin-name">+</span></span> a <span class="number">1</span>) b))))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">sum-integers</span> a b)</span><br><span class="line">  (<span class="name"><span class="builtin-name">define</span></span> (<span class="name">iter</span> a result)</span><br><span class="line">    (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">&gt;</span></span> a b)</span><br><span class="line">        result</span><br><span class="line">        (<span class="name">iter</span> (<span class="name"><span class="builtin-name">+</span></span> a <span class="number">1</span>)</span><br><span class="line">              (<span class="name"><span class="builtin-name">+</span></span> a result))))</span><br><span class="line">  (<span class="name">iter</span> a <span class="number">0</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">sum</span> term a next b)</span><br><span class="line">  (<span class="name"><span class="builtin-name">define</span></span> (<span class="name">iter</span> a result)</span><br><span class="line">    (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">&gt;</span></span> a b)</span><br><span class="line">        result</span><br><span class="line">        (<span class="name">iter</span> (<span class="name">next</span> a) (<span class="name"><span class="builtin-name">+</span></span> (<span class="name">term</span> a) result))))</span><br><span class="line">  (<span class="name">iter</span> a <span class="number">0</span>))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">sum-integers</span> a b)</span><br><span class="line">  (<span class="name"><span class="builtin-name">define</span></span> (<span class="name">identity</span> x) x)</span><br><span class="line">  (<span class="name"><span class="builtin-name">define</span></span> (<span class="name">inc</span> n) (<span class="name"><span class="builtin-name">+</span></span> n <span class="number">1</span>))</span><br><span class="line">    (<span class="name">sum</span> identity a inc b))</span><br></pre></td></tr></table></figure>
+<h3 id="Exercise-1-31"><a href="#Exercise-1-31" class="headerlink" title="Exercise 1.31:"></a>Exercise 1.31:</h3><p>a. The sum procedure is only the simplest of a vast number of similar abstractions that can be captured as higher-order procedures. Write an analogous procedure called product that returns the product of the values of a function at points over a given range. Show how to define factorial in terms of product. Also use product to compute approximations to π using the formula</p>
+<p>b. If your product procedure generates a recursive process, write one that generates an iterative process. If it generates an iterative process, write one that generates a recursive process.</p>
+<h3 id="Exercise-1-32"><a href="#Exercise-1-32" class="headerlink" title="Exercise 1.32:"></a>Exercise 1.32:</h3><p>a. Show that sum and product (Exercise 1.31) are both special cases of a still more general notion called accumulate that combines a collection of terms, using some general accumulation function:<br>(accumulate combiner null-value term a next b)<br>accumulate takes as arguments the same term and range specifications as sum and product, together with a combiner procedure (of two arguments) that specifies how the current term is to be combined with the accumulation of the preceding terms and a null-value<br>that specifies what base value to use when the terms run out. Write accumulate and show how sum and product can both be defined as simple calls to accumulate.<br>b. If your accumulate procedure generates a recursive process, write one that generates an iterative process. If it generates an iterative process, write one that generates a recursive process.</p>
+<h3 id="Exercise-1-33"><a href="#Exercise-1-33" class="headerlink" title="Exercise 1.33:"></a>Exercise 1.33:</h3><p>You can obtain an even more general version of accumulate (Exercise 1.32) by introducing the notion of a filter on the terms to be combined. That is, combine only those terms derived from values in the range that satisfy a specified condition. The resulting filtered-accumulate abstraction takes the same arguments as accumulate, together with an additional predicate of one argument that<br>specifies the filter. Write filtered-accumulate as a procedure. Show how to express the following using filteredaccumulate:<br>a. the sum of the squares of the prime numbers in the interval a to b (assuming that you have a prime? predicate already writhen)<br>b. the product of all the positive integers less than n that are relatively prime to n (i.e., all positive integers i &lt; n such that GCD(i,n) = 1).</p>
+<h2 id="用-lambda-构造过程"><a href="#用-lambda-构造过程" class="headerlink" title="用 lambda 构造过程"></a>用 lambda 构造过程</h2><p>(1.3.2 Constructing Procedures Using lambda)</p>
+<h3 id="Exercise-1-34"><a href="#Exercise-1-34" class="headerlink" title="Exercise 1.34:"></a>Exercise 1.34:</h3><p>Suppose we define the procedure<br>(define (f g) (g 2))</p>
+<p>Then we have<br>(f square)<br>4<br>(f (lambda (z) (* z (+ z 1))))<br>6<br>What happens if we (perversely) ask the interpreter to evaluate the combination (f f)? Explain.</p>
+<h2 id="过程作为一般性的方法"><a href="#过程作为一般性的方法" class="headerlink" title="过程作为一般性的方法"></a>过程作为一般性的方法</h2><p>(1.3.3 Procedures as General Methods)</p>
+<h3 id="Exercise-1-35"><a href="#Exercise-1-35" class="headerlink" title="Exercise 1.35:"></a>Exercise 1.35:</h3><p>Show that the golden ratio ϕ (Section 1.2.2) is a fixed point of the transformation x –&gt; 1 + 1=x, and use this fact to compute ϕ by means of the fixed-point procedure.</p>
+<h3 id="Exercise-1-36"><a href="#Exercise-1-36" class="headerlink" title="Exercise 1.36:"></a>Exercise 1.36:</h3><p>Modify fixed-point so that it prints the sequence of approximations it generates, using the newline and display primitives shown in Exercise 1.22. en find a solution to xx = 1000 by finding a fixed point of x 7! log(1000)= log(x). (Use Scheme’s primitive log procedure, which computes natural logarithms.) Compare the number of steps this takes with and without average damping. (Note that you cannot start fixed-point with a guess of 1, as this would cause division by log(1) = 0.)</p>
+<h3 id="Exercise-1-37"><a href="#Exercise-1-37" class="headerlink" title="Exercise 1.37:"></a>Exercise 1.37:</h3><p>a. An infinite continued fraction is an expression of theform<br>f =<br>N1<br>D1 +<br>N2<br>D2 +<br>N3<br>D3 + : : :<br>:<br>As an example, one can show that the infinite continued fraction expansion with the Ni and the Di all equal to 1 produces 1=ϕ, where ϕ is the golden ratio (described in Section 1.2.2). One way to approximate an infinite continued fraction is to truncate the expansion aer a given number of terms. Such a truncation— a so-called k-term finite continued fraction—has the form<br>N1<br>D1 +<br>N2<br>: : : +<br>Nk<br>Dk<br>:<br>Suppose that n and d are procedures of one argument (the term index i) that return the Ni and Di of the terms of the continued fraction. Define a procedure cont-frac such that evaluating (cont-frac n d k) computes the value of the k-term finite continued fraction. Check your procedure by approximating 1=ϕ using<br>(cont-frac (lambda (i) 1.0)<br>(lambda (i) 1.0)<br>k)<br>for successive values of k. How large must you make<br>k in order to get an approximation that is accurate to<br>4 decimal places?<br>b. If your cont-frac procedure generates a recursive process,<br>write one that generates an iterative process. If<br>it generates an iterative process, write one that generates<br>a recursive process.</p>
+<h3 id="Exercise-1-38"><a href="#Exercise-1-38" class="headerlink" title="Exercise 1.38:"></a>Exercise 1.38:</h3><p>In 1737, the Swiss mathematician Leonhard Euler published a memoir De Fractionibus Continuis, which included a continued fraction expansion for e 􀀀 2, where e is the base of the natural logarithms. In this fraction, the Ni are all 1, and the Di are successively 1, 2, 1, 1, 4, 1, 1, 6, 1, 1, 8, : : :. Write a program that uses your cont-frac procedure from Exercise 1.37 to approximate e, based on Euler’s expansion.</p>
+<h3 id="Exercise-1-39"><a href="#Exercise-1-39" class="headerlink" title="Exercise 1.39:"></a>Exercise 1.39:</h3><p>A continued fraction representation of the tangent function was published in 1770 by the German mathematician<br>J.H. Lambert:<br>tan x =<br>x<br>1 􀀀<br>x2<br>3 􀀀<br>x2<br>5 􀀀 : : :<br>;<br>where x is in radians. Define a procedure (tan-cf x k) that computes an approximation to the tangent function based on Lambert’s formula. k specifies the number of terms to compute, as in Exercise 1.37.</p>
+<h2 id="过程作为返回值"><a href="#过程作为返回值" class="headerlink" title="过程作为返回值"></a>过程作为返回值</h2><p>(1.3.4 Procedures as Returned Values)</p>
+<h3 id="Exercise-1-40"><a href="#Exercise-1-40" class="headerlink" title="Exercise 1.40:"></a>Exercise 1.40:</h3><p>Define a procedure cubic that can be used together with the newtons-method procedure in expressions of the form<br>(newtons-method (cubic a b c) 1)<br>to approximate zeros of the cubic x3 + ax2 + bx + c.</p>
+<h3 id="Exercise-1-41"><a href="#Exercise-1-41" class="headerlink" title="Exercise 1.41:"></a>Exercise 1.41:</h3><p>Define a procedure double that takes a procedure of one argument as argument and returns a procedure that applies the original procedure twice. For example, if inc is a procedure that adds 1 to its argument, then (double inc) should be a procedure that adds 2. What value is returned by<br>(((double (double double)) inc) 5)</p>
+<h3 id="Exercise-1-42"><a href="#Exercise-1-42" class="headerlink" title="Exercise 1.42:"></a>Exercise 1.42:</h3><p>Let f and g be two one-argument functions. the composition f after g is defined to be the function x 7! f (g(x)). Define a procedure compose that implements composition. For example, if inc is a procedure that adds 1 to its argument,<br>((compose square inc) 6)<br>49</p>
+<h3 id="Exercise-1-43"><a href="#Exercise-1-43" class="headerlink" title="Exercise 1.43:"></a>Exercise 1.43:</h3><p>If f is a numerical function and n is a positive integer, then we can form the nth repeated application of f , which is defined to be the function whose value at x is f (f (: : : (f (x)) : : : )). For example, if f is the function x 7! x + 1, then the nth repeated application of f is the function x 7! x +n. If f is the operation of squaring a number, then the nth repeated application of f is the function that raises its argument to the 2n-th power. Write a procedure that takes as inputs a procedure that computes f and a positive integer n and returns the procedure that computes the nth repeated application of f . Your procedure should be able to be used as follows:<br>((repeated square 2) 5)<br>625<br>Hint: You may find it convenient to use compose from Exercise 1.42.</p>
+<h3 id="Exercise-1-44"><a href="#Exercise-1-44" class="headerlink" title="Exercise 1.44:"></a>Exercise 1.44:</h3><p>The idea of smoothing a function is an important concept in signal processing. If f is a function and dx is some small number, then the smoothed version of f is the function whose value at a point x is the average of f (x 􀀀 dx), f (x), and f (x +dx). Write a procedure smooth that takes as input a procedure that computes f and returns a procedure that computes the smoothed f . It is sometimes valuable to repeatedly smooth a function (that is, smooth the smoothed function, and so on) to obtain the n-fold smoothed function. Show how to generate the n-fold smoothed function of any given function using smooth and repeated from Exercise 1.43.</p>
+<h3 id="Exercise-1-45"><a href="#Exercise-1-45" class="headerlink" title="Exercise 1.45:"></a>Exercise 1.45:</h3><p>We saw in Section 1.3.3 that aempting to compute square roots by naively finding a fixed point of y 7! x=y does not converge, and that this can be fixed by average damping. e same method works for finding cube roots as fixed points of the average-damped y 7! x=y2. Unfortunately, the process does not work for fourth roots—a single average damp is not enough to make a fixed-point search for y 7! x=y3 converge. On the other hand, if we average damp twice (i.e., use the average damp of the average damp of y 7! x=y3) the fixed-point search does converge. Do some experiments to determine how many average damps are required to compute nth roots as a fixedpoint search based upon repeated average damping of y 7! x=yn􀀀1. Use this to implement a simple procedure for computingnth roots using fixed-point, average-damp, and the repeated procedure of Exercise 1.43. Assume that any arithmetic operations you need are available as primitives.</p>
+<h3 id="Exercise-1-46"><a href="#Exercise-1-46" class="headerlink" title="Exercise 1.46:"></a>Exercise 1.46:</h3><p>Several of the numerical methods described in this chapter are instances of an extremely general computational strategy known as iterative improvement. Iterative improvement says that, to compute something, we start with an initial guess for the answer, test if the guess is good enough, and otherwise improve the guess and continue the process using the improved guess as the new guess. Write a procedure iterative-improve that takes two procedures as arguments: a method for telling whether a guess is good enough and a method for improving a guess. iterativeimprove should return as its value a procedure that takes a guess as argument and keeps improving the guess until it is good enough. Rewrite the sqrt procedure of Section 1.1.7 and the fixed-point procedure of Section 1.3.3 in terms of iterative-improve.</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/24/SICP笔记_01_构造过程抽象/" rel="next" title="01_构造过程抽象">
+                <i class="fa fa-chevron-left"></i> 01_构造过程抽象
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/28/SICP笔记_02_构造数据抽象/" rel="prev" title="02_构造数据抽象">
+                02_构造数据抽象 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wangzk1900</p>
+              <div class="site-description motion-element" itemprop="description">记录学习总结和思考</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/wangzk1900" title="GitHub &rarr; https://github.com/wangzk1900" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:wangzk1900@gmail.com" title="E-Mail &rarr; mailto:wangzk1900@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序设计的基本元素"><span class="nav-number">1.</span> <span class="nav-text">程序设计的基本元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#条件表达式和谓词"><span class="nav-number">1.1.</span> <span class="nav-text">条件表达式和谓词</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-1"><span class="nav-number">1.1.1.</span> <span class="nav-text">Exercise 1.1:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-2"><span class="nav-number">1.1.2.</span> <span class="nav-text">Exercise 1.2:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-3"><span class="nav-number">1.1.3.</span> <span class="nav-text">Exercise 1.3:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-4"><span class="nav-number">1.1.4.</span> <span class="nav-text">Exercise 1.4:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-5"><span class="nav-number">1.1.5.</span> <span class="nav-text">Exercise 1.5:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例：采用牛顿法求平方根"><span class="nav-number">1.2.</span> <span class="nav-text">实例：采用牛顿法求平方根</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-6"><span class="nav-number">1.2.1.</span> <span class="nav-text">Exercise 1.6:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-7"><span class="nav-number">1.2.2.</span> <span class="nav-text">Exercise 1.7:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-8"><span class="nav-number">1.2.3.</span> <span class="nav-text">Exercise 1.8:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-9"><span class="nav-number">1.2.4.</span> <span class="nav-text">Exercise 1.9:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-10"><span class="nav-number">1.2.5.</span> <span class="nav-text">Exercise 1.10:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-11"><span class="nav-number">1.2.6.</span> <span class="nav-text">Exercise 1.11:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-12"><span class="nav-number">1.2.7.</span> <span class="nav-text">Exercise 1.12:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-13"><span class="nav-number">1.2.8.</span> <span class="nav-text">Exercise 1.13:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#过程与它们所产生的计算步骤"><span class="nav-number">2.</span> <span class="nav-text">过程与它们所产生的计算步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#增长的阶"><span class="nav-number">2.1.</span> <span class="nav-text">增长的阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-14"><span class="nav-number">2.1.1.</span> <span class="nav-text">Exercise 1.14:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-15"><span class="nav-number">2.1.2.</span> <span class="nav-text">Exercise 1.15:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求幂"><span class="nav-number">2.2.</span> <span class="nav-text">求幂</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-16"><span class="nav-number">2.2.1.</span> <span class="nav-text">Exercise 1.16:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-17"><span class="nav-number">2.2.2.</span> <span class="nav-text">Exercise 1.17:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-18"><span class="nav-number">2.2.3.</span> <span class="nav-text">Exercise 1.18:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-19"><span class="nav-number">2.2.4.</span> <span class="nav-text">Exercise 1.19:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最大公约数"><span class="nav-number">2.3.</span> <span class="nav-text">最大公约数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-20"><span class="nav-number">2.3.1.</span> <span class="nav-text">Exercise 1.20:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-21"><span class="nav-number">2.3.2.</span> <span class="nav-text">Exercise 1.21:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-22"><span class="nav-number">2.3.3.</span> <span class="nav-text">Exercise 1.22:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-23"><span class="nav-number">2.3.4.</span> <span class="nav-text">Exercise 1.23:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-24"><span class="nav-number">2.3.5.</span> <span class="nav-text">Exercise 1.24:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-25"><span class="nav-number">2.3.6.</span> <span class="nav-text">Exercise 1.25:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-26"><span class="nav-number">2.3.7.</span> <span class="nav-text">Exercise 1.26:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-27"><span class="nav-number">2.3.8.</span> <span class="nav-text">Exercise 1.27:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-28"><span class="nav-number">2.3.9.</span> <span class="nav-text">Exercise 1.28:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用高阶函数做抽象"><span class="nav-number">3.</span> <span class="nav-text">用高阶函数做抽象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#过程作为参数"><span class="nav-number">3.1.</span> <span class="nav-text">过程作为参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-29"><span class="nav-number">3.1.1.</span> <span class="nav-text">Exercise 1.29:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-30"><span class="nav-number">3.1.2.</span> <span class="nav-text">Exercise 1.30:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-31"><span class="nav-number">3.1.3.</span> <span class="nav-text">Exercise 1.31:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-32"><span class="nav-number">3.1.4.</span> <span class="nav-text">Exercise 1.32:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-33"><span class="nav-number">3.1.5.</span> <span class="nav-text">Exercise 1.33:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用-lambda-构造过程"><span class="nav-number">3.2.</span> <span class="nav-text">用 lambda 构造过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-34"><span class="nav-number">3.2.1.</span> <span class="nav-text">Exercise 1.34:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程作为一般性的方法"><span class="nav-number">3.3.</span> <span class="nav-text">过程作为一般性的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-35"><span class="nav-number">3.3.1.</span> <span class="nav-text">Exercise 1.35:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-36"><span class="nav-number">3.3.2.</span> <span class="nav-text">Exercise 1.36:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-37"><span class="nav-number">3.3.3.</span> <span class="nav-text">Exercise 1.37:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-38"><span class="nav-number">3.3.4.</span> <span class="nav-text">Exercise 1.38:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-39"><span class="nav-number">3.3.5.</span> <span class="nav-text">Exercise 1.39:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过程作为返回值"><span class="nav-number">3.4.</span> <span class="nav-text">过程作为返回值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-40"><span class="nav-number">3.4.1.</span> <span class="nav-text">Exercise 1.40:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-41"><span class="nav-number">3.4.2.</span> <span class="nav-text">Exercise 1.41:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-42"><span class="nav-number">3.4.3.</span> <span class="nav-text">Exercise 1.42:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-43"><span class="nav-number">3.4.4.</span> <span class="nav-text">Exercise 1.43:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-44"><span class="nav-number">3.4.5.</span> <span class="nav-text">Exercise 1.44:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-45"><span class="nav-number">3.4.6.</span> <span class="nav-text">Exercise 1.45:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise-1-46"><span class="nav-number">3.4.7.</span> <span class="nav-text">Exercise 1.46:</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wangzk1900</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
