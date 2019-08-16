@@ -96,17 +96,19 @@
 
 
 
-  <meta name="description" content="Servlet 是什么？Servlet 是基于 java 的 web 组件（Java对象），Servlet 容器管理这些对象的创建、初始化和销毁。 Servlet 用途处理客户端请求并动态生成响应内容。 Servlet 容器Servlet 容器有时又被称为 Servlet 引擎，是Web服务器或应用程序服务器的一部分。常用的 Servlet 容器有：Tomcat、WebLogic、WebSpher">
+  <meta name="description" content="Servlet 是什么？Servlet 是基于 java 的 web 组件（Java对象），用来处理客户端请求并动态生成响应内容。Servlet 容器管理这些对象的创建、初始化和销毁。可以使用 Servlet 技术来开发简单的 Web 应用。 Servlet 容器Servlet 容器有时又被称为 Servlet 引擎，是Web服务器或应用程序服务器的一部分。常用的 Servlet 容器有：Tomc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="01_Servlet 介绍">
 <meta property="og:url" content="http://yoursite.com/2019/08/16/Servlet_01_Servlet 介绍/index.html">
 <meta property="og:site_name" content="wangzk1900&#39;s site">
-<meta property="og:description" content="Servlet 是什么？Servlet 是基于 java 的 web 组件（Java对象），Servlet 容器管理这些对象的创建、初始化和销毁。 Servlet 用途处理客户端请求并动态生成响应内容。 Servlet 容器Servlet 容器有时又被称为 Servlet 引擎，是Web服务器或应用程序服务器的一部分。常用的 Servlet 容器有：Tomcat、WebLogic、WebSpher">
+<meta property="og:description" content="Servlet 是什么？Servlet 是基于 java 的 web 组件（Java对象），用来处理客户端请求并动态生成响应内容。Servlet 容器管理这些对象的创建、初始化和销毁。可以使用 Servlet 技术来开发简单的 Web 应用。 Servlet 容器Servlet 容器有时又被称为 Servlet 引擎，是Web服务器或应用程序服务器的一部分。常用的 Servlet 容器有：Tomc">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-16T02:36:23.664Z">
+<meta property="og:image" content="http://yoursite.com/images/servlet/web_module_structure.png">
+<meta property="og:updated_time" content="2019-08-16T06:39:39.378Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01_Servlet 介绍">
-<meta name="twitter:description" content="Servlet 是什么？Servlet 是基于 java 的 web 组件（Java对象），Servlet 容器管理这些对象的创建、初始化和销毁。 Servlet 用途处理客户端请求并动态生成响应内容。 Servlet 容器Servlet 容器有时又被称为 Servlet 引擎，是Web服务器或应用程序服务器的一部分。常用的 Servlet 容器有：Tomcat、WebLogic、WebSpher">
+<meta name="twitter:description" content="Servlet 是什么？Servlet 是基于 java 的 web 组件（Java对象），用来处理客户端请求并动态生成响应内容。Servlet 容器管理这些对象的创建、初始化和销毁。可以使用 Servlet 技术来开发简单的 Web 应用。 Servlet 容器Servlet 容器有时又被称为 Servlet 引擎，是Web服务器或应用程序服务器的一部分。常用的 Servlet 容器有：Tomc">
+<meta name="twitter:image" content="http://yoursite.com/images/servlet/web_module_structure.png">
 
 
 
@@ -370,7 +372,7 @@
                 
               
 
-              <time title="创建时间：2019-08-16 00:00:00 / 修改时间：10:36:23" itemprop="dateCreated datePublished" datetime="2019-08-16T00:00:00+08:00">2019-08-16</time>
+              <time title="创建时间：2019-08-16 00:00:00 / 修改时间：14:39:39" itemprop="dateCreated datePublished" datetime="2019-08-16T00:00:00+08:00">2019-08-16</time>
             
 
             
@@ -434,11 +436,12 @@
       
 
       
-        <p><strong>Servlet 是什么？</strong><br>Servlet 是基于 java 的 web 组件（Java对象），Servlet 容器管理这些对象的创建、初始化和销毁。</p>
-<p><strong>Servlet 用途</strong><br>处理客户端请求并动态生成响应内容。</p>
+        <p><strong>Servlet 是什么？</strong><br>Servlet 是基于 java 的 web 组件（Java对象），用来处理客户端请求并动态生成响应内容。<br>Servlet 容器管理这些对象的创建、初始化和销毁。可以使用 Servlet 技术来开发简单的 Web 应用。</p>
 <p><strong>Servlet 容器</strong><br>Servlet 容器有时又被称为 Servlet 引擎，是Web服务器或应用程序服务器的一部分。常用的 Servlet 容器有：Tomcat、WebLogic、WebSphere等。</p>
+<p><strong>Web 应用</strong></p>
+<p>下图是编译、打包（war包）之后 Web 应用的目录结构：<br><img src="/images/servlet/web_module_structure.png" alt="Web Module Structure"><br><code>WEB-INF/classes</code>目录：存放编写的 Servlet 类、Filter类以及各种业务类的class文件；<br><code>WEB-INF/bin</code>目录：存放应用依赖的jar包；<br><code>WEB-INF/web.xml</code>配置文件：包含Web 组件的配置和部署信息；<br><code>Web pages</code>：一般是html、jsp文件，可以被浏览器直接访问。</p>
 <p><strong>Servlet 规范</strong><br>JSR 53: Java Servlet 2.3 and JavaServer Pages 1.2 Specifications<br>JSR 154: Java Servlet 2.4 Specification<br>JSR 315: Java Servlet 3.0 Specification<br>JSR 340: Java Servlet 3.1 Specification<br>JSR 369: Java Servlet 4.0 Specification</p>
-<p>Servlet 规范（JSR）：<a href="https://jcp.org/en/home/index" target="_blank" rel="noopener">https://jcp.org/en/home/index</a><br>Servlet 参考实现（RI）：<a href="https://github.com/javaee/servlet-spec" target="_blank" rel="noopener">https://github.com/javaee/servlet-spec</a><br>Collaboration home for Java Servlet Specification：<a href="https://javaee.github.io/servlet-spec/" target="_blank" rel="noopener">https://javaee.github.io/servlet-spec/</a></p>
+<p>Servlet 规范（JSR 369）：<a href="https://jcp.org/en/jsr/detail?id=369" target="_blank" rel="noopener">https://jcp.org/en/jsr/detail?id=369</a><br>Servlet 参考实现（RI）：<a href="https://github.com/javaee/servlet-spec" target="_blank" rel="noopener">https://github.com/javaee/servlet-spec</a><br>Collaboration home for Java Servlet Specification：<a href="https://javaee.github.io/servlet-spec/" target="_blank" rel="noopener">https://javaee.github.io/servlet-spec/</a></p>
 <p><strong>Servlet API</strong><br>Java 包：<code>javax.servle</code>和<code>javax.servlet.http</code>提供了用来编写 Servlet 的接口和类。</p>
 <p>Java(TM) EE 7 Specification APIs：<br><a href="https://docs.oracle.com/javaee/7/api/toc.htm" target="_blank" rel="noopener">https://docs.oracle.com/javaee/7/api/toc.htm</a></p>
 <p><strong>官方教程</strong><br>The Java EE 7 Tutorial: <a href="https://docs.oracle.com/javaee/7/tutorial/index.html" target="_blank" rel="noopener">https://docs.oracle.com/javaee/7/tutorial/index.html</a></p>

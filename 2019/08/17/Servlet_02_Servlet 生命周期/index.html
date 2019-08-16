@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="wangzk1900&#39;s site">
 <meta property="og:description" content="生命周期Servlet 生命周期包括从它被加载、实例化到销毁的全过程：  加载 Servlet 类并实例化（时机：在 Servlet 被需要时加载，也可以指定在容器启动时加载） 调用init ()方法对 Servlet 进行初始化。 调用service()方法，传入 Request 和 Response 对象，处理来自客户端的请求。 调用destroy()方法释放 Servelet 占用的资源并进">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-16T02:53:20.627Z">
+<meta property="og:updated_time" content="2019-08-16T04:25:26.083Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="02_Servlet 生命周期">
 <meta name="twitter:description" content="生命周期Servlet 生命周期包括从它被加载、实例化到销毁的全过程：  加载 Servlet 类并实例化（时机：在 Servlet 被需要时加载，也可以指定在容器启动时加载） 调用init ()方法对 Servlet 进行初始化。 调用service()方法，传入 Request 和 Response 对象，处理来自客户端的请求。 调用destroy()方法释放 Servelet 占用的资源并进">
@@ -387,7 +387,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-16 10:53:20" itemprop="dateModified" datetime="2019-08-16T10:53:20+08:00">2019-08-16</time>
+                <time title="修改时间：2019-08-16 12:25:26" itemprop="dateModified" datetime="2019-08-16T12:25:26+08:00">2019-08-16</time>
               
             
           </span>
@@ -459,15 +459,16 @@
 <h2 id="service-方法"><a href="#service-方法" class="headerlink" title="service() 方法"></a>service() 方法</h2><p>service() 方法是<code>javax.servlet</code>接口中定义的方法。</p>
 <p>另外，<code>javax.servlet.http.HttpServlet</code>抽象类中新增了下面这些方法：</p>
 <ul>
-<li>doGet() for handling HTTP  GET requests</li>
-<li>doPost() for handling HTTP  POST requests</li>
-<li>doPut() for handling HTTP  PUT requests</li>
-<li>doDelete() for handling HTTP  DELETE requests</li>
-<li>doHead() for handling HTTP  HEAD requests</li>
-<li>doOptions() for handling HTTP  OPTIONS requests</li>
-<li>doTrace() for handling HTTP  TRACE requests<br>这些方法专门用来处理 HTTP 请求，编写<code>HttpServlet</code>的子类时只需根据客户端的请求类型来重写上面的某些方法。<br><code>service()</code>方法会检查 HTTP 请求类型（GET、POST、PUT、DELETE 等），并在适当的时候调用 <code>doGet()</code>、<code>doPost()</code>、<code>doPut()</code>、<code>doDelete()</code> 等方法。</li>
+<li><code>doGet()</code> for handling HTTP  GET requests</li>
+<li><code>doPost()</code> for handling HTTP  POST requests</li>
+<li><code>doPut()</code> for handling HTTP  PUT requests</li>
+<li><code>doDelete()</code> for handling HTTP  DELETE requests</li>
+<li><code>doHead()</code> for handling HTTP  HEAD requests</li>
+<li><code>doOptions()</code> for handling HTTP  OPTIONS requests</li>
+<li><code>doTrace()</code> for handling HTTP  TRACE requests</li>
 </ul>
-<p>定义 doGet() 和 doPost() 方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// doGet() 方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">                  HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Servlet code</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// doPost() 方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">                   HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Servlet code</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这些方法专门用来处理 HTTP 请求，编写<code>HttpServlet</code>的子类时只需根据客户端的请求类型来重写上面的某些方法。<br><code>service()</code>方法会检查 HTTP 请求类型（GET、POST、PUT、DELETE 等），并在适当的时候调用 <code>doGet()</code>、<code>doPost()</code>、<code>doPut()</code>、<code>doDelete()</code> 等方法。</p>
+<p>定义 doGet() 和 doPost() 方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// doGet() 方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Servlet code</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// doPost() 方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Servlet code</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="destroy-方法"><a href="#destroy-方法" class="headerlink" title="destroy() 方法"></a>destroy() 方法</h2><p><code>destroy()</code>方法只在 Servlet  生命周期结束时被调用一次。<code>destroy()</code>方法可以让你的 Servlet 关闭数据库连接、停止后台线程、将 cookie 列表或点击计数器写入磁盘，并执行其他类似的清理活动。</p>
 <p>定义destroy() 方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Finalization code...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h1 id="生命周期事件"><a href="#生命周期事件" class="headerlink" title="生命周期事件"></a>生命周期事件</h1><p>在Servlet生命周期中，我们可以监控发生的事件并作出反应。</p>
@@ -513,7 +514,7 @@
 </tr>
 </tbody>
 </table>
-<p>使用<code>@WebListener</code>注解定义一个监听器，<code>@WebListener</code>注解的类必须实现下面的某个个接口：</p>
+<p>使用<code>@WebListener</code>注解定义一个监听器，<code>@WebListener</code>注解的类必须实现下面的某个接口：</p>
 <blockquote>
 <p>javax.servlet.ServletContextListener<br>javax.servlet.ServletContextAttributeListener<br>javax.servlet.ServletRequestListener<br>javax.servlet.ServletRequestAttributeListener<br>javax.servlet..http.HttpSessionListener<br>javax.servlet..http.HttpSessionAttributeListener</p>
 </blockquote>
