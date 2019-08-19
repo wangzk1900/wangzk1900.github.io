@@ -327,7 +327,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/19/Servlet_05_Response/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/Servlet_05_Response/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wangzk1900">
@@ -347,7 +347,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/08/19/Servlet_05_Response/" class="post-title-link" itemprop="url">05_Response</a>
+                <a href="/2019/08/20/Servlet_05_Response/" class="post-title-link" itemprop="url">05_Response</a>
               
             
           </h1>
@@ -372,12 +372,24 @@
                 
               
 
-              <time title="创建时间：2019-08-19 00:00:00 / 修改时间：13:48:35" itemprop="dateCreated datePublished" datetime="2019-08-19T00:00:00+08:00">2019-08-19</time>
+              <time title="创建时间：2019-08-20 00:00:00" itemprop="dateCreated datePublished" datetime="2019-08-20T00:00:00+08:00">2019-08-20</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-19 14:10:38" itemprop="dateModified" datetime="2019-08-19T14:10:38+08:00">2019-08-19</time>
               
             
           </span>
@@ -511,7 +523,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/18/Servlet_04_Request/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/19/Servlet_04_Request/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wangzk1900">
@@ -531,7 +543,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/08/18/Servlet_04_Request/" class="post-title-link" itemprop="url">04_Request</a>
+                <a href="/2019/08/19/Servlet_04_Request/" class="post-title-link" itemprop="url">04_Request</a>
               
             
           </h1>
@@ -556,24 +568,12 @@
                 
               
 
-              <time title="创建时间：2019-08-18 00:00:00" itemprop="dateCreated datePublished" datetime="2019-08-18T00:00:00+08:00">2019-08-18</time>
+              <time title="创建时间：2019-08-19 00:00:00 / 修改时间：14:10:24" itemprop="dateCreated datePublished" datetime="2019-08-19T00:00:00+08:00">2019-08-19</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-19 13:48:00" itemprop="dateModified" datetime="2019-08-19T13:48:00+08:00">2019-08-19</time>
               
             
           </span>
@@ -640,7 +640,7 @@
 <p><strong>配置方式一：</strong><br>使用web.xml文件，需要在<code>&lt;servlet&gt;</code>标签下使用<code>&lt;multipart-config&gt;</code>进行配置，如下所示：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>FileUpload<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.my.request.FileUpload<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">multipart-config</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">location</span>&gt;</span>/tmp<span class="tag">&lt;/<span class="name">location</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">max-file-size</span>&gt;</span>20848820<span class="tag">&lt;/<span class="name">max-file-size</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">max-request-size</span>&gt;</span>418018841<span class="tag">&lt;/<span class="name">max-request-size</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">file-size-threshold</span>&gt;</span>1048576<span class="tag">&lt;/<span class="name">file-size-threshold</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">multipart-config</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p><strong>配置方式二：</strong><br>使用<code>@MultipartConfig</code>注解，如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/FileUpload"</span>)</span><br><span class="line"><span class="meta">@MultipartConfig</span>(location=<span class="string">"/tmp"</span>, fileSizeThreshold=<span class="number">1024</span>*<span class="number">1024</span>,</span><br><span class="line">maxFileSize=<span class="number">1024</span>*<span class="number">1024</span>*<span class="number">5</span>, maxRequestSize=<span class="number">1024</span>*<span class="number">1024</span>*<span class="number">5</span>*<span class="number">5</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileUpload</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h1 id="属性（Attributes）"><a href="#属性（Attributes）" class="headerlink" title="属性（Attributes）"></a>属性（Attributes）</h1><p>属性分为两种：<br>一种是 Servlet 容器设置的一些属性。<br>另外，Servlet 也可以设置属性，通过这种方式与其它 Servlet 进行沟通。</p>
-<p>在某些情况下，Servlet 规范规定了 Servlet 容器必须设置一些属性。如果客户端通过安全协议（比如：HTTPS）发送请求时，Servlet 容器必须设置下面三个属性：</p>
+<p>在某些情况下，Servlet 规范规定了 Servlet 容器必须设置一些属性。比如，当客户端通过安全协议（比如：HTTPS）发送请求时，Servlet 容器必须设置下面三个属性：</p>
 <table>
 <thead>
 <tr>
@@ -673,12 +673,12 @@
 <h1 id="请求路径"><a href="#请求路径" class="headerlink" title="请求路径"></a>请求路径</h1><p>一个请求URL包含下面几部分：<br><code>http://[host]:[port][request-path]?[query-string]</code></p>
 <p>其中的<code>request-path</code>包含下面三种元素：</p>
 <ul>
-<li>Context path: A concatenation of a forward slash ( / ) with the context root of the<br>servlet’s web application.</li>
-<li>Servlet path: The path section that corresponds to the component alias that<br>activated this request. This path starts with a forward slash ( / ).</li>
-<li>Path info: The part of the request path that is not part of the context path or the<br>servlet path.</li>
+<li><strong>Context path</strong>: A concatenation of a forward slash ( / ) with the context root of the servlet’s web application.</li>
+<li><strong>Servlet path</strong>: The path section that corresponds to the component alias that activated this request. This path starts with a forward slash ( / ).</li>
+<li><strong>Path info</strong>: The part of the request path that is not part of the context path or the servlet path.</li>
 </ul>
-<p><strong>requestURI = contextPath + servletPath + pathInfo</strong><br>可以通过<code>getContextPath()</code>，<code>getServletPath()</code>和<code>getPathInfo()</code>方法访问这些信息。</p>
-<p>另外，Servlet API 还提供了了两个便捷的方法来获取真实的系统路径：<br>■ ServletContext.getRealPath<br>■ HttpServletRequest.getPathTranslated</p>
+<p><strong>request-path = contextPath + servletPath + pathInfo</strong><br>可以通过<code>getContextPath()</code>，<code>getServletPath()</code>和<code>getPathInfo()</code>方法访问这些信息。</p>
+<p>另外，Servlet API 还提供了两个便捷的方法来获取真实的系统路径：<br>■ ServletContext.getRealPath<br>■ HttpServletRequest.getPathTranslated</p>
 <h1 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies"></a>Cookies</h1><p><code>HttpServletRequest</code>接口提供了<code>getCookies</code>方法来获取 HTTP 请求中的 cookie。</p>
 <h1 id="Request-编码"><a href="#Request-编码" class="headerlink" title="Request 编码"></a>Request 编码</h1><p><strong>获取 Request 编码</strong><br>使用<code>getCharacterEncoding()</code>方法，若浏览器发送的请求中没有包含编码信息，则该方法返回 NULL。</p>
 <p><strong>设置 Request 编码</strong><br>有三种方法：</p>
@@ -688,6 +688,191 @@
 <li>使用<code>ServletRequest</code>接口中的<code>setCharacterEncoding(String enc)</code>方法。</li>
 </ul>
 <p><code>setCharacterEncoding(String enc)</code>方法可以覆盖前两种方法设置的值。并且，该方法必须在从 Request 中获取数据之前设置，否则无效。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/18/Servlet_03_Servlet 定义/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangzk1900">
+      <meta itemprop="description" content="记录学习总结和思考">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangzk1900's site">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/18/Servlet_03_Servlet 定义/" class="post-title-link" itemprop="url">03_Servlet 定义</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-18 00:00:00" itemprop="dateCreated datePublished" datetime="2019-08-18T00:00:00+08:00">2019-08-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-19 14:10:13" itemprop="dateModified" datetime="2019-08-19T14:10:13+08:00">2019-08-19</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java-EE/" itemprop="url" rel="index"><span itemprop="name">Java EE</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java-EE/Servlet/" itemprop="url" rel="index"><span itemprop="name">Servlet</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在 Web 应用开发中，要定义一个 Servlet 需要继承<code>javax.servlet.http.HttpServlet</code>类。</p>
+<p>针对不同的请求，可以定义不同的 Servlet 进行处理。那 Web 容器如何将不同的请求发送给正确的 Servlet 进行处理呢？<br>Servlet 规范提供了两种方式：<br>方式一：在 web.xml 文件中注册 Servlet，并配置 Servlet 和请求路径（URL）的映射关系。<br>方式二：使用<code>@WebServlet</code>注解修饰 Servlet 类，并指定对应的请求路径（URL）。</p>
+<p><strong>示例一：</strong>在web.xml文件进行配置<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns</span>=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">version</span>=<span class="string">"4.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">display-name</span>&gt;</span>servlet_study_01<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">welcome-file-list</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">welcome-file</span>&gt;</span>index.html<span class="tag">&lt;/<span class="name">welcome-file</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">welcome-file</span>&gt;</span>index.htm<span class="tag">&lt;/<span class="name">welcome-file</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">welcome-file</span>&gt;</span>index.jsp<span class="tag">&lt;/<span class="name">welcome-file</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">welcome-file-list</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>DisplayParameters<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.my.request.DisplayParameters<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>DisplayParameters<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/DisplayParameters<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>Web 容器会根据<code>&lt;url-pattern&gt;</code>找到对应的<code>&lt;servlet-name&gt;</code>，然后根据<code>&lt;servlet-name&gt;</code>找到对应的<code>&lt;servlet-class&gt;</code>，从而对其进行加载和实例化。</p>
+<p><strong>示例二：</strong>使用<code>@WebServlet</code>注解<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/report"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MoodServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Web 容器把Servlet类加载和实例化之后，会调用<code>init()</code>方法对Servlet进行初始化。<br>我们也可以重写Servlet接口的<code>init()</code>方法，或者在<code>@WebServlet</code>注解中指定<code>initParams</code>属性。</p>
 
           
         
@@ -939,191 +1124,6 @@
 <blockquote>
 <p>javax.servlet.ServletContextListener<br>javax.servlet.ServletContextAttributeListener<br>javax.servlet.ServletRequestListener<br>javax.servlet.ServletRequestAttributeListener<br>javax.servlet..http.HttpSessionListener<br>javax.servlet..http.HttpSessionAttributeListener</p>
 </blockquote>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/17/Servlet_03_Servlet 定义/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wangzk1900">
-      <meta itemprop="description" content="记录学习总结和思考">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wangzk1900's site">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/08/17/Servlet_03_Servlet 定义/" class="post-title-link" itemprop="url">03_Servlet 定义</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-17 00:00:00" itemprop="dateCreated datePublished" datetime="2019-08-17T00:00:00+08:00">2019-08-17</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-19 13:46:51" itemprop="dateModified" datetime="2019-08-19T13:46:51+08:00">2019-08-19</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java-EE/" itemprop="url" rel="index"><span itemprop="name">Java EE</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java-EE/Servlet/" itemprop="url" rel="index"><span itemprop="name">Servlet</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在 Web 应用开发中，要定义一个 Servlet 需要继承<code>javax.servlet.http.HttpServlet</code>类。</p>
-<p>针对不同的请求，可以定义不同的 Servlet 进行处理。那 Web 容器如何将不同的请求发送给正确的 Servlet 进行处理呢？<br>Servlet 规范提供了两种方式：<br>方式一：在 web.xml 文件中注册 Servlet，并配置 Servlet 和请求路径（URL）的映射关系。<br>方式二：使用<code>@WebServlet</code>注解修饰 Servlet 类，并指定对应的请求路径（URL）。</p>
-<p><strong>示例一：</strong>在web.xml文件进行配置<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns</span>=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">version</span>=<span class="string">"4.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">display-name</span>&gt;</span>servlet_study_01<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">welcome-file-list</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">welcome-file</span>&gt;</span>index.html<span class="tag">&lt;/<span class="name">welcome-file</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">welcome-file</span>&gt;</span>index.htm<span class="tag">&lt;/<span class="name">welcome-file</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">welcome-file</span>&gt;</span>index.jsp<span class="tag">&lt;/<span class="name">welcome-file</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">welcome-file-list</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>DisplayParameters<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.my.request.DisplayParameters<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>DisplayParameters<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/DisplayParameters<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>Web 容器会根据<code>&lt;url-pattern&gt;</code>找到对应的<code>&lt;servlet-name&gt;</code>，然后根据<code>&lt;servlet-name&gt;</code>找到对应的<code>&lt;servlet-class&gt;</code>，从而对其进行加载和实例化。</p>
-<p><strong>示例二：</strong>使用<code>@WebServlet</code>注解<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/report"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MoodServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>Web 容器把Servlet类加载和实例化之后，会调用<code>init()</code>方法对Servlet进行初始化。<br>我们也可以重写Servlet接口的<code>init()</code>方法，或者在<code>@WebServlet</code>注解中指定<code>initParams</code>属性。</p>
 
           
         

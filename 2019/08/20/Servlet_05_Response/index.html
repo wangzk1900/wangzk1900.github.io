@@ -96,19 +96,17 @@
 
 
 
-  <meta name="description" content="Servlet 是什么？Servlet 是基于 java 的 web 组件（Java对象），用来处理客户端请求并动态生成响应内容。Servlet 容器管理这些对象的创建、初始化和销毁。可以使用 Servlet 技术来开发简单的 Web 应用。 Servlet 容器Servlet 容器有时又被称为 Servlet 引擎，是Web服务器或应用程序服务器的一部分。常用的 Servlet 容器有：Tomc">
+  <meta name="description" content="所有的 Response 类都要实现ServletResponse接口。与 Request 对象一样，Response 对象是由 Servlet 容器负责创建和维护的，并将其传入 Servlet 对象的 service()方法。利用 Response 对象中的方法，我们可以编写响应给客户端的内容，做一些相关的配置。 缓冲（Buffering）为了提高效率，可以利用ServletResponse接口">
 <meta property="og:type" content="article">
-<meta property="og:title" content="01_Servlet 介绍">
-<meta property="og:url" content="http://yoursite.com/2019/08/16/Servlet_01_Servlet 介绍/index.html">
+<meta property="og:title" content="05_Response">
+<meta property="og:url" content="http://yoursite.com/2019/08/20/Servlet_05_Response/index.html">
 <meta property="og:site_name" content="wangzk1900&#39;s site">
-<meta property="og:description" content="Servlet 是什么？Servlet 是基于 java 的 web 组件（Java对象），用来处理客户端请求并动态生成响应内容。Servlet 容器管理这些对象的创建、初始化和销毁。可以使用 Servlet 技术来开发简单的 Web 应用。 Servlet 容器Servlet 容器有时又被称为 Servlet 引擎，是Web服务器或应用程序服务器的一部分。常用的 Servlet 容器有：Tomc">
+<meta property="og:description" content="所有的 Response 类都要实现ServletResponse接口。与 Request 对象一样，Response 对象是由 Servlet 容器负责创建和维护的，并将其传入 Servlet 对象的 service()方法。利用 Response 对象中的方法，我们可以编写响应给客户端的内容，做一些相关的配置。 缓冲（Buffering）为了提高效率，可以利用ServletResponse接口">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/images/servlet/web_module_structure.png">
-<meta property="og:updated_time" content="2019-08-16T06:39:39.378Z">
+<meta property="og:updated_time" content="2019-08-19T06:10:38.646Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="01_Servlet 介绍">
-<meta name="twitter:description" content="Servlet 是什么？Servlet 是基于 java 的 web 组件（Java对象），用来处理客户端请求并动态生成响应内容。Servlet 容器管理这些对象的创建、初始化和销毁。可以使用 Servlet 技术来开发简单的 Web 应用。 Servlet 容器Servlet 容器有时又被称为 Servlet 引擎，是Web服务器或应用程序服务器的一部分。常用的 Servlet 容器有：Tomc">
-<meta name="twitter:image" content="http://yoursite.com/images/servlet/web_module_structure.png">
+<meta name="twitter:title" content="05_Response">
+<meta name="twitter:description" content="所有的 Response 类都要实现ServletResponse接口。与 Request 对象一样，Response 对象是由 Servlet 容器负责创建和维护的，并将其传入 Servlet 对象的 service()方法。利用 Response 对象中的方法，我们可以编写响应给客户端的内容，做一些相关的配置。 缓冲（Buffering）为了提高效率，可以利用ServletResponse接口">
 
 
 
@@ -116,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/08/16/Servlet_01_Servlet 介绍/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/20/Servlet_05_Response/">
 
 
 
@@ -126,7 +124,7 @@
   };
 </script>
 
-  <title>01_Servlet 介绍 | wangzk1900's site</title>
+  <title>05_Response | wangzk1900's site</title>
   
 
 
@@ -329,7 +327,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/16/Servlet_01_Servlet 介绍/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/Servlet_05_Response/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wangzk1900">
@@ -346,7 +344,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">01_Servlet 介绍
+          <h1 class="post-title" itemprop="name headline">05_Response
 
               
             
@@ -372,12 +370,24 @@
                 
               
 
-              <time title="创建时间：2019-08-16 00:00:00 / 修改时间：14:39:39" itemprop="dateCreated datePublished" datetime="2019-08-16T00:00:00+08:00">2019-08-16</time>
+              <time title="创建时间：2019-08-20 00:00:00" itemprop="dateCreated datePublished" datetime="2019-08-20T00:00:00+08:00">2019-08-20</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-19 14:10:38" itemprop="dateModified" datetime="2019-08-19T14:10:38+08:00">2019-08-19</time>
               
             
           </span>
@@ -436,15 +446,23 @@
       
 
       
-        <p><strong>Servlet 是什么？</strong><br>Servlet 是基于 java 的 web 组件（Java对象），用来处理客户端请求并动态生成响应内容。<br>Servlet 容器管理这些对象的创建、初始化和销毁。可以使用 Servlet 技术来开发简单的 Web 应用。</p>
-<p><strong>Servlet 容器</strong><br>Servlet 容器有时又被称为 Servlet 引擎，是Web服务器或应用程序服务器的一部分。常用的 Servlet 容器有：Tomcat、WebLogic、WebSphere等。</p>
-<p><strong>Web 应用</strong></p>
-<p>下图是编译、打包（war包）之后 Web 应用的目录结构：<br><img src="/images/servlet/web_module_structure.png" alt="Web Module Structure"><br><code>WEB-INF/classes</code>目录：存放编写的 Servlet 类、Filter类以及各种业务类的class文件；<br><code>WEB-INF/bin</code>目录：存放应用依赖的jar包；<br><code>WEB-INF/web.xml</code>配置文件：包含Web 组件的配置和部署信息；<br><code>Web pages</code>：一般是html、jsp文件，可以被浏览器直接访问。</p>
-<p><strong>Servlet 规范</strong><br>JSR 53: Java Servlet 2.3 and JavaServer Pages 1.2 Specifications<br>JSR 154: Java Servlet 2.4 Specification<br>JSR 315: Java Servlet 3.0 Specification<br>JSR 340: Java Servlet 3.1 Specification<br>JSR 369: Java Servlet 4.0 Specification</p>
-<p>Servlet 规范（JSR 369）：<a href="https://jcp.org/en/jsr/detail?id=369" target="_blank" rel="noopener">https://jcp.org/en/jsr/detail?id=369</a><br>Servlet 参考实现（RI）：<a href="https://github.com/javaee/servlet-spec" target="_blank" rel="noopener">https://github.com/javaee/servlet-spec</a><br>Collaboration home for Java Servlet Specification：<a href="https://javaee.github.io/servlet-spec/" target="_blank" rel="noopener">https://javaee.github.io/servlet-spec/</a></p>
-<p><strong>Servlet API</strong><br>Java 包：<code>javax.servle</code>和<code>javax.servlet.http</code>提供了用来编写 Servlet 的接口和类。</p>
-<p>Java(TM) EE 7 Specification APIs：<br><a href="https://docs.oracle.com/javaee/7/api/toc.htm" target="_blank" rel="noopener">https://docs.oracle.com/javaee/7/api/toc.htm</a></p>
-<p><strong>官方教程</strong><br>The Java EE 7 Tutorial: <a href="https://docs.oracle.com/javaee/7/tutorial/index.html" target="_blank" rel="noopener">https://docs.oracle.com/javaee/7/tutorial/index.html</a></p>
+        <p>所有的 Response 类都要实现<code>ServletResponse</code>接口。<br>与 Request 对象一样，Response 对象是由 Servlet 容器负责创建和维护的，并将其传入 Servlet 对象的 <code>service()</code>方法。<br>利用 Response 对象中的方法，我们可以编写响应给客户端的内容，做一些相关的配置。</p>
+<h1 id="缓冲（Buffering）"><a href="#缓冲（Buffering）" class="headerlink" title="缓冲（Buffering）"></a>缓冲（Buffering）</h1><p>为了提高效率，可以利用<code>ServletResponse</code>接口提供的一些方法设置缓冲。</p>
+<p>相关的方法：<br>■ getBufferSize<br>■ setBufferSize<br>■ isCommitted<br>■ reset<br>■ resetBuffer<br>■ flushBuffer</p>
+<h1 id="响应头（Headers）"><a href="#响应头（Headers）" class="headerlink" title="响应头（Headers）"></a>响应头（Headers）</h1><p>利用<code>HttpServletResponse</code>接口提供的方法可以设置响应头中的信息：<br>■ setHeader<br>■ addHeader<br>■ setIntHeader<br>■ setDateHeader<br>■ addIntHeader<br>■ addDateHeader</p>
+<h1 id="便利方法"><a href="#便利方法" class="headerlink" title="便利方法"></a>便利方法</h1><p><strong>重定向（Redirect）</strong><br>利用<code>HttpServletResponse</code>接口的<code>sendRedirect</code>方法设置适当的响应信息，可以将客户端重定向到不同的URL。</p>
+<p><strong>错误信息</strong><br>利用<code>HttpServletResponse</code>接口的<code>sendError</code>方法可以在响应中设置错误信息。</p>
+<h1 id="国际化"><a href="#国际化" class="headerlink" title="国际化"></a>国际化</h1><p>编写 Servlet 时，根据不同的地区和语言，应该设置 Response 的区域（locale）和字符编码。<br>区域的默认值由 Servlet 容器默认设置有关，字符编码的默认值是：ISO-8859-1。</p>
+<p>在web.xml显式配置区域和字符编码：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--设置区域--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">locale-encoding-mapping-list</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">locale-encoding-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">locale</span>&gt;</span>ja<span class="tag">&lt;/<span class="name">locale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">encoding</span>&gt;</span>Shift_JIS<span class="tag">&lt;/<span class="name">encoding</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">locale-encoding-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">locale-encoding-mapping-list</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--设置字符编码，对所有response有效--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">response-character-encoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">response-character-encoding</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><code>ServletResponse</code>提供的相关方法：</p>
+<ul>
+<li>getCharacterEncoding</li>
+<li>setCharacterEncoding</li>
+<li>getContentType</li>
+<li>setContentType</li>
+<li>getLocale</li>
+<li>setLocale  – 设置区域，并根据web.xml中配置的映射关系或者容器提供的映射关系，设置字符编码。当<code>setCharacterEncoding</code>和<code>setContentType</code>方法都未调用时，该方法设置的字符编码才有效。</li>
+</ul>
 
       
     </div>
@@ -475,8 +493,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/24/MySQL安装/" rel="next" title="MySQL安装">
-                <i class="fa fa-chevron-left"></i> MySQL安装
+              <a href="/2019/08/19/Servlet_04_Request/" rel="next" title="04_Request">
+                <i class="fa fa-chevron-left"></i> 04_Request
               </a>
             
           </div>
@@ -484,10 +502,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/17/Servlet_02_Servlet 生命周期/" rel="prev" title="02_Servlet 生命周期">
-                02_Servlet 生命周期 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -531,8 +545,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -629,6 +652,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#缓冲（Buffering）"><span class="nav-number">1.</span> <span class="nav-text">缓冲（Buffering）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#响应头（Headers）"><span class="nav-number">2.</span> <span class="nav-text">响应头（Headers）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#便利方法"><span class="nav-number">3.</span> <span class="nav-text">便利方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#国际化"><span class="nav-number">4.</span> <span class="nav-text">国际化</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
