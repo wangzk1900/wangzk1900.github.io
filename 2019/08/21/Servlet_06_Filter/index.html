@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="生命周期Servlet 生命周期包括从它被加载、实例化到销毁的全过程：  加载 Servlet 类并实例化（时机：在 Servlet 被需要时加载，也可以指定在容器启动时加载） 调用init ()方法对 Servlet 进行初始化。 调用service()方法，传入 Request 和 Response 对象，处理来自客户端的请求。 调用destroy()方法释放 Servelet 占用的资源并进">
+  <meta name="description" content="过滤器是什么过滤器是一个可以转换请求或响应的报头和内容（或两者）的对象。 过滤器的主要任务：  Query the request and act accordingly. Block the request-and-response pair from passing any further. Modify the request headers and data. You do this by">
 <meta property="og:type" content="article">
-<meta property="og:title" content="02_Servlet 生命周期">
-<meta property="og:url" content="http://yoursite.com/2019/08/17/Servlet_02_Servlet 生命周期/index.html">
+<meta property="og:title" content="06_Filter">
+<meta property="og:url" content="http://yoursite.com/2019/08/21/Servlet_06_Filter/index.html">
 <meta property="og:site_name" content="wangzk1900&#39;s site">
-<meta property="og:description" content="生命周期Servlet 生命周期包括从它被加载、实例化到销毁的全过程：  加载 Servlet 类并实例化（时机：在 Servlet 被需要时加载，也可以指定在容器启动时加载） 调用init ()方法对 Servlet 进行初始化。 调用service()方法，传入 Request 和 Response 对象，处理来自客户端的请求。 调用destroy()方法释放 Servelet 占用的资源并进">
+<meta property="og:description" content="过滤器是什么过滤器是一个可以转换请求或响应的报头和内容（或两者）的对象。 过滤器的主要任务：  Query the request and act accordingly. Block the request-and-response pair from passing any further. Modify the request headers and data. You do this by">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-16T04:25:26.083Z">
+<meta property="og:updated_time" content="2019-08-20T07:44:34.438Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="02_Servlet 生命周期">
-<meta name="twitter:description" content="生命周期Servlet 生命周期包括从它被加载、实例化到销毁的全过程：  加载 Servlet 类并实例化（时机：在 Servlet 被需要时加载，也可以指定在容器启动时加载） 调用init ()方法对 Servlet 进行初始化。 调用service()方法，传入 Request 和 Response 对象，处理来自客户端的请求。 调用destroy()方法释放 Servelet 占用的资源并进">
+<meta name="twitter:title" content="06_Filter">
+<meta name="twitter:description" content="过滤器是什么过滤器是一个可以转换请求或响应的报头和内容（或两者）的对象。 过滤器的主要任务：  Query the request and act accordingly. Block the request-and-response pair from passing any further. Modify the request headers and data. You do this by">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/08/17/Servlet_02_Servlet 生命周期/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/21/Servlet_06_Filter/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>02_Servlet 生命周期 | wangzk1900's site</title>
+  <title>06_Filter | wangzk1900's site</title>
   
 
 
@@ -327,7 +327,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/17/Servlet_02_Servlet 生命周期/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/21/Servlet_06_Filter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wangzk1900">
@@ -344,7 +344,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">02_Servlet 生命周期
+          <h1 class="post-title" itemprop="name headline">06_Filter
 
               
             
@@ -370,7 +370,7 @@
                 
               
 
-              <time title="创建时间：2019-08-17 00:00:00" itemprop="dateCreated datePublished" datetime="2019-08-17T00:00:00+08:00">2019-08-17</time>
+              <time title="创建时间：2019-08-21 00:00:00" itemprop="dateCreated datePublished" datetime="2019-08-21T00:00:00+08:00">2019-08-21</time>
             
 
             
@@ -387,7 +387,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-16 12:25:26" itemprop="dateModified" datetime="2019-08-16T12:25:26+08:00">2019-08-16</time>
+                <time title="修改时间：2019-08-20 15:44:34" itemprop="dateModified" datetime="2019-08-20T15:44:34+08:00">2019-08-20</time>
               
             
           </span>
@@ -446,78 +446,52 @@
       
 
       
-        <h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><p>Servlet 生命周期包括从它被加载、实例化到销毁的全过程：</p>
+        <h1 id="过滤器是什么"><a href="#过滤器是什么" class="headerlink" title="过滤器是什么"></a>过滤器是什么</h1><p>过滤器是一个可以转换请求或响应的报头和内容（或两者）的对象。</p>
+<p>过滤器的主要任务：</p>
 <ul>
-<li>加载 Servlet 类并实例化（时机：在 Servlet 被需要时加载，也可以指定在容器启动时加载）</li>
-<li>调用<code>init ()</code>方法对 Servlet 进行初始化。</li>
-<li>调用<code>service()</code>方法，传入 Request 和 Response 对象，处理来自客户端的请求。</li>
-<li>调用<code>destroy()</code>方法释放 Servelet 占用的资源并进行必要的持久化。</li>
+<li>Query the request and act accordingly.</li>
+<li>Block the request-and-response pair from passing any further.</li>
+<li>Modify the request headers and data. You do this by providing a customized version of the request.</li>
+<li>Modify the response headers and data. You do this by providing a customized version of the response.</li>
+<li>Interact with external resources.</li>
 </ul>
-<p>调用<code>destroy()</code>方法之后，Servlet 容器需要释放这个实例，以便  JVM 的垃圾回收器对其进行回收。</p>
-<h2 id="init-方法"><a href="#init-方法" class="headerlink" title="init() 方法"></a>init() 方法</h2><p>在 Servlet 生命周期中，<code>init()</code>方法只会被调用一次。即：在 Servlet 被实例化的时候被调用。</p>
-<p>定义init() 方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">  <span class="comment">// Initialization code...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="service-方法"><a href="#service-方法" class="headerlink" title="service() 方法"></a>service() 方法</h2><p>service() 方法是<code>javax.servlet</code>接口中定义的方法。</p>
-<p>另外，<code>javax.servlet.http.HttpServlet</code>抽象类中新增了下面这些方法：</p>
+<p>过滤器类型：</p>
 <ul>
-<li><code>doGet()</code> for handling HTTP  GET requests</li>
-<li><code>doPost()</code> for handling HTTP  POST requests</li>
-<li><code>doPut()</code> for handling HTTP  PUT requests</li>
-<li><code>doDelete()</code> for handling HTTP  DELETE requests</li>
-<li><code>doHead()</code> for handling HTTP  HEAD requests</li>
-<li><code>doOptions()</code> for handling HTTP  OPTIONS requests</li>
-<li><code>doTrace()</code> for handling HTTP  TRACE requests</li>
+<li>Authentication filters</li>
+<li>Logging and auditing filters</li>
+<li>Image conversion filters</li>
+<li>Data compression filters</li>
+<li>Encryption filters</li>
+<li>Tokenizing filters</li>
+<li>Filters that trigger resource access events</li>
+<li>XSL/T filters that transform XML content</li>
+<li>MIME-type chain filters</li>
+<li>Caching filters</li>
 </ul>
-<p>这些方法专门用来处理 HTTP 请求，编写<code>HttpServlet</code>的子类时只需根据客户端的请求类型来重写上面的某些方法。<br><code>service()</code>方法会检查 HTTP 请求类型（GET、POST、PUT、DELETE 等），并在适当的时候调用 <code>doGet()</code>、<code>doPost()</code>、<code>doPut()</code>、<code>doDelete()</code> 等方法。</p>
-<p>定义 doGet() 和 doPost() 方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// doGet() 方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Servlet code</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// doPost() 方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Servlet code</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="destroy-方法"><a href="#destroy-方法" class="headerlink" title="destroy() 方法"></a>destroy() 方法</h2><p><code>destroy()</code>方法只在 Servlet  生命周期结束时被调用一次。<code>destroy()</code>方法可以让你的 Servlet 关闭数据库连接、停止后台线程、将 cookie 列表或点击计数器写入磁盘，并执行其他类似的清理活动。</p>
-<p>定义destroy() 方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Finalization code...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="生命周期事件"><a href="#生命周期事件" class="headerlink" title="生命周期事件"></a>生命周期事件</h1><p>在Servlet生命周期中，我们可以监控发生的事件并作出反应。</p>
-<p>生命周期事件：</p>
-<table>
-<thead>
-<tr>
-<th>Object</th>
-<th>Event</th>
-<th>Listener Interface and Event Class</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Web context</td>
-<td>Initialization and destruction</td>
-<td>javax.servlet.ServletContextListener and ServletContextEvent</td>
-</tr>
-<tr>
-<td>Web context</td>
-<td>Attribute added, removed, or replaced</td>
-<td>javax.servlet.ServletContextAttributeListener andServletContextAttributeEvent</td>
-</tr>
-<tr>
-<td>Session</td>
-<td>Creation, invalidation, activation, passivation, and timeout</td>
-<td>javax.servlet.http.HttpSessionListener,javax.servlet.http.HttpSessionActivationListener, and HttpSessionEvent</td>
-</tr>
-<tr>
-<td>Session</td>
-<td>Attribute added, removed, or replaced</td>
-<td>javax.servlet.http.HttpSessionAttributeListener andHttpSessionBindingEvent</td>
-</tr>
-<tr>
-<td>Request</td>
-<td>A servlet request has started being processed by web components</td>
-<td>javax.servlet.ServletRequestListener and ServletRequestEvent</td>
-</tr>
-<tr>
-<td>Request</td>
-<td>Attribute added, removed, or replaced</td>
-<td>javax.servlet.ServletRequestAttributeListener andServletRequestAttributeEvent</td>
-</tr>
-</tbody>
-</table>
-<p>使用<code>@WebListener</code>注解定义一个监听器，<code>@WebListener</code>注解的类必须实现下面的某个接口：</p>
-<blockquote>
-<p>javax.servlet.ServletContextListener<br>javax.servlet.ServletContextAttributeListener<br>javax.servlet.ServletRequestListener<br>javax.servlet.ServletRequestAttributeListener<br>javax.servlet..http.HttpSessionListener<br>javax.servlet..http.HttpSessionAttributeListener</p>
-</blockquote>
+<p>过滤器相关的API主要包括：<code>javax.servlet.Filter</code>，<code>javax.servlet.FilterChain</code>和<code>javax.servlet.FilterConfig</code>。<br>通过实现<code>javax.servlet.Filter</code>接口来定义一个 Filter。</p>
+<h1 id="过滤器配置"><a href="#过滤器配置" class="headerlink" title="过滤器配置"></a>过滤器配置</h1><p>Filter 定义完成之后，需要进行相关配置告诉 Servlet 容器这是一个过滤器以及在什么情况下调用这个过滤器。和 Servlet 类一样，有两种配置方式。</p>
+<h2 id="使用配置文件"><a href="#使用配置文件" class="headerlink" title="使用配置文件"></a>使用配置文件</h2><p>在web.xml文件使用<code>&lt;filter&gt;</code>和<code>&lt;filter-mapping&gt;</code>标签进行配置。</p>
+<p><strong>\&lt;filter>标签</strong><br>使用<code>&lt;filter&gt;</code>标签声明一个过滤器，这个标签主要包含下面三个子标签：</p>
+<ul>
+<li>filter-name : used to map the filter to a servlet or URL</li>
+<li>filter-class : used by the container to identify the filter type</li>
+<li>init-params : initialization parameters for a filter</li>
+</ul>
+<p><em>示例：</em><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>Image Filter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>com.example.ImageServlet<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>\&lt;filter-mapping>标签</strong><br>使用<code>&lt;filter-mapping&gt;</code>标签指定过滤器需要处理的Servlet或静态资源。</p>
+<p><em>示例：</em><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>Image Filter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>ImageServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>Logging Filter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>另外，从 Servlet 2.4 开始，增加了一个新特性，就是基于<code>forward()</code>和<code>include()</code>方法调用过滤器。<br>在 <code>&lt;filter-mapping&gt;</code>标签下增加了一个<code>&lt;dispatcher&gt;</code>子标签。可配置的值有下面几个：</p>
+<ul>
+<li><strong>REQUEST</strong> – 客户端直接发来的请求，匹配<code>&lt;servlet-name&gt;</code>或<code>&lt;url-pattern&gt;</code>时调用过滤器。</li>
+<li><strong>FORWARD</strong> – RequestDispatcher匹配<code>&lt;servlet-name&gt;</code>或<code>&lt;url-pattern&gt;</code>，并且用<code>forward()</code>方法处理请求时，调用过滤器。</li>
+<li><strong>INCLUDE</strong> – RequestDispatcher匹配<code>&lt;servlet-name&gt;</code>或<code>&lt;url-pattern&gt;</code>，并且用<code>include()</code>方法处理请求时，调用过滤器。</li>
+<li><strong>ERROR</strong> – 返回给客户端的error页面匹配<code>&lt;url-pattern&gt;</code>时调用过滤器。</li>
+<li><strong>ASYNC</strong> – 当被<code>AsyncContext</code>接口的<code>dispatch</code>方法处理的请求匹配<code>&lt;url-pattern&gt;</code>时调用过滤器。</li>
+</ul>
+<p><em>示例：</em></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>Logging Filter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>ProductServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dispatcher</span>&gt;</span>INCLUDE<span class="tag">&lt;/<span class="name">dispatcher</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用注解配置"><a href="#使用注解配置" class="headerlink" title="使用注解配置"></a>使用注解配置</h2><p>使用<code>@WebFilter</code>注解。</p>
+<p><em>示例：</em><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.servlet.Filter;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebFilter;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebInitParam;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebFilter</span>(filterName = <span class="string">"TimeOfDayFilter"</span>,</span><br><span class="line">urlPatterns = &#123;<span class="string">"/*"</span>&#125;,</span><br><span class="line">initParams = &#123;</span><br><span class="line">    <span class="meta">@WebInitParam</span>(name = <span class="string">"mood"</span>, value = <span class="string">"awake"</span>)&#125;</span><br><span class="line">dispatcherTypes= &#123;DispatcherType.INCLUDE&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimeOfDayFilter</span> <span class="keyword">implements</span> <span class="title">Filter</span> </span>&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -548,8 +522,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/16/Servlet_01_Servlet 介绍/" rel="next" title="01_Servlet 介绍">
-                <i class="fa fa-chevron-left"></i> 01_Servlet 介绍
+              <a href="/2019/08/20/Servlet_05_Response/" rel="next" title="05_Response">
+                <i class="fa fa-chevron-left"></i> 05_Response
               </a>
             
           </div>
@@ -558,8 +532,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/18/Servlet_03_Servlet 定义/" rel="prev" title="03_Servlet 定义">
-                03_Servlet 定义 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/22/Servlet_07_分发请求/" rel="prev" title="07_分发请求">
+                07_分发请求 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -722,7 +696,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#生命周期"><span class="nav-number">1.</span> <span class="nav-text">生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#init-方法"><span class="nav-number">1.1.</span> <span class="nav-text">init() 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service-方法"><span class="nav-number">1.2.</span> <span class="nav-text">service() 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#destroy-方法"><span class="nav-number">1.3.</span> <span class="nav-text">destroy() 方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生命周期事件"><span class="nav-number">2.</span> <span class="nav-text">生命周期事件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#过滤器是什么"><span class="nav-number">1.</span> <span class="nav-text">过滤器是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#过滤器配置"><span class="nav-number">2.</span> <span class="nav-text">过滤器配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用配置文件"><span class="nav-number">2.1.</span> <span class="nav-text">使用配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用注解配置"><span class="nav-number">2.2.</span> <span class="nav-text">使用注解配置</span></a></li></ol></li></ol></div>
             
 
           </div>
