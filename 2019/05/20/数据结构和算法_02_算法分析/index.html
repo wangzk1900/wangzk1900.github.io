@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="针对同一个问题，通常可以有不同的算法来解决它，这就需要我们评估这些算法的优劣，选出最合适到的那一个。 要评估算法的优劣，基本可以从以下两个方面来考察：  运行的时间，消耗时间越少，效率越高。 占用的空间，占用空间越小越好。  一个程序占用的空间则和以下两点有关：  采用的数据结构； 数据的规模。 前者跟使用的算法有关（不同的算法对应不同的数据结构），后者取决于程序本身和输入。  事后统计法 最直接">
+  <meta name="description" content="针对同一个问题，通常可以有不同的算法来解决它，这就需要我们评估这些算法的优劣，选出最合适到的那一个。要评估算法的优劣，基本可以从以下两个方面来考察：  运行的时间，消耗时间越少，效率越高。 占用的空间，占用空间越小越好。  一个程序占用的空间则和以下两点有关：  采用的数据结构； 数据的规模。前者跟使用的算法有关（不同的算法对应不同的数据结构），后者取决于程序本身和输入。  事后统计法最直接的方法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="02_算法分析">
 <meta property="og:url" content="http://yoursite.com/2019/05/20/数据结构和算法_02_算法分析/index.html">
 <meta property="og:site_name" content="wangzk1900&#39;s site">
-<meta property="og:description" content="针对同一个问题，通常可以有不同的算法来解决它，这就需要我们评估这些算法的优劣，选出最合适到的那一个。 要评估算法的优劣，基本可以从以下两个方面来考察：  运行的时间，消耗时间越少，效率越高。 占用的空间，占用空间越小越好。  一个程序占用的空间则和以下两点有关：  采用的数据结构； 数据的规模。 前者跟使用的算法有关（不同的算法对应不同的数据结构），后者取决于程序本身和输入。  事后统计法 最直接">
+<meta property="og:description" content="针对同一个问题，通常可以有不同的算法来解决它，这就需要我们评估这些算法的优劣，选出最合适到的那一个。要评估算法的优劣，基本可以从以下两个方面来考察：  运行的时间，消耗时间越少，效率越高。 占用的空间，占用空间越小越好。  一个程序占用的空间则和以下两点有关：  采用的数据结构； 数据的规模。前者跟使用的算法有关（不同的算法对应不同的数据结构），后者取决于程序本身和输入。  事后统计法最直接的方法">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-06-28T01:31:59.285Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="02_算法分析">
-<meta name="twitter:description" content="针对同一个问题，通常可以有不同的算法来解决它，这就需要我们评估这些算法的优劣，选出最合适到的那一个。 要评估算法的优劣，基本可以从以下两个方面来考察：  运行的时间，消耗时间越少，效率越高。 占用的空间，占用空间越小越好。  一个程序占用的空间则和以下两点有关：  采用的数据结构； 数据的规模。 前者跟使用的算法有关（不同的算法对应不同的数据结构），后者取决于程序本身和输入。  事后统计法 最直接">
+<meta name="twitter:description" content="针对同一个问题，通常可以有不同的算法来解决它，这就需要我们评估这些算法的优劣，选出最合适到的那一个。要评估算法的优劣，基本可以从以下两个方面来考察：  运行的时间，消耗时间越少，效率越高。 占用的空间，占用空间越小越好。  一个程序占用的空间则和以下两点有关：  采用的数据结构； 数据的规模。前者跟使用的算法有关（不同的算法对应不同的数据结构），后者取决于程序本身和输入。  事后统计法最直接的方法">
 
 
 
@@ -439,8 +439,7 @@
       
 
       
-        <p>针对同一个问题，通常可以有不同的算法来解决它，这就需要我们评估这些算法的优劣，选出最合适到的那一个。
-要评估算法的优劣，基本可以从以下两个方面来考察：</p>
+        <p>针对同一个问题，通常可以有不同的算法来解决它，这就需要我们评估这些算法的优劣，选出最合适到的那一个。<br>要评估算法的优劣，基本可以从以下两个方面来考察：</p>
 <ul>
 <li>运行的时间，消耗时间越少，效率越高。</li>
 <li>占用的空间，占用空间越小越好。</li>
@@ -448,36 +447,25 @@
 <p>一个程序占用的空间则和以下两点有关：</p>
 <ul>
 <li>采用的数据结构；</li>
-<li>数据的规模。
-前者跟使用的算法有关（不同的算法对应不同的数据结构），后者取决于程序本身和输入。</li>
+<li>数据的规模。<br>前者跟使用的算法有关（不同的算法对应不同的数据结构），后者取决于程序本身和输入。</li>
 </ul>
-<h1>事后统计法</h1>
-<p>最直接的方法就是把代码跑一遍，通过统计、监控就能得到算法的执行时间和占用的内存大小。</p>
-<p>这种方法虽然直观，但是比较麻烦，可能还需要自己编写测试程序来监控算法的执行时间和占用内存大小。
-另外，测试结果受数据规模的影响也很大。比如，对于小规模的数据，两种算法的效率相差不大，对于大规模的数据，两者的差别可能会很明显。</p>
-<h1>时间复杂度</h1>
-<p>一个程序运行的总时间主要和两点有关：</p>
+<h1 id="事后统计法"><a href="#事后统计法" class="headerlink" title="事后统计法"></a>事后统计法</h1><p>最直接的方法就是把代码跑一遍，通过统计、监控就能得到算法的执行时间和占用的内存大小。</p>
+<p>这种方法虽然直观，但是比较麻烦，可能还需要自己编写测试程序来监控算法的执行时间和占用内存大小。<br>另外，测试结果受数据规模的影响也很大。比如，对于小规模的数据，两种算法的效率相差不大，对于大规模的数据，两者的差别可能会很明显。</p>
+<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><p>一个程序运行的总时间主要和两点有关：</p>
 <ul>
 <li>执行每条语句的耗时；</li>
-<li>执行每条语句的频率。
-前者取决于计算机和操作系统，后者取决于程序本身和输入。</li>
+<li>执行每条语句的频率。<br>前者取决于计算机和操作系统，后者取决于程序本身和输入。</li>
 </ul>
-<h2>时间复杂度是什么</h2>
-<p>一般情况下计算机、操作系统和程序本身变动很小，最大的变动因素是输入。
-不同的程序随着数据规模的增大，其运行时间的增长速度也是不同的。
-时间复杂度全称是渐进时间复杂度（asymptotic time complexity），表示算法的运行时间与数据规模之间的增长关系，使用大O符号来表示。</p>
-<p><strong>示例1：</strong>
-假设每条语句执行的时间都一样，为unit_time。
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cal</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (; i &lt;= n; ++i) &#123;</span><br><span class="line">    sum = sum + i;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>上面代码总的执行时间是：(2n+2)*unit_time。
-它的时间复杂度是：O(n)，表示运行时间是线性增长的。</p>
-<p><strong>示例2：</strong>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cal</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> j = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (; i &lt;= n; ++i) &#123;</span><br><span class="line">    j = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; j &lt;= n; ++j) &#123;</span><br><span class="line">      sum = sum + i * j;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这段代码总的执行时间是：T(n) = (2n^2 + 2n + 3)*unit_time。
-它的时间复杂度是：O(n^2)，表示运行时间是平方级别的。
-当n很大时，公式中的低阶、常量、系数三部分并不影响增长趋势，所以可以忽略。我们只需要记录一个最大量级就可以了。</p>
-<h2>常见的时间复杂度</h2>
-<p>常见的时间复杂度：</p>
+<h2 id="时间复杂度是什么"><a href="#时间复杂度是什么" class="headerlink" title="时间复杂度是什么"></a>时间复杂度是什么</h2><p>一般情况下计算机、操作系统和程序本身变动很小，最大的变动因素是输入。<br>不同的程序随着数据规模的增大，其运行时间的增长速度也是不同的。<br>时间复杂度全称是渐进时间复杂度（asymptotic time complexity），表示算法的运行时间与数据规模之间的增长关系，使用大O符号来表示。</p>
+<p><strong>示例1：</strong><br>假设每条语句执行的时间都一样，为unit_time。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cal</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (; i &lt;= n; ++i) &#123;</span><br><span class="line">    sum = sum + i;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码总的执行时间是：(2n+2)*unit_time。<br>它的时间复杂度是：O(n)，表示运行时间是线性增长的。</p>
+<p><strong>示例2：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cal</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> j = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (; i &lt;= n; ++i) &#123;</span><br><span class="line">    j = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; j &lt;= n; ++j) &#123;</span><br><span class="line">      sum = sum + i * j;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码总的执行时间是：T(n) = (2n^2 + 2n + 3)*unit_time。<br>它的时间复杂度是：O(n^2)，表示运行时间是平方级别的。<br>当n很大时，公式中的低阶、常量、系数三部分并不影响增长趋势，所以可以忽略。我们只需要记录一个最大量级就可以了。</p>
+<h2 id="常见的时间复杂度"><a href="#常见的时间复杂度" class="headerlink" title="常见的时间复杂度"></a>常见的时间复杂度</h2><p>常见的时间复杂度：</p>
 <ul>
 <li>常数阶 O(1)</li>
 <li>对数阶 O(logn)</li>
@@ -488,26 +476,15 @@
 <li>指数阶 O(2^n)</li>
 <li>阶乘阶 O(n!)</li>
 </ul>
-<h2>时间复杂度分析</h2>
-<p>有时，同样的数据规模，程序的运行时间也不是稳定的。
-比如下面的例子：在数组中查找一个数据，并返回它的索引下标。
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// n 表示数组 array 的长度</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> n, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> pos = -<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (; i &lt; n; ++i) &#123;</span><br><span class="line">    <span class="keyword">if</span> (array[i] == x) &#123;</span><br><span class="line">       pos = i;</span><br><span class="line">       <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> pos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这段代码的时间复杂度就不能简单的判定为O(n)了，因为不一定会遍历数组中的所有数据。
-最好的情况是第一个元素就是要找的数据，这样时间复杂度就是O(1)，即：最好情况时间复杂度（best case time complexity）。
-最坏的情况是最后一个元素才是要找的数据，这样时间复杂度才是O(n)，即：最坏情况时间复杂度（worst case time complexity）。</p>
+<h2 id="时间复杂度分析"><a href="#时间复杂度分析" class="headerlink" title="时间复杂度分析"></a>时间复杂度分析</h2><p>有时，同样的数据规模，程序的运行时间也不是稳定的。<br>比如下面的例子：在数组中查找一个数据，并返回它的索引下标。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// n 表示数组 array 的长度</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> n, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> pos = -<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (; i &lt; n; ++i) &#123;</span><br><span class="line">    <span class="keyword">if</span> (array[i] == x) &#123;</span><br><span class="line">       pos = i;</span><br><span class="line">       <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> pos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码的时间复杂度就不能简单的判定为O(n)了，因为不一定会遍历数组中的所有数据。<br>最好的情况是第一个元素就是要找的数据，这样时间复杂度就是O(1)，即：最好情况时间复杂度（best case time complexity）。<br>最坏的情况是最后一个元素才是要找的数据，这样时间复杂度才是O(n)，即：最坏情况时间复杂度（worst case time complexity）。</p>
 <p>上面两种复杂度对应的是两种极端情况，发生概率不大。我们可以分析平均情况下的时间复杂度，即：平均情况时间复杂度（average case time complexity）。</p>
-<p>分析一下上面例子的平均情况时间复杂度:
-要查找变量x在数组中的位置，有n+1中情况：在数组中和不在数组中。把每种情况下，需要遍历的元素个数累加起来，然后在除以n+1，就可以得出需要遍历元素个数的平均值，即：
-$$\frac{1+2+3+...+n+n}{n+1}=\frac{n(n+3)}{2(n+1)}$$
-省略低阶、常量和系数，得到的平均情况时间复杂度就是O(n)。
-这只是简单的分析，其实还应该考虑每种情况的概率。</p>
-<h1>空间复杂度</h1>
-<p>空间复杂度全称是渐进空间复杂度（asymptotic space complexity），表示算法的存储空间与数据规模之间的增长关系。
-常见的空间复杂度有：O(1)，O(n)，O(n^2)。</p>
+<p>分析一下上面例子的平均情况时间复杂度:<br>要查找变量x在数组中的位置，有n+1中情况：在数组中和不在数组中。把每种情况下，需要遍历的元素个数累加起来，然后在除以n+1，就可以得出需要遍历元素个数的平均值，即：<br>$$\frac{1+2+3+…+n+n}{n+1}=\frac{n(n+3)}{2(n+1)}$$<br>省略低阶、常量和系数，得到的平均情况时间复杂度就是O(n)。<br>这只是简单的分析，其实还应该考虑每种情况的概率。</p>
+<h1 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h1><p>空间复杂度全称是渐进空间复杂度（asymptotic space complexity），表示算法的存储空间与数据规模之间的增长关系。<br>常见的空间复杂度有：O(1)，O(n)，O(n^2)。</p>
 <hr>
-<p><strong>参考资料：</strong>
-<a href="https://time.geekbang.org/column/intro/126" target="_blank" rel="noopener">《数据结构与算法之美》--王争</a>
-<a href="https://book.douban.com/subject/19952400/" target="_blank" rel="noopener">《算法（第4版）》</a></p>
+<p><strong>参考资料：</strong><br><a href="https://time.geekbang.org/column/intro/126" target="_blank" rel="noopener">《数据结构与算法之美》–王争</a><br><a href="https://book.douban.com/subject/19952400/" target="_blank" rel="noopener">《算法（第4版）》</a></p>
 
       
     </div>
@@ -712,7 +689,7 @@ $$\frac{1+2+3+...+n+n}{n+1}=\frac{n(n+3)}{2(n+1)}$$
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">事后统计法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">时间复杂度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">时间复杂度是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">常见的时间复杂度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">时间复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">空间复杂度</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事后统计法"><span class="nav-number">1.</span> <span class="nav-text">事后统计法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时间复杂度"><span class="nav-number">2.</span> <span class="nav-text">时间复杂度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#时间复杂度是什么"><span class="nav-number">2.1.</span> <span class="nav-text">时间复杂度是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见的时间复杂度"><span class="nav-number">2.2.</span> <span class="nav-text">常见的时间复杂度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间复杂度分析"><span class="nav-number">2.3.</span> <span class="nav-text">时间复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#空间复杂度"><span class="nav-number">3.</span> <span class="nav-text">空间复杂度</span></a></li></ol></div>
             
 
           </div>

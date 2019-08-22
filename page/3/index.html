@@ -446,50 +446,21 @@
             <p>链表是一种链式存储的线性结构。</p>
 <p>链表包括：单向链表、双向链表和循环链表。</p>
 <p>和数组一样，链表也支持插入、删除和查找操作。</p>
-<h1>单向链表</h1>
-<p>单向链表是最简单的链表，它的节点包含两部分：一部分存储数据，另一部分存储指向下一个节点的指针（地址）。
-<img src="/images/612px-Singly-linked-list.svg.png" alt="单向链表">
-单向链表中第一个和最后一个节点是两个特殊的节点，通常称为<code>头节点</code>和<code>尾节点</code>。
-没有任何节点指向<code>头节点</code>，而<code>尾节点</code>不指向任何节点。</p>
-<p><strong>插入</strong>
-插入操作，只需要修改前驱节点的指针，并将新节点指向后继节点，对应的时间复杂度是O(1)。
-但是，若在指定的位置插入新的节点，则还需遍历链表找到相应的前驱节点。</p>
-<p><strong>删除</strong>
-删除操作，只需修改前驱节点的指针，对应的时间复杂度是O(1)。
-但是不管是删除指定的节点或随机删除第k个节点，都需要遍历链表找到被删节点的前驱节点。</p>
-<p><strong>查找</strong>
-查找指定的节点或随机访问第k个节点，则需要遍历链表，对应的时间复杂度是O(n)。</p>
-<p><strong>遍历</strong>
-由于单向链表节点中只包含一个指针，因此只能按固定的方向（头节点--&gt;尾节点）遍历链表中的节点。</p>
-<h1>双向链表</h1>
-<p>双向链表的节点中不仅包含后继节点的指针，还包含前驱节点的指针。因此，相同长度的双向链表要比单向链表多占用1/2的存储空间。
-<img src="/images/915px-Doubly-linked-list.svg.png" alt="双向链表">
-除了<code>头节点</code>的后继节点之外，没有任何节点指向<code>头节点</code>。
-除了<code>尾节点</code>的前驱节点之外，<code>尾节点</code>不指向任何节点。</p>
-<p><strong>插入</strong>
-插入操作，只需要修改前驱节点和后继节点的指针，对应的时间复杂度是O(1)。
-但是，若在指定的位置插入新的节点，则需遍历链表找到插入位置的前后节点。</p>
-<p><strong>删除</strong>
-删除操作，只需要修改前驱节点和后继节点的指针，对应的时间复杂度是O(1)。
-若要删除指定的节点，则很简单，因为根据被删节点可以找到它的前驱节点和后继节点。
-但是若要随机删除第k个节点，则需要先遍历链表找到被删节点。</p>
-<p><strong>查找</strong>
-查找指定的节点或随机访问第k个节点，也需要遍历链表。
-随机访问第k个节点时，可以先判断这个节点离链表的哪头近，离哪头近就从哪头开始查找。</p>
-<p><strong>遍历</strong>
-支持双向遍历。</p>
-<h1>循环链表</h1>
-<p>在单向链表的基础上，将尾节点指向头节点。
-<img src="/images/525px-Circularly-linked-list.svg.png" alt="循环链表">
-和单向链表相比，循环链表的优点是从链尾到链头比较方便。当处理的数据具有环形结构特点，就特别适合使用循环链表。</p>
-<h1>双向循环链表</h1>
-<p>在双向链表的基础上，将尾节点指向头节点。</p>
-<h1>练习</h1>
-<p><a href="https://github.com/wangzk1900/Data-structures-and-algorithms/tree/master/linkedlist" target="_blank" rel="noopener">链表的一些练习</a></p>
+<h1 id="单向链表"><a href="#单向链表" class="headerlink" title="单向链表"></a>单向链表</h1><p>单向链表是最简单的链表，它的节点包含两部分：一部分存储数据，另一部分存储指向下一个节点的指针（地址）。<br><img src="/images/612px-Singly-linked-list.svg.png" alt="单向链表"><br>单向链表中第一个和最后一个节点是两个特殊的节点，通常称为<code>头节点</code>和<code>尾节点</code>。<br>没有任何节点指向<code>头节点</code>，而<code>尾节点</code>不指向任何节点。</p>
+<p><strong>插入</strong><br>插入操作，只需要修改前驱节点的指针，并将新节点指向后继节点，对应的时间复杂度是O(1)。<br>但是，若在指定的位置插入新的节点，则还需遍历链表找到相应的前驱节点。</p>
+<p><strong>删除</strong><br>删除操作，只需修改前驱节点的指针，对应的时间复杂度是O(1)。<br>但是不管是删除指定的节点或随机删除第k个节点，都需要遍历链表找到被删节点的前驱节点。</p>
+<p><strong>查找</strong><br>查找指定的节点或随机访问第k个节点，则需要遍历链表，对应的时间复杂度是O(n)。</p>
+<p><strong>遍历</strong><br>由于单向链表节点中只包含一个指针，因此只能按固定的方向（头节点–&gt;尾节点）遍历链表中的节点。</p>
+<h1 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h1><p>双向链表的节点中不仅包含后继节点的指针，还包含前驱节点的指针。因此，相同长度的双向链表要比单向链表多占用1/2的存储空间。<br><img src="/images/915px-Doubly-linked-list.svg.png" alt="双向链表"><br>除了<code>头节点</code>的后继节点之外，没有任何节点指向<code>头节点</code>。<br>除了<code>尾节点</code>的前驱节点之外，<code>尾节点</code>不指向任何节点。</p>
+<p><strong>插入</strong><br>插入操作，只需要修改前驱节点和后继节点的指针，对应的时间复杂度是O(1)。<br>但是，若在指定的位置插入新的节点，则需遍历链表找到插入位置的前后节点。</p>
+<p><strong>删除</strong><br>删除操作，只需要修改前驱节点和后继节点的指针，对应的时间复杂度是O(1)。<br>若要删除指定的节点，则很简单，因为根据被删节点可以找到它的前驱节点和后继节点。<br>但是若要随机删除第k个节点，则需要先遍历链表找到被删节点。</p>
+<p><strong>查找</strong><br>查找指定的节点或随机访问第k个节点，也需要遍历链表。<br>随机访问第k个节点时，可以先判断这个节点离链表的哪头近，离哪头近就从哪头开始查找。</p>
+<p><strong>遍历</strong><br>支持双向遍历。</p>
+<h1 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h1><p>在单向链表的基础上，将尾节点指向头节点。<br><img src="/images/525px-Circularly-linked-list.svg.png" alt="循环链表"><br>和单向链表相比，循环链表的优点是从链尾到链头比较方便。当处理的数据具有环形结构特点，就特别适合使用循环链表。</p>
+<h1 id="双向循环链表"><a href="#双向循环链表" class="headerlink" title="双向循环链表"></a>双向循环链表</h1><p>在双向链表的基础上，将尾节点指向头节点。</p>
+<h1 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h1><p><a href="https://github.com/wangzk1900/Data-structures-and-algorithms/tree/master/linkedlist" target="_blank" rel="noopener">链表的一些练习</a></p>
 <hr>
-<p><strong>参考资料：</strong>
-<a href="https://time.geekbang.org/column/intro/126" target="_blank" rel="noopener">《数据结构与算法之美》--王争</a>
-<a href="https://zh.wikipedia.org/wiki/%E9%93%BE%E8%A1%A8" target="_blank" rel="noopener">维基百科</a></p>
+<p><strong>参考资料：</strong><br><a href="https://time.geekbang.org/column/intro/126" target="_blank" rel="noopener">《数据结构与算法之美》–王争</a><br><a href="https://zh.wikipedia.org/wiki/%E9%93%BE%E8%A1%A8" target="_blank" rel="noopener">维基百科</a></p>
 
           
         
@@ -662,13 +633,9 @@
       
         
           
-            <p>数组
-它用一组连续的内存空间，来存储一组具有相同类型的数据。</p>
-<p><strong>随机访问效率高</strong>
-根据下标随机访问效率高，根据下标和数据类型的长度很容易就能计算出相应元素的存储地址。时间复杂度是O(1)。
-但是，若要查找指定的元素，则需要遍历数组，对应的时间复杂的是O(n)。</p>
-<p><strong>插入和删除效率低</strong>
-插入和删除元素比较低效，因为要保持内存数据的连续性。若在k位置插入元素，则需将k位置及其之后的所有元素后移。若要删除k位置上的元素，则该元素之后的所有元素都要向前移动一个位置。</p>
+            <p>数组<br>它用一组连续的内存空间，来存储一组具有相同类型的数据。</p>
+<p><strong>随机访问效率高</strong><br>根据下标随机访问效率高，根据下标和数据类型的长度很容易就能计算出相应元素的存储地址。时间复杂度是O(1)。<br>但是，若要查找指定的元素，则需要遍历数组，对应的时间复杂的是O(n)。</p>
+<p><strong>插入和删除效率低</strong><br>插入和删除元素比较低效，因为要保持内存数据的连续性。若在k位置插入元素，则需将k位置及其之后的所有元素后移。若要删除k位置上的元素，则该元素之后的所有元素都要向前移动一个位置。</p>
 <p>假如数组中的元素是无序的，我们可以改进插入和删除的方法：</p>
 <ul>
 <li>在插入新元素时，只需将k位置的元素移动到数组的末尾，然后将新的元素插入就可以了。</li>
@@ -846,8 +813,7 @@
       
         
           
-            <p>针对同一个问题，通常可以有不同的算法来解决它，这就需要我们评估这些算法的优劣，选出最合适到的那一个。
-要评估算法的优劣，基本可以从以下两个方面来考察：</p>
+            <p>针对同一个问题，通常可以有不同的算法来解决它，这就需要我们评估这些算法的优劣，选出最合适到的那一个。<br>要评估算法的优劣，基本可以从以下两个方面来考察：</p>
 <ul>
 <li>运行的时间，消耗时间越少，效率越高。</li>
 <li>占用的空间，占用空间越小越好。</li>
@@ -855,36 +821,25 @@
 <p>一个程序占用的空间则和以下两点有关：</p>
 <ul>
 <li>采用的数据结构；</li>
-<li>数据的规模。
-前者跟使用的算法有关（不同的算法对应不同的数据结构），后者取决于程序本身和输入。</li>
+<li>数据的规模。<br>前者跟使用的算法有关（不同的算法对应不同的数据结构），后者取决于程序本身和输入。</li>
 </ul>
-<h1>事后统计法</h1>
-<p>最直接的方法就是把代码跑一遍，通过统计、监控就能得到算法的执行时间和占用的内存大小。</p>
-<p>这种方法虽然直观，但是比较麻烦，可能还需要自己编写测试程序来监控算法的执行时间和占用内存大小。
-另外，测试结果受数据规模的影响也很大。比如，对于小规模的数据，两种算法的效率相差不大，对于大规模的数据，两者的差别可能会很明显。</p>
-<h1>时间复杂度</h1>
-<p>一个程序运行的总时间主要和两点有关：</p>
+<h1 id="事后统计法"><a href="#事后统计法" class="headerlink" title="事后统计法"></a>事后统计法</h1><p>最直接的方法就是把代码跑一遍，通过统计、监控就能得到算法的执行时间和占用的内存大小。</p>
+<p>这种方法虽然直观，但是比较麻烦，可能还需要自己编写测试程序来监控算法的执行时间和占用内存大小。<br>另外，测试结果受数据规模的影响也很大。比如，对于小规模的数据，两种算法的效率相差不大，对于大规模的数据，两者的差别可能会很明显。</p>
+<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><p>一个程序运行的总时间主要和两点有关：</p>
 <ul>
 <li>执行每条语句的耗时；</li>
-<li>执行每条语句的频率。
-前者取决于计算机和操作系统，后者取决于程序本身和输入。</li>
+<li>执行每条语句的频率。<br>前者取决于计算机和操作系统，后者取决于程序本身和输入。</li>
 </ul>
-<h2>时间复杂度是什么</h2>
-<p>一般情况下计算机、操作系统和程序本身变动很小，最大的变动因素是输入。
-不同的程序随着数据规模的增大，其运行时间的增长速度也是不同的。
-时间复杂度全称是渐进时间复杂度（asymptotic time complexity），表示算法的运行时间与数据规模之间的增长关系，使用大O符号来表示。</p>
-<p><strong>示例1：</strong>
-假设每条语句执行的时间都一样，为unit_time。
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cal</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (; i &lt;= n; ++i) &#123;</span><br><span class="line">    sum = sum + i;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>上面代码总的执行时间是：(2n+2)*unit_time。
-它的时间复杂度是：O(n)，表示运行时间是线性增长的。</p>
-<p><strong>示例2：</strong>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cal</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> j = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (; i &lt;= n; ++i) &#123;</span><br><span class="line">    j = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; j &lt;= n; ++j) &#123;</span><br><span class="line">      sum = sum + i * j;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这段代码总的执行时间是：T(n) = (2n^2 + 2n + 3)*unit_time。
-它的时间复杂度是：O(n^2)，表示运行时间是平方级别的。
-当n很大时，公式中的低阶、常量、系数三部分并不影响增长趋势，所以可以忽略。我们只需要记录一个最大量级就可以了。</p>
-<h2>常见的时间复杂度</h2>
-<p>常见的时间复杂度：</p>
+<h2 id="时间复杂度是什么"><a href="#时间复杂度是什么" class="headerlink" title="时间复杂度是什么"></a>时间复杂度是什么</h2><p>一般情况下计算机、操作系统和程序本身变动很小，最大的变动因素是输入。<br>不同的程序随着数据规模的增大，其运行时间的增长速度也是不同的。<br>时间复杂度全称是渐进时间复杂度（asymptotic time complexity），表示算法的运行时间与数据规模之间的增长关系，使用大O符号来表示。</p>
+<p><strong>示例1：</strong><br>假设每条语句执行的时间都一样，为unit_time。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cal</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (; i &lt;= n; ++i) &#123;</span><br><span class="line">    sum = sum + i;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码总的执行时间是：(2n+2)*unit_time。<br>它的时间复杂度是：O(n)，表示运行时间是线性增长的。</p>
+<p><strong>示例2：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cal</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> j = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (; i &lt;= n; ++i) &#123;</span><br><span class="line">    j = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; j &lt;= n; ++j) &#123;</span><br><span class="line">      sum = sum + i * j;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码总的执行时间是：T(n) = (2n^2 + 2n + 3)*unit_time。<br>它的时间复杂度是：O(n^2)，表示运行时间是平方级别的。<br>当n很大时，公式中的低阶、常量、系数三部分并不影响增长趋势，所以可以忽略。我们只需要记录一个最大量级就可以了。</p>
+<h2 id="常见的时间复杂度"><a href="#常见的时间复杂度" class="headerlink" title="常见的时间复杂度"></a>常见的时间复杂度</h2><p>常见的时间复杂度：</p>
 <ul>
 <li>常数阶 O(1)</li>
 <li>对数阶 O(logn)</li>
@@ -895,26 +850,15 @@
 <li>指数阶 O(2^n)</li>
 <li>阶乘阶 O(n!)</li>
 </ul>
-<h2>时间复杂度分析</h2>
-<p>有时，同样的数据规模，程序的运行时间也不是稳定的。
-比如下面的例子：在数组中查找一个数据，并返回它的索引下标。
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// n 表示数组 array 的长度</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> n, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> pos = -<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (; i &lt; n; ++i) &#123;</span><br><span class="line">    <span class="keyword">if</span> (array[i] == x) &#123;</span><br><span class="line">       pos = i;</span><br><span class="line">       <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> pos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这段代码的时间复杂度就不能简单的判定为O(n)了，因为不一定会遍历数组中的所有数据。
-最好的情况是第一个元素就是要找的数据，这样时间复杂度就是O(1)，即：最好情况时间复杂度（best case time complexity）。
-最坏的情况是最后一个元素才是要找的数据，这样时间复杂度才是O(n)，即：最坏情况时间复杂度（worst case time complexity）。</p>
+<h2 id="时间复杂度分析"><a href="#时间复杂度分析" class="headerlink" title="时间复杂度分析"></a>时间复杂度分析</h2><p>有时，同样的数据规模，程序的运行时间也不是稳定的。<br>比如下面的例子：在数组中查找一个数据，并返回它的索引下标。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// n 表示数组 array 的长度</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span>[] array, <span class="keyword">int</span> n, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> pos = -<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (; i &lt; n; ++i) &#123;</span><br><span class="line">    <span class="keyword">if</span> (array[i] == x) &#123;</span><br><span class="line">       pos = i;</span><br><span class="line">       <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> pos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码的时间复杂度就不能简单的判定为O(n)了，因为不一定会遍历数组中的所有数据。<br>最好的情况是第一个元素就是要找的数据，这样时间复杂度就是O(1)，即：最好情况时间复杂度（best case time complexity）。<br>最坏的情况是最后一个元素才是要找的数据，这样时间复杂度才是O(n)，即：最坏情况时间复杂度（worst case time complexity）。</p>
 <p>上面两种复杂度对应的是两种极端情况，发生概率不大。我们可以分析平均情况下的时间复杂度，即：平均情况时间复杂度（average case time complexity）。</p>
-<p>分析一下上面例子的平均情况时间复杂度:
-要查找变量x在数组中的位置，有n+1中情况：在数组中和不在数组中。把每种情况下，需要遍历的元素个数累加起来，然后在除以n+1，就可以得出需要遍历元素个数的平均值，即：
-$$\frac{1+2+3+...+n+n}{n+1}=\frac{n(n+3)}{2(n+1)}$$
-省略低阶、常量和系数，得到的平均情况时间复杂度就是O(n)。
-这只是简单的分析，其实还应该考虑每种情况的概率。</p>
-<h1>空间复杂度</h1>
-<p>空间复杂度全称是渐进空间复杂度（asymptotic space complexity），表示算法的存储空间与数据规模之间的增长关系。
-常见的空间复杂度有：O(1)，O(n)，O(n^2)。</p>
+<p>分析一下上面例子的平均情况时间复杂度:<br>要查找变量x在数组中的位置，有n+1中情况：在数组中和不在数组中。把每种情况下，需要遍历的元素个数累加起来，然后在除以n+1，就可以得出需要遍历元素个数的平均值，即：<br>$$\frac{1+2+3+…+n+n}{n+1}=\frac{n(n+3)}{2(n+1)}$$<br>省略低阶、常量和系数，得到的平均情况时间复杂度就是O(n)。<br>这只是简单的分析，其实还应该考虑每种情况的概率。</p>
+<h1 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h1><p>空间复杂度全称是渐进空间复杂度（asymptotic space complexity），表示算法的存储空间与数据规模之间的增长关系。<br>常见的空间复杂度有：O(1)，O(n)，O(n^2)。</p>
 <hr>
-<p><strong>参考资料：</strong>
-<a href="https://time.geekbang.org/column/intro/126" target="_blank" rel="noopener">《数据结构与算法之美》--王争</a>
-<a href="https://book.douban.com/subject/19952400/" target="_blank" rel="noopener">《算法（第4版）》</a></p>
+<p><strong>参考资料：</strong><br><a href="https://time.geekbang.org/column/intro/126" target="_blank" rel="noopener">《数据结构与算法之美》–王争</a><br><a href="https://book.douban.com/subject/19952400/" target="_blank" rel="noopener">《算法（第4版）》</a></p>
 
           
         
@@ -1087,46 +1031,34 @@ $$\frac{1+2+3+...+n+n}{n+1}=\frac{n(n+3)}{2(n+1)}$$
       
         
           
-            <h1>基本概念</h1>
-<p><strong>算法</strong>
-编写一段计算机程序一般都是实现一种已有的方法来解决某个问题。这种方法大多和使用的编程语言无关——它适用于各种计算机以及编程语言。是这种方法而非计算机程序本身描述了解决问题的步骤。在计算机科学领域，我们用算法这个词来描述一种有限、确定、有效的并适合用计算机程序来实现的解决问题的方法。算法是计算机科学的基础，是这个领域研究的核心。（<a href="https://book.douban.com/subject/19952400/" target="_blank" rel="noopener">《算法（第4版）》</a>，第1页）</p>
+            <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p><strong>算法</strong><br>编写一段计算机程序一般都是实现一种已有的方法来解决某个问题。这种方法大多和使用的编程语言无关——它适用于各种计算机以及编程语言。是这种方法而非计算机程序本身描述了解决问题的步骤。在计算机科学领域，我们用算法这个词来描述一种有限、确定、有效的并适合用计算机程序来实现的解决问题的方法。算法是计算机科学的基础，是这个领域研究的核心。（<a href="https://book.douban.com/subject/19952400/" target="_blank" rel="noopener">《算法（第4版）》</a>，第1页）</p>
 <p>算法（algorithm）是为求解一个问题需要遵循的、被清楚地指定的简单指令的集合。（<a href="https://book.douban.com/subject/1139426/" target="_blank" rel="noopener">《数据结构与算法分析 C语言描述（原书第2版）》</a>，第15页）</p>
-<p><strong>数据结构</strong>
-我们关注的大多数算法都需要适当地组织数据，而为了组织数据就产生了数据结构，数据结构也是计算机科学研究的核心对象，它和算法的关系非常密切。在本书中，我们的观点是数据结构是算法的副产品或是结果，因此要理解算法必须学习数据结构。简单的算法也会产生复杂的数据结构，相应地，复杂的算法也许只需要简单的数据结构。（<a href="https://book.douban.com/subject/19952400/" target="_blank" rel="noopener">《算法（第4版）》</a>，第2页）</p>
+<p><strong>数据结构</strong><br>我们关注的大多数算法都需要适当地组织数据，而为了组织数据就产生了数据结构，数据结构也是计算机科学研究的核心对象，它和算法的关系非常密切。在本书中，我们的观点是数据结构是算法的副产品或是结果，因此要理解算法必须学习数据结构。简单的算法也会产生复杂的数据结构，相应地，复杂的算法也许只需要简单的数据结构。（<a href="https://book.douban.com/subject/19952400/" target="_blank" rel="noopener">《算法（第4版）》</a>，第2页）</p>
 <p>数据结构是对在计算机内存中（有时在磁盘中）的数据的一种安排。数据结构包括数组、链表、栈、二叉树、哈希表等等。算法是对这些结构中的数据进行各种处理，例如，查找一条特殊的数据项或对数据进行排序。（<a href="https://book.douban.com/subject/1144007/" target="_blank" rel="noopener">《Java数据结构和算法》</a>，第1页）</p>
-<p><strong>抽象数据类型（ADT）</strong>
-抽象数据类型（ADT）是一种能够对使用者隐藏数据表示的数据类型。用 Java 类来实现抽象数据类型和用一组静态方法实现一个函数库并没有什么不同。抽象数据类型的主要不同之处在于它将数据和函数的实现关联，并将数据的表示方式隐藏起来。在使用抽象数据类型时，我们的注意力集中在 API 描述的操作上而不会去关心数据的表示；在实现抽象数据类型时，我们的注意力集中在数据本身并将实现对该数据的各种操作。（<a href="https://book.douban.com/subject/19952400/" target="_blank" rel="noopener">《算法（第4版）》</a>，第38页）</p>
+<p><strong>抽象数据类型（ADT）</strong><br>抽象数据类型（ADT）是一种能够对使用者隐藏数据表示的数据类型。用 Java 类来实现抽象数据类型和用一组静态方法实现一个函数库并没有什么不同。抽象数据类型的主要不同之处在于它将数据和函数的实现关联，并将数据的表示方式隐藏起来。在使用抽象数据类型时，我们的注意力集中在 API 描述的操作上而不会去关心数据的表示；在实现抽象数据类型时，我们的注意力集中在数据本身并将实现对该数据的各种操作。（<a href="https://book.douban.com/subject/19952400/" target="_blank" rel="noopener">《算法（第4版）》</a>，第38页）</p>
 <p>抽象数据类型（abstract data type，ADT）是一些操作的集合。抽象数据类型是数学的抽象；在ADT的定义中根本没有涉及如何实现操作的集合。这可以看做是模块化设计的扩充。对诸如表、集合、图和它们的操作一起可以看作是抽象数据类型，就像整数、实数和布尔量是数据类型一样。整数、实数及布尔量有与它们相关的操作，而抽象数据类型也有与它们自己相关的操作。（<a href="https://book.douban.com/subject/1139426/" target="_blank" rel="noopener">《数据结构与算法分析 C语言描述（原书第2版）》</a>，第31页）</p>
 <p>什么是ADT？简单说来，他是一种考虑数据结构的方式：着重于它做了什么，而忽略它是怎么做的。（<a href="https://book.douban.com/subject/1144007/" target="_blank" rel="noopener">《Java数据结构和算法》</a>，第150页）</p>
-<p><strong>我的理解</strong>
-算法应该是与编程语言无关的，是一种解决某种问题的方法，我们可以用自然语言、数学公式或者编程语言来描述其具体的实现步骤。
-数据结构包括逻辑结构和物理结构（存储结构），不同的数据结构支持不同的操作。我们主要研究不同数据操作的效率，以便在编程时选择合适的数据结构。
-抽象数据类型（ADT）是一种自定义的数据类型，它应该包括对数据和操作的描述。
-ADT应该相当于Java中的接口，可以用不同的数据结构和算法来实现。例如：栈ADT既可以用数组实现也可以用链表实现。</p>
-<h1>数据结构</h1>
-<p>数据结构分为：</p>
+<p><strong>我的理解</strong><br>算法应该是与编程语言无关的，是一种解决某种问题的方法，我们可以用自然语言、数学公式或者编程语言来描述其具体的实现步骤。<br>数据结构包括逻辑结构和物理结构（存储结构），不同的数据结构支持不同的操作。我们主要研究不同数据操作的效率，以便在编程时选择合适的数据结构。<br>抽象数据类型（ADT）是一种自定义的数据类型，它应该包括对数据和操作的描述。<br>ADT应该相当于Java中的接口，可以用不同的数据结构和算法来实现。例如：栈ADT既可以用数组实现也可以用链表实现。</p>
+<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><p>数据结构分为：</p>
 <ul>
-<li>逻辑结构 -- 是指数据对象中数据元素之间的相互关系。</li>
-<li>物理结构 -- 是指数据的逻辑结构在计算机中的存储形式。</li>
+<li>逻辑结构 – 是指数据对象中数据元素之间的相互关系。</li>
+<li>物理结构 – 是指数据的逻辑结构在计算机中的存储形式。</li>
 </ul>
 <p>逻辑结构：</p>
 <ul>
-<li>集合结构 -- 元素之间无特定的关系。</li>
-<li>线性结构 -- 元素之间是一对一的关系（只有简单的前后关系）。</li>
-<li>树形结构 -- 元素之间是一对多的关系。</li>
-<li>图形结构 -- 元素之间是多对多的关系。</li>
+<li>集合结构 – 元素之间无特定的关系。</li>
+<li>线性结构 – 元素之间是一对一的关系（只有简单的前后关系）。</li>
+<li>树形结构 – 元素之间是一对多的关系。</li>
+<li>图形结构 – 元素之间是多对多的关系。</li>
 </ul>
 <p>物理结构：</p>
 <ul>
-<li>顺序存储结构 -- 把数据元素存放在地址连续的存储单元里，其数据间的逻辑关系和物理关系是一致的。</li>
-<li>链式存储结构 -- 把数据元素存放在任意的存储单元里，这组存储单元可以是连续的，也可以是不连续的。</li>
+<li>顺序存储结构 – 把数据元素存放在地址连续的存储单元里，其数据间的逻辑关系和物理关系是一致的。</li>
+<li>链式存储结构 – 把数据元素存放在任意的存储单元里，这组存储单元可以是连续的，也可以是不连续的。</li>
 </ul>
-<h2>集合结构</h2>
-<p>好像没什么好说的。</p>
-<h2>线性结构</h2>
-<p>基于不同的存储结构，线性结构可以分为：数组和链表。</p>
-<p>数组是顺序存储，大部分高级语言都提供了对数组的支持。
-链表是链式存储，需要额外的存储空间存放“指针”，节点之间的逻辑关系是通过“指针”来维系的。</p>
+<h2 id="集合结构"><a href="#集合结构" class="headerlink" title="集合结构"></a>集合结构</h2><p>好像没什么好说的。</p>
+<h2 id="线性结构"><a href="#线性结构" class="headerlink" title="线性结构"></a>线性结构</h2><p>基于不同的存储结构，线性结构可以分为：数组和链表。</p>
+<p>数组是顺序存储，大部分高级语言都提供了对数组的支持。<br>链表是链式存储，需要额外的存储空间存放“指针”，节点之间的逻辑关系是通过“指针”来维系的。</p>
 <p>常见的链表结构：</p>
 <ul>
 <li>单向链表</li>
@@ -1134,8 +1066,7 @@ ADT应该相当于Java中的接口，可以用不同的数据结构和算法来�
 <li>循环链表</li>
 <li>双向循环链表</li>
 </ul>
-<h2>树形结构</h2>
-<p>最常用的树形结构是二叉树。</p>
+<h2 id="树形结构"><a href="#树形结构" class="headerlink" title="树形结构"></a>树形结构</h2><p>最常用的树形结构是二叉树。</p>
 <p>二叉树：</p>
 <ul>
 <li>平衡二叉树</li>
@@ -1164,20 +1095,13 @@ ADT应该相当于Java中的接口，可以用不同的数据结构和算法来�
 <li>树状数组</li>
 <li>线段树</li>
 </ul>
-<h2>图形结构</h2>
-<p>图的存储</p>
+<h2 id="图形结构"><a href="#图形结构" class="headerlink" title="图形结构"></a>图形结构</h2><p>图的存储</p>
 <ul>
 <li>邻接矩阵</li>
 <li>邻接表</li>
 </ul>
-<p>拓扑排序
-最短路径
-关键路径
-最小生成树
-二分图
-最大流</p>
-<h1>算法</h1>
-<p>算法是解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作。</p>
+<p>拓扑排序<br>最短路径<br>关键路径<br>最小生成树<br>二分图<br>最大流</p>
+<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><p>算法是解决特定问题求解步骤的描述，在计算机中表现为指令的有限序列，并且每条指令表示一个或多个操作。</p>
 <p>基本算法思想：</p>
 <ul>
 <li>贪心算法</li>
@@ -1222,8 +1146,7 @@ ADT应该相当于Java中的接口，可以用不同的数据结构和算法来�
 <li>后缀数组</li>
 </ul>
 <hr>
-<p><strong>参考资料：</strong>
-<a href="https://time.geekbang.org/column/intro/126" target="_blank" rel="noopener">《数据结构与算法之美》--王争</a></p>
+<p><strong>参考资料：</strong><br><a href="https://time.geekbang.org/column/intro/126" target="_blank" rel="noopener">《数据结构与算法之美》–王争</a></p>
 
           
         

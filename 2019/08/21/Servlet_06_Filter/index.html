@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="过滤器是什么 过滤器是一个可以转换请求或响应的报头和内容（或两者）的对象。 过滤器的主要任务：  Query the request and act accordingly. Block the request-and-response pair from passing any further. Modify the request headers and data. You do this b">
+  <meta name="description" content="过滤器是什么过滤器是一个可以转换请求或响应的报头和内容（或两者）的对象。 过滤器的主要任务：  Query the request and act accordingly. Block the request-and-response pair from passing any further. Modify the request headers and data. You do this by">
 <meta property="og:type" content="article">
 <meta property="og:title" content="06_Filter">
 <meta property="og:url" content="http://yoursite.com/2019/08/21/Servlet_06_Filter/index.html">
 <meta property="og:site_name" content="wangzk1900&#39;s site">
-<meta property="og:description" content="过滤器是什么 过滤器是一个可以转换请求或响应的报头和内容（或两者）的对象。 过滤器的主要任务：  Query the request and act accordingly. Block the request-and-response pair from passing any further. Modify the request headers and data. You do this b">
+<meta property="og:description" content="过滤器是什么过滤器是一个可以转换请求或响应的报头和内容（或两者）的对象。 过滤器的主要任务：  Query the request and act accordingly. Block the request-and-response pair from passing any further. Modify the request headers and data. You do this by">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-08-20T07:59:48.113Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="06_Filter">
-<meta name="twitter:description" content="过滤器是什么 过滤器是一个可以转换请求或响应的报头和内容（或两者）的对象。 过滤器的主要任务：  Query the request and act accordingly. Block the request-and-response pair from passing any further. Modify the request headers and data. You do this b">
+<meta name="twitter:description" content="过滤器是什么过滤器是一个可以转换请求或响应的报头和内容（或两者）的对象。 过滤器的主要任务：  Query the request and act accordingly. Block the request-and-response pair from passing any further. Modify the request headers and data. You do this by">
 
 
 
@@ -446,8 +446,7 @@
       
 
       
-        <h1>过滤器是什么</h1>
-<p>过滤器是一个可以转换请求或响应的报头和内容（或两者）的对象。</p>
+        <h1 id="过滤器是什么"><a href="#过滤器是什么" class="headerlink" title="过滤器是什么"></a>过滤器是什么</h1><p>过滤器是一个可以转换请求或响应的报头和内容（或两者）的对象。</p>
 <p>过滤器的主要任务：</p>
 <ul>
 <li>Query the request and act accordingly.</li>
@@ -469,41 +468,36 @@
 <li>MIME-type chain filters</li>
 <li>Caching filters</li>
 </ul>
-<p>过滤器相关的API主要包括：<code>javax.servlet.Filter</code>，<code>javax.servlet.FilterChain</code>和<code>javax.servlet.FilterConfig</code>。
-通过实现<code>javax.servlet.Filter</code>接口来定义一个 Filter。</p>
-<h1>过滤器配置</h1>
-<p>Filter 定义完成之后，需要进行相关配置告诉 Servlet 容器这是一个过滤器以及在什么情况下调用这个过滤器。和 Servlet 类一样，有两种配置方式。</p>
-<h2>使用配置文件</h2>
-<p>在web.xml文件使用<code>&lt;filter&gt;</code>和<code>&lt;filter-mapping&gt;</code>标签进行配置。</p>
-<p><strong>&lt;filter&gt;标签</strong>
-使用<code>&lt;filter&gt;</code>标签声明一个过滤器，这个标签主要包含下面三个子标签：</p>
+<p>过滤器相关的API主要包括：<code>javax.servlet.Filter</code>，<code>javax.servlet.FilterChain</code>和<code>javax.servlet.FilterConfig</code>。<br>通过实现<code>javax.servlet.Filter</code>接口来定义一个 Filter。</p>
+<h1 id="过滤器配置"><a href="#过滤器配置" class="headerlink" title="过滤器配置"></a>过滤器配置</h1><p>Filter 定义完成之后，需要进行相关配置告诉 Servlet 容器这是一个过滤器以及在什么情况下调用这个过滤器。和 Servlet 类一样，有两种配置方式。</p>
+<h2 id="使用配置文件"><a href="#使用配置文件" class="headerlink" title="使用配置文件"></a>使用配置文件</h2><p>在web.xml文件使用<code>&lt;filter&gt;</code>和<code>&lt;filter-mapping&gt;</code>标签进行配置。</p>
+<p><strong>&lt;filter&gt;标签</strong><br>使用<code>&lt;filter&gt;</code>标签声明一个过滤器，这个标签主要包含下面三个子标签：</p>
 <ul>
 <li>filter-name : used to map the filter to a servlet or URL</li>
 <li>filter-class : used by the container to identify the filter type</li>
 <li>init-params : initialization parameters for a filter</li>
 </ul>
-<p><em>示例：</em>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>Image Filter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>com.example.ImageServlet<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>&lt;filter-mapping&gt;标签</strong>
-使用<code>&lt;filter-mapping&gt;</code>标签指定过滤器需要处理的Servlet或静态资源。</p>
-<p><em>示例：</em>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>Image Filter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>ImageServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>Logging Filter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>另外，从 Servlet 2.4 开始，增加了一个新特性，就是基于<code>forward()</code>和<code>include()</code>方法调用过滤器。
-在 <code>&lt;filter-mapping&gt;</code>标签下增加了一个<code>&lt;dispatcher&gt;</code>子标签。可配置的值有下面几个：</p>
+<p><em>示例：</em></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>Image Filter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>com.example.ImageServlet<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>&lt;filter-mapping&gt;标签</strong><br>使用<code>&lt;filter-mapping&gt;</code>标签指定过滤器需要处理的Servlet或静态资源。</p>
+<p><em>示例：</em></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>Image Filter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>ImageServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>Logging Filter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>另外，从 Servlet 2.4 开始，增加了一个新特性，就是基于<code>forward()</code>和<code>include()</code>方法调用过滤器。<br>在 <code>&lt;filter-mapping&gt;</code>标签下增加了一个<code>&lt;dispatcher&gt;</code>子标签。可配置的值有下面几个：</p>
 <ul>
-<li><strong>REQUEST</strong> -- 客户端直接发来的请求，匹配<code>&lt;servlet-name&gt;</code>或<code>&lt;url-pattern&gt;</code>时调用过滤器。</li>
-<li><strong>FORWARD</strong> -- RequestDispatcher匹配<code>&lt;servlet-name&gt;</code>或<code>&lt;url-pattern&gt;</code>，并且用<code>forward()</code>方法处理请求时，调用过滤器。</li>
-<li><strong>INCLUDE</strong> -- RequestDispatcher匹配<code>&lt;servlet-name&gt;</code>或<code>&lt;url-pattern&gt;</code>，并且用<code>include()</code>方法处理请求时，调用过滤器。</li>
-<li><strong>ERROR</strong> -- 返回给客户端的error页面匹配<code>&lt;url-pattern&gt;</code>时调用过滤器。</li>
-<li><strong>ASYNC</strong> -- 当被<code>AsyncContext</code>接口的<code>dispatch</code>方法处理的请求匹配<code>&lt;url-pattern&gt;</code>时调用过滤器。</li>
+<li><strong>REQUEST</strong> – 客户端直接发来的请求，匹配<code>&lt;servlet-name&gt;</code>或<code>&lt;url-pattern&gt;</code>时调用过滤器。</li>
+<li><strong>FORWARD</strong> – RequestDispatcher匹配<code>&lt;servlet-name&gt;</code>或<code>&lt;url-pattern&gt;</code>，并且用<code>forward()</code>方法处理请求时，调用过滤器。</li>
+<li><strong>INCLUDE</strong> – RequestDispatcher匹配<code>&lt;servlet-name&gt;</code>或<code>&lt;url-pattern&gt;</code>，并且用<code>include()</code>方法处理请求时，调用过滤器。</li>
+<li><strong>ERROR</strong> – 返回给客户端的error页面匹配<code>&lt;url-pattern&gt;</code>时调用过滤器。</li>
+<li><strong>ASYNC</strong> – 当被<code>AsyncContext</code>接口的<code>dispatch</code>方法处理的请求匹配<code>&lt;url-pattern&gt;</code>时调用过滤器。</li>
 </ul>
 <p><em>示例：</em></p>
-<p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>Logging Filter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>ProductServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dispatcher</span>&gt;</span>INCLUDE<span class="tag">&lt;/<span class="name">dispatcher</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h2>使用注解配置</h2>
-<p>使用<code>@WebFilter</code>注解。</p>
-<p><em>示例：</em>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.servlet.Filter;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebFilter;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebInitParam;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebFilter</span>(filterName = <span class="string">"TimeOfDayFilter"</span>,</span><br><span class="line">urlPatterns = &#123;<span class="string">"/*"</span>&#125;,</span><br><span class="line">initParams = &#123;</span><br><span class="line">    <span class="meta">@WebInitParam</span>(name = <span class="string">"mood"</span>, value = <span class="string">"awake"</span>)&#125;</span><br><span class="line">dispatcherTypes= &#123;DispatcherType.INCLUDE&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimeOfDayFilter</span> <span class="keyword">implements</span> <span class="title">Filter</span> </span>&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>Logging Filter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>ProductServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dispatcher</span>&gt;</span>INCLUDE<span class="tag">&lt;/<span class="name">dispatcher</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="使用注解配置"><a href="#使用注解配置" class="headerlink" title="使用注解配置"></a>使用注解配置</h2><p>使用<code>@WebFilter</code>注解。</p>
+<p><em>示例：</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.servlet.Filter;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebFilter;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebInitParam;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebFilter</span>(filterName = <span class="string">"TimeOfDayFilter"</span>,</span><br><span class="line">urlPatterns = &#123;<span class="string">"/*"</span>&#125;,</span><br><span class="line">initParams = &#123;</span><br><span class="line">    <span class="meta">@WebInitParam</span>(name = <span class="string">"mood"</span>, value = <span class="string">"awake"</span>)&#125;</span><br><span class="line">dispatcherTypes= &#123;DispatcherType.INCLUDE&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimeOfDayFilter</span> <span class="keyword">implements</span> <span class="title">Filter</span> </span>&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -707,7 +701,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">过滤器是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">过滤器配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">使用配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">使用注解配置</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#过滤器是什么"><span class="nav-number">1.</span> <span class="nav-text">过滤器是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#过滤器配置"><span class="nav-number">2.</span> <span class="nav-text">过滤器配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用配置文件"><span class="nav-number">2.1.</span> <span class="nav-text">使用配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用注解配置"><span class="nav-number">2.2.</span> <span class="nav-text">使用注解配置</span></a></li></ol></li></ol></div>
             
 
           </div>

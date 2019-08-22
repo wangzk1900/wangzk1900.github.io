@@ -96,12 +96,12 @@
 
 
 
-  <meta name="description" content="2-3树  计算机科学中，2–3树是一种树型数据结构，内部结点（存在子结点的结点）要么有2个孩子和1个数据元素，要么有3个孩子和2个数据元素，叶子结点没有孩子，并且有1个或2个数据元素。 2–3树由约翰·霍普克洛夫特于1970年发明。  --《维基百科》  2-3树是一种非二叉树，它的结点有两种：  2-结点 —— 包含一个数据项，有两个子结点 3-结点 —— 包含两个数据项，有三个子结点  特点">
+  <meta name="description" content="2-3树 计算机科学中，2–3树是一种树型数据结构，内部结点（存在子结点的结点）要么有2个孩子和1个数据元素，要么有3个孩子和2个数据元素，叶子结点没有孩子，并且有1个或2个数据元素。2–3树由约翰·霍普克洛夫特于1970年发明。  –《维基百科》  2-3树是一种非二叉树，它的结点有两种：  2-结点 —— 包含一个数据项，有两个子结点 3-结点 —— 包含两个数据项，有三个子结点  特点：容易">
 <meta property="og:type" content="article">
 <meta property="og:title" content="10_B树">
 <meta property="og:url" content="http://yoursite.com/2019/06/02/数据结构和算法_10_B树/index.html">
 <meta property="og:site_name" content="wangzk1900&#39;s site">
-<meta property="og:description" content="2-3树  计算机科学中，2–3树是一种树型数据结构，内部结点（存在子结点的结点）要么有2个孩子和1个数据元素，要么有3个孩子和2个数据元素，叶子结点没有孩子，并且有1个或2个数据元素。 2–3树由约翰·霍普克洛夫特于1970年发明。  --《维基百科》  2-3树是一种非二叉树，它的结点有两种：  2-结点 —— 包含一个数据项，有两个子结点 3-结点 —— 包含两个数据项，有三个子结点  特点">
+<meta property="og:description" content="2-3树 计算机科学中，2–3树是一种树型数据结构，内部结点（存在子结点的结点）要么有2个孩子和1个数据元素，要么有3个孩子和2个数据元素，叶子结点没有孩子，并且有1个或2个数据元素。2–3树由约翰·霍普克洛夫特于1970年发明。  –《维基百科》  2-3树是一种非二叉树，它的结点有两种：  2-结点 —— 包含一个数据项，有两个子结点 3-结点 —— 包含两个数据项，有三个子结点  特点：容易">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/2-3tree/insert/2-node.png">
 <meta property="og:image" content="http://yoursite.com/images/2-3tree/insert/3-node-root.png">
@@ -119,7 +119,7 @@
 <meta property="og:updated_time" content="2019-06-06T07:44:44.351Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="10_B树">
-<meta name="twitter:description" content="2-3树  计算机科学中，2–3树是一种树型数据结构，内部结点（存在子结点的结点）要么有2个孩子和1个数据元素，要么有3个孩子和2个数据元素，叶子结点没有孩子，并且有1个或2个数据元素。 2–3树由约翰·霍普克洛夫特于1970年发明。  --《维基百科》  2-3树是一种非二叉树，它的结点有两种：  2-结点 —— 包含一个数据项，有两个子结点 3-结点 —— 包含两个数据项，有三个子结点  特点">
+<meta name="twitter:description" content="2-3树 计算机科学中，2–3树是一种树型数据结构，内部结点（存在子结点的结点）要么有2个孩子和1个数据元素，要么有3个孩子和2个数据元素，叶子结点没有孩子，并且有1个或2个数据元素。2–3树由约翰·霍普克洛夫特于1970年发明。  –《维基百科》  2-3树是一种非二叉树，它的结点有两种：  2-结点 —— 包含一个数据项，有两个子结点 3-结点 —— 包含两个数据项，有三个子结点  特点：容易">
 <meta name="twitter:image" content="http://yoursite.com/images/2-3tree/insert/2-node.png">
 
 
@@ -453,81 +453,34 @@
       
 
       
-        <h1>2-3树</h1>
-<blockquote>
-<p>计算机科学中，2–3树是一种树型数据结构，内部结点（存在子结点的结点）要么有2个孩子和1个数据元素，要么有3个孩子和2个数据元素，叶子结点没有孩子，并且有1个或2个数据元素。
-2–3树由约翰·霍普克洛夫特于1970年发明。  --《维基百科》</p>
+        <h1 id="2-3树"><a href="#2-3树" class="headerlink" title="2-3树"></a>2-3树</h1><blockquote>
+<p>计算机科学中，2–3树是一种树型数据结构，内部结点（存在子结点的结点）要么有2个孩子和1个数据元素，要么有3个孩子和2个数据元素，叶子结点没有孩子，并且有1个或2个数据元素。<br>2–3树由约翰·霍普克洛夫特于1970年发明。  –《维基百科》</p>
 </blockquote>
 <p>2-3树是一种非二叉树，它的结点有两种：</p>
 <ul>
 <li>2-结点 —— 包含一个数据项，有两个子结点</li>
 <li>3-结点 —— 包含两个数据项，有三个子结点</li>
 </ul>
-<p>特点：
-容易保持平衡，但是实现起来很麻烦。
-可能会浪费一些存储空间。</p>
-<p>一棵完美平衡的 2-3 查找树中的所有空链接到根结点的距离都应该是相同的。
-对于任意结点数量的树，都能做到完美的平衡，因为2-3树中允许一个结点可以存放 2 个元素。
-而二叉树只有当树中的元素数量满足 2^n - 1时，才能做到完美平衡的效果。</p>
-<h2>查找操作</h2>
-<p>和二叉查找树类似，从根结点开始，将查找元素与根结点中的元素进行比较，若二者相等则结束查找，否则继续向下在子结点中查找。</p>
-<h2>插入操作</h2>
-<p>首先进行一次未命中查找（重复数据不允许插入），这个结点肯定是一个叶子结点，然后将新数据插入该结点。
-在插入数据之后，如果该结点中元素的数量达到了3个，那么将该结点的中间元素上移到其父结点。判断父结点中元素数量，若达到3个，则继续进行上移操作。
-假如到最后根结点中元素的数量也达到了3个，那么将根结点分解，把根结点分解为3个新结点，在此种情况下，2-3树才会增加 1 个高度。</p>
-<p><strong>1. 该结点是 2-结点</strong>
-直接将数据插入该结点即可。
-<img src="/images/2-3tree/insert/2-node.png" alt></p>
-<p><strong>2. 该结点是 3-结点，并且是 root 结点</strong>
-将结点分解为 3 个结点。
-<img src="/images/2-3tree/insert/3-node-root.png" alt></p>
-<p><strong>3. 该结点是 3-结点，并且父结点是 2-结点</strong>
-由于，父结点有 2 个子结点，所以有以下两种情况。
-<strong>3.1</strong> 该结点是父结点的左子结点
-<img src="/images/2-3tree/insert/3-node-p2-left.png" alt></p>
-<p><strong>3.2</strong> 该结点是父结点的右子结点
-<img src="/images/2-3tree/insert/3-node-p2-right.png" alt></p>
-<p><strong>4. 该结点是 3-结点，并且父结点也是 3-结点</strong>
-同样，由于父结点有 3 个子结点，该情形又分三种情况。
-<strong>4.1</strong> 该结点是父结点的左子结点
-<img src="/images/2-3tree/insert/3-node-p3-left.png" alt></p>
-<p><strong>4.2</strong> 该结点是父结点的中间结点
-<img src="/images/2-3tree/insert/3-node-p3-middle.png" alt></p>
-<p><strong>4.3</strong> 该结点是父结点的右子结点
-<img src="/images/2-3tree/insert/3-node-p3-right.png" alt></p>
-<h2>删除操作</h2>
-<p>首先找到被删元素所在的结点。</p>
-<p><strong>1. 删除元素位于叶子结点，并且是3-结点</strong>
-直接删除元素即可，不影响树的平衡。
-<img src="/images/2-3tree/delete/1-leaf-3-node.png" alt></p>
-<p><strong>2. 删除元素位于叶子结点，并且是2-结点</strong>
-又分为以下几种情况：
-<strong>2.1</strong> 父结点是2-结点，并且兄弟结点是3-结点。
-如下图所示，进行左旋或右旋操作。
-<img src="/images/2-3tree/delete/2-1-leaf-2-node-p2-s3.png" alt></p>
-<p><strong>2.2</strong> 父结点是2-结点，并且兄弟结点也是2-结点。
-先将兄弟结点变成3-结点，按照中序遍历的顺序，将兄弟结点后的元素依次向前移，直到第一个叶子结点为止。
-<img src="/images/2-3tree/delete/2-2-leaf-2-node-p2-s2.png" alt></p>
-<p><strong>2.3</strong> 父结点是3-结点。
-首先删除该结点，然后进行判断。
-若该结点是父结点的前两个孩子，则将父结点第一个元素下移，添加到剩余孩子中左侧的那个；否则将父结点的第二个元素下移，添加到中间孩子结点中。
-添加元素之后，孩子结点的元素个数可能会达到 3 个，此时就需要进行分裂。
-<img src="/images/2-3tree/delete/2-3-leaf-2-node-p3.png" alt></p>
-<p><strong>2.4</strong> 当前树是一个满二叉树。
-若待删元素小于根结点中的元素，则按中序遍历的顺序，将该元素之后的元素前移，依次覆盖掉前面的元素，直到根结点为止。
-若待删元素大于根结点中的元素，则按中序遍历的顺序，将该元素之前的元素后移，依次覆盖掉后面的元素，直到根结点为止。
-最后，将根结点的两个子结点合并。
-<img src="/images/2-3tree/delete/2-4-leaf-2-node-all.png" alt></p>
-<p><strong>3. 删除元素位于非叶子结点</strong>
-假定删除元素是 A，首先进行中序遍历，找到该结点的直接后继结点中的元素 B；
-然后删除这个后继结点中的元素 B，最后用 B 覆盖 A。
-这个后继结点肯定是一个叶子结点。
-<img src="/images/2-3tree/delete/3-not-leaf.png" alt></p>
+<p>特点：<br>容易保持平衡，但是实现起来很麻烦。<br>可能会浪费一些存储空间。</p>
+<p>一棵完美平衡的 2-3 查找树中的所有空链接到根结点的距离都应该是相同的。<br>对于任意结点数量的树，都能做到完美的平衡，因为2-3树中允许一个结点可以存放 2 个元素。<br>而二叉树只有当树中的元素数量满足 2^n - 1时，才能做到完美平衡的效果。</p>
+<h2 id="查找操作"><a href="#查找操作" class="headerlink" title="查找操作"></a>查找操作</h2><p>和二叉查找树类似，从根结点开始，将查找元素与根结点中的元素进行比较，若二者相等则结束查找，否则继续向下在子结点中查找。</p>
+<h2 id="插入操作"><a href="#插入操作" class="headerlink" title="插入操作"></a>插入操作</h2><p>首先进行一次未命中查找（重复数据不允许插入），这个结点肯定是一个叶子结点，然后将新数据插入该结点。<br>在插入数据之后，如果该结点中元素的数量达到了3个，那么将该结点的中间元素上移到其父结点。判断父结点中元素数量，若达到3个，则继续进行上移操作。<br>假如到最后根结点中元素的数量也达到了3个，那么将根结点分解，把根结点分解为3个新结点，在此种情况下，2-3树才会增加 1 个高度。</p>
+<p><strong>1. 该结点是 2-结点</strong><br>直接将数据插入该结点即可。<br><img src="/images/2-3tree/insert/2-node.png" alt></p>
+<p><strong>2. 该结点是 3-结点，并且是 root 结点</strong><br>将结点分解为 3 个结点。<br><img src="/images/2-3tree/insert/3-node-root.png" alt></p>
+<p><strong>3. 该结点是 3-结点，并且父结点是 2-结点</strong><br>由于，父结点有 2 个子结点，所以有以下两种情况。<br><strong>3.1</strong> 该结点是父结点的左子结点<br><img src="/images/2-3tree/insert/3-node-p2-left.png" alt></p>
+<p><strong>3.2</strong> 该结点是父结点的右子结点<br><img src="/images/2-3tree/insert/3-node-p2-right.png" alt></p>
+<p><strong>4. 该结点是 3-结点，并且父结点也是 3-结点</strong><br>同样，由于父结点有 3 个子结点，该情形又分三种情况。<br><strong>4.1</strong> 该结点是父结点的左子结点<br><img src="/images/2-3tree/insert/3-node-p3-left.png" alt></p>
+<p><strong>4.2</strong> 该结点是父结点的中间结点<br><img src="/images/2-3tree/insert/3-node-p3-middle.png" alt></p>
+<p><strong>4.3</strong> 该结点是父结点的右子结点<br><img src="/images/2-3tree/insert/3-node-p3-right.png" alt></p>
+<h2 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h2><p>首先找到被删元素所在的结点。</p>
+<p><strong>1. 删除元素位于叶子结点，并且是3-结点</strong><br>直接删除元素即可，不影响树的平衡。<br><img src="/images/2-3tree/delete/1-leaf-3-node.png" alt></p>
+<p><strong>2. 删除元素位于叶子结点，并且是2-结点</strong><br>又分为以下几种情况：<br><strong>2.1</strong> 父结点是2-结点，并且兄弟结点是3-结点。<br>如下图所示，进行左旋或右旋操作。<br><img src="/images/2-3tree/delete/2-1-leaf-2-node-p2-s3.png" alt></p>
+<p><strong>2.2</strong> 父结点是2-结点，并且兄弟结点也是2-结点。<br>先将兄弟结点变成3-结点，按照中序遍历的顺序，将兄弟结点后的元素依次向前移，直到第一个叶子结点为止。<br><img src="/images/2-3tree/delete/2-2-leaf-2-node-p2-s2.png" alt></p>
+<p><strong>2.3</strong> 父结点是3-结点。<br>首先删除该结点，然后进行判断。<br>若该结点是父结点的前两个孩子，则将父结点第一个元素下移，添加到剩余孩子中左侧的那个；否则将父结点的第二个元素下移，添加到中间孩子结点中。<br>添加元素之后，孩子结点的元素个数可能会达到 3 个，此时就需要进行分裂。<br><img src="/images/2-3tree/delete/2-3-leaf-2-node-p3.png" alt></p>
+<p><strong>2.4</strong> 当前树是一个满二叉树。<br>若待删元素小于根结点中的元素，则按中序遍历的顺序，将该元素之后的元素前移，依次覆盖掉前面的元素，直到根结点为止。<br>若待删元素大于根结点中的元素，则按中序遍历的顺序，将该元素之前的元素后移，依次覆盖掉后面的元素，直到根结点为止。<br>最后，将根结点的两个子结点合并。<br><img src="/images/2-3tree/delete/2-4-leaf-2-node-all.png" alt></p>
+<p><strong>3. 删除元素位于非叶子结点</strong><br> 假定删除元素是 A，首先进行中序遍历，找到该结点的直接后继结点中的元素 B；<br>然后删除这个后继结点中的元素 B，最后用 B 覆盖 A。<br>这个后继结点肯定是一个叶子结点。<br><img src="/images/2-3tree/delete/3-not-leaf.png" alt></p>
 <hr>
-<p><strong>参考资料：</strong>
-<a href="https://github.com/devkapupara/2-3-Tree/blob/master/TwoThreeTree.java" target="_blank" rel="noopener">devkapupara/2-3-Tree</a>
-<a href="https://book.douban.com/subject/19952400/" target="_blank" rel="noopener">《算法（第4版）》</a>
-<a href="https://book.douban.com/subject/6424904/" target="_blank" rel="noopener">《大话数据结构》</a></p>
+<p><strong>参考资料：</strong><br><a href="https://github.com/devkapupara/2-3-Tree/blob/master/TwoThreeTree.java" target="_blank" rel="noopener">devkapupara/2-3-Tree</a><br><a href="https://book.douban.com/subject/19952400/" target="_blank" rel="noopener">《算法（第4版）》</a><br><a href="https://book.douban.com/subject/6424904/" target="_blank" rel="noopener">《大话数据结构》</a></p>
 
       
     </div>
@@ -732,7 +685,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">2-3树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">查找操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">插入操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">删除操作</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2-3树"><span class="nav-number">1.</span> <span class="nav-text">2-3树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查找操作"><span class="nav-number">1.1.</span> <span class="nav-text">查找操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入操作"><span class="nav-number">1.2.</span> <span class="nav-text">插入操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除操作"><span class="nav-number">1.3.</span> <span class="nav-text">删除操作</span></a></li></ol></li></ol></div>
             
 
           </div>

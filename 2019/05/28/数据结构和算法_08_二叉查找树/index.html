@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="二叉查找树，也叫二叉搜索树，其特点是： 对于树中的任意一个节点，其左子树中每个节点的值，都要小于这个节点的值；而其右子树所有节点的值都大于这个节点的值。 常用操作 支持快速查找、插入、删除操作。 查找 从根节点开始，如果要查找的数据比根节点的值小，那就在左子树中递归查找；如果要查找的数据比根节点的值大，那就在右子树中递归查找。 1234567891011121314151617181920priv">
+  <meta name="description" content="二叉查找树，也叫二叉搜索树，其特点是：对于树中的任意一个节点，其左子树中每个节点的值，都要小于这个节点的值；而其右子树所有节点的值都大于这个节点的值。 常用操作支持快速查找、插入、删除操作。 查找从根节点开始，如果要查找的数据比根节点的值小，那就在左子树中递归查找；如果要查找的数据比根节点的值大，那就在右子树中递归查找。 1234567891011121314151617181920private">
 <meta property="og:type" content="article">
 <meta property="og:title" content="08_二叉查找树">
 <meta property="og:url" content="http://yoursite.com/2019/05/28/数据结构和算法_08_二叉查找树/index.html">
 <meta property="og:site_name" content="wangzk1900&#39;s site">
-<meta property="og:description" content="二叉查找树，也叫二叉搜索树，其特点是： 对于树中的任意一个节点，其左子树中每个节点的值，都要小于这个节点的值；而其右子树所有节点的值都大于这个节点的值。 常用操作 支持快速查找、插入、删除操作。 查找 从根节点开始，如果要查找的数据比根节点的值小，那就在左子树中递归查找；如果要查找的数据比根节点的值大，那就在右子树中递归查找。 1234567891011121314151617181920priv">
+<meta property="og:description" content="二叉查找树，也叫二叉搜索树，其特点是：对于树中的任意一个节点，其左子树中每个节点的值，都要小于这个节点的值；而其右子树所有节点的值都大于这个节点的值。 常用操作支持快速查找、插入、删除操作。 查找从根节点开始，如果要查找的数据比根节点的值小，那就在左子树中递归查找；如果要查找的数据比根节点的值大，那就在右子树中递归查找。 1234567891011121314151617181920private">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-05-29T01:54:06.219Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="08_二叉查找树">
-<meta name="twitter:description" content="二叉查找树，也叫二叉搜索树，其特点是： 对于树中的任意一个节点，其左子树中每个节点的值，都要小于这个节点的值；而其右子树所有节点的值都大于这个节点的值。 常用操作 支持快速查找、插入、删除操作。 查找 从根节点开始，如果要查找的数据比根节点的值小，那就在左子树中递归查找；如果要查找的数据比根节点的值大，那就在右子树中递归查找。 1234567891011121314151617181920priv">
+<meta name="twitter:description" content="二叉查找树，也叫二叉搜索树，其特点是：对于树中的任意一个节点，其左子树中每个节点的值，都要小于这个节点的值；而其右子树所有节点的值都大于这个节点的值。 常用操作支持快速查找、插入、删除操作。 查找从根节点开始，如果要查找的数据比根节点的值小，那就在左子树中递归查找；如果要查找的数据比根节点的值大，那就在右子树中递归查找。 1234567891011121314151617181920private">
 
 
 
@@ -439,77 +439,74 @@
       
 
       
-        <p>二叉查找树，也叫二叉搜索树，其特点是：
-对于树中的任意一个节点，其左子树中每个节点的值，都要小于这个节点的值；而其右子树所有节点的值都大于这个节点的值。</p>
-<h1>常用操作</h1>
-<p>支持快速查找、插入、删除操作。</p>
-<p><strong>查找</strong>
-从根节点开始，如果要查找的数据比根节点的值小，那就在左子树中递归查找；如果要查找的数据比根节点的值大，那就在右子树中递归查找。
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">find</span><span class="params">(<span class="keyword">int</span> data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Node node = root;</span><br><span class="line">    <span class="keyword">while</span> (node != <span class="keyword">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (data &lt; node.data)</span><br><span class="line">        &#123;</span><br><span class="line">            node = node.leftChild;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (data &gt; node.data)</span><br><span class="line">        &#123;</span><br><span class="line">            node = node.rightChild;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> node;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>插入</strong>
-和查找过程类似，首先查找出插入位置，然后将新节点插入。
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Node newNode = <span class="keyword">new</span> Node(data);</span><br><span class="line">    <span class="keyword">if</span> (isEmpty())</span><br><span class="line">    &#123;</span><br><span class="line">        root = newNode;</span><br><span class="line">        size++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        Node node = root;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 向左查找插入位置</span></span><br><span class="line">            <span class="keyword">if</span> (data &lt; node.data)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (node.leftChild == <span class="keyword">null</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    node.leftChild = newNode;</span><br><span class="line">                    size++;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    node = node.leftChild;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 向右查找插入位置</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (data &gt; node.data)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (node.rightChild == <span class="keyword">null</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    node.rightChild = newNode;</span><br><span class="line">                    size++;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    node = node.rightChild;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123; <span class="comment">// 重复数据不允许插入</span></span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>删除</strong>
-删除操作就比较麻烦了，分三种情况：</p>
+        <p>二叉查找树，也叫二叉搜索树，其特点是：<br>对于树中的任意一个节点，其左子树中每个节点的值，都要小于这个节点的值；而其右子树所有节点的值都大于这个节点的值。</p>
+<h1 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h1><p>支持快速查找、插入、删除操作。</p>
+<p><strong>查找</strong><br>从根节点开始，如果要查找的数据比根节点的值小，那就在左子树中递归查找；如果要查找的数据比根节点的值大，那就在右子树中递归查找。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">find</span><span class="params">(<span class="keyword">int</span> data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Node node = root;</span><br><span class="line">    <span class="keyword">while</span> (node != <span class="keyword">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (data &lt; node.data)</span><br><span class="line">        &#123;</span><br><span class="line">            node = node.leftChild;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (data &gt; node.data)</span><br><span class="line">        &#123;</span><br><span class="line">            node = node.rightChild;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> node;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>插入</strong><br>和查找过程类似，首先查找出插入位置，然后将新节点插入。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Node newNode = <span class="keyword">new</span> Node(data);</span><br><span class="line">    <span class="keyword">if</span> (isEmpty())</span><br><span class="line">    &#123;</span><br><span class="line">        root = newNode;</span><br><span class="line">        size++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        Node node = root;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 向左查找插入位置</span></span><br><span class="line">            <span class="keyword">if</span> (data &lt; node.data)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (node.leftChild == <span class="keyword">null</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    node.leftChild = newNode;</span><br><span class="line">                    size++;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    node = node.leftChild;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 向右查找插入位置</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (data &gt; node.data)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (node.rightChild == <span class="keyword">null</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    node.rightChild = newNode;</span><br><span class="line">                    size++;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    node = node.rightChild;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123; <span class="comment">// 重复数据不允许插入</span></span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>删除</strong><br>删除操作就比较麻烦了，分三种情况：</p>
 <ol>
 <li>被删节点没有子节点，只需将其父节点中指向该节点的指针置空（root节点需另外处理）。</li>
 <li>被删节点有一个子节点，只需将其父节点指向该节点的指针改为指向其子节点。</li>
 <li>被删节点有两个子节点，首先需要找出其右子树中最小的节点，然后把这个最小节点放到被删节点的位置上。</li>
 </ol>
-<pre><code class="language-java">public void delete(int data)
-{
+<pre><code class="java"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(<span class="keyword">int</span> data)</span></span>
+<span class="function"></span>{
     Node delNode = root;
-    // 被删节点的父节点
-    Node delPNode = null;
-    while (delNode != null &amp;&amp; delNode.data != data)
+    <span class="comment">// 被删节点的父节点</span>
+    Node delPNode = <span class="keyword">null</span>;
+    <span class="keyword">while</span> (delNode != <span class="keyword">null</span> &amp;&amp; delNode.data != data)
     {
         delPNode = delNode;
-        if (data &lt; delNode.data)
+        <span class="keyword">if</span> (data &lt; delNode.data)
         {
             delNode = delNode.leftChild;
         }
-        else if (data &gt; delNode.data)
+        <span class="keyword">else</span> <span class="keyword">if</span> (data &gt; delNode.data)
         {
             delNode = delNode.rightChild;
         }
     }
-    // 没找到
-    if (delNode == null)
+    <span class="comment">// 没找到</span>
+    <span class="keyword">if</span> (delNode == <span class="keyword">null</span>)
     {
-        return;
+        <span class="keyword">return</span>;
     }
-    // 1. 待删节点有两个子节点
-    if (delNode.leftChild != null &amp;&amp; delNode.rightChild !=
+    <span class="comment">// 1. 待删节点有两个子节点</span>
+    <span class="keyword">if</span> (delNode.leftChild != <span class="keyword">null</span> &amp;&amp; delNode.rightChild !=
     {
-        // 右子树中的最小节点
+        <span class="comment">// 右子树中的最小节点</span>
         Node minNode = delNode.rightChild;
-        // 最小节点的父节点
+        <span class="comment">// 最小节点的父节点</span>
         Node minPNode = delNode;
-        // 找出右子树中的最小节点
-        while (minNode.leftChild != null)
+        <span class="comment">// 找出右子树中的最小节点</span>
+        <span class="keyword">while</span> (minNode.leftChild != <span class="keyword">null</span>)
         {
             minPNode = minNode;
             minNode = minNode.leftChild;
         }
-        // 最小节点的数据放到被删节点中
+        <span class="comment">// 最小节点的数据放到被删节点中</span>
         delNode.data = minNode.data;
-        // 更新被删节点，及其父节点
+        <span class="comment">// 更新被删节点，及其父节点</span>
         delPNode = minPNode;
         delNode = minNode;
     }
-    // 2. 待删节点没有子节点或者只有一个子节点
-    Node cNode = delNode.leftChild != null ? delNode.leftC
-    // 被删节点是 root 节点
-    if (delPNode == null)
+    <span class="comment">// 2. 待删节点没有子节点或者只有一个子节点</span>
+    Node cNode = delNode.leftChild != <span class="keyword">null</span> ? delNode.leftC
+    <span class="comment">// 被删节点是 root 节点</span>
+    <span class="keyword">if</span> (delPNode == <span class="keyword">null</span>)
     {
         root = cNode;
     }
-    // 更新父节点的指针
-    else if (delPNode.leftChild == delNode)
+    <span class="comment">// 更新父节点的指针</span>
+    <span class="keyword">else</span> <span class="keyword">if</span> (delPNode.leftChild == delNode)
     {
         delPNode.leftChild = cNode;
     }
-    else
+    <span class="keyword">else</span>
     {
         delPNode.rightChild = cNode;
     }
@@ -521,15 +518,15 @@
 中序遍历二叉查找树，可以输出有序的数据序列，时间复杂度是O(n)。
 
 **完整练习代码：**
-[二叉查找树](https://github.com/wangzk1900/Data-structures-and-algorithms/blob/master/binarysearchtree/BinarySearchTree1.java)
+[二叉查找树](https:<span class="comment">//github.com/wangzk1900/Data-structures-and-algorithms/blob/master/binarysearchtree/BinarySearchTree1.java)</span>
 
 # 支持重复数据
 如果允许在二叉查找树中存放重复数据，这里有两种方法：
-1. 将数据存放在链表中，然后将链表存放到二叉树的节点中（除了链表，也可以使用支持动态扩容的数组等结构）。
-2. 若插入的数据与现有节点的值相同，则将其按大于这个节点的值来处理，也就是将数据放到该节点的右子树中。
+<span class="number">1</span>. 将数据存放在链表中，然后将链表存放到二叉树的节点中（除了链表，也可以使用支持动态扩容的数组等结构）。
+<span class="number">2</span>. 若插入的数据与现有节点的值相同，则将其按大于这个节点的值来处理，也就是将数据放到该节点的右子树中。
 
 **完整练习代码：**
-[支持重复数据的二叉查找树](https://github.com/wangzk1900/Data-structures-and-algorithms/blob/master/binarysearchtree/BinarySearchTree2.java)
+[支持重复数据的二叉查找树](https:<span class="comment">//github.com/wangzk1900/Data-structures-and-algorithms/blob/master/binarysearchtree/BinarySearchTree2.java)</span>
 
 # 时间复杂度分析
 
@@ -540,8 +537,7 @@
 
 -----
 参考资料：
-[《数据结构与算法之美》--王争](https://time.geekbang.org/column/intro/126)
-</code></pre>
+[《数据结构与算法之美》--王争](https:<span class="comment">//time.geekbang.org/column/intro/126)</span></code></pre>
 
       
     </div>
@@ -746,7 +742,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">常用操作</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常用操作"><span class="nav-number">1.</span> <span class="nav-text">常用操作</span></a></li></ol></div>
             
 
           </div>
