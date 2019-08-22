@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="JSP 技术JavaServer Pages(JSP) 技术是 Java EE 的一部分，用来生成动态 web 内容（比如：HTML, DHTML, XHTML和XML）。 虽然 Servlet 技术也可以生成动态 web 内容，但是 Servlet 有个最大缺点就是在 Servlet 类中编写大量繁杂的 HTML 代码，使得Java代码与HTML代码糅杂在一起。 JSP 本质也是 Servelt">
+  <meta name="description" content="JSP 技术 JavaServer Pages(JSP) 技术是 Java EE 的一部分，用来生成动态 web 内容（比如：HTML, DHTML, XHTML和XML）。 虽然 Servlet 技术也可以生成动态 web 内容，但是 Servlet 有个最大缺点就是在 Servlet 类中编写大量繁杂的 HTML 代码，使得Java代码与HTML代码糅杂在一起。 JSP 本质也是 Servel">
 <meta property="og:type" content="article">
 <meta property="og:title" content="08_JSP">
 <meta property="og:url" content="http://yoursite.com/2019/08/24/Servlet_09_JSP/index.html">
 <meta property="og:site_name" content="wangzk1900&#39;s site">
-<meta property="og:description" content="JSP 技术JavaServer Pages(JSP) 技术是 Java EE 的一部分，用来生成动态 web 内容（比如：HTML, DHTML, XHTML和XML）。 虽然 Servlet 技术也可以生成动态 web 内容，但是 Servlet 有个最大缺点就是在 Servlet 类中编写大量繁杂的 HTML 代码，使得Java代码与HTML代码糅杂在一起。 JSP 本质也是 Servelt">
+<meta property="og:description" content="JSP 技术 JavaServer Pages(JSP) 技术是 Java EE 的一部分，用来生成动态 web 内容（比如：HTML, DHTML, XHTML和XML）。 虽然 Servlet 技术也可以生成动态 web 内容，但是 Servlet 有个最大缺点就是在 Servlet 类中编写大量繁杂的 HTML 代码，使得Java代码与HTML代码糅杂在一起。 JSP 本质也是 Servel">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-08-22T02:52:33.802Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="08_JSP">
-<meta name="twitter:description" content="JSP 技术JavaServer Pages(JSP) 技术是 Java EE 的一部分，用来生成动态 web 内容（比如：HTML, DHTML, XHTML和XML）。 虽然 Servlet 技术也可以生成动态 web 内容，但是 Servlet 有个最大缺点就是在 Servlet 类中编写大量繁杂的 HTML 代码，使得Java代码与HTML代码糅杂在一起。 JSP 本质也是 Servelt">
+<meta name="twitter:description" content="JSP 技术 JavaServer Pages(JSP) 技术是 Java EE 的一部分，用来生成动态 web 内容（比如：HTML, DHTML, XHTML和XML）。 虽然 Servlet 技术也可以生成动态 web 内容，但是 Servlet 有个最大缺点就是在 Servlet 类中编写大量繁杂的 HTML 代码，使得Java代码与HTML代码糅杂在一起。 JSP 本质也是 Servel">
 
 
 
@@ -446,13 +446,20 @@
       
 
       
-        <h1 id="JSP-技术"><a href="#JSP-技术" class="headerlink" title="JSP 技术"></a>JSP 技术</h1><p>JavaServer Pages(JSP) 技术是 Java EE 的一部分，用来生成动态 web 内容（比如：HTML, DHTML, XHTML和XML）。</p>
+        <h1>JSP 技术</h1>
+<p>JavaServer Pages(JSP) 技术是 Java EE 的一部分，用来生成动态 web 内容（比如：HTML, DHTML, XHTML和XML）。</p>
 <p>虽然 Servlet 技术也可以生成动态 web 内容，但是 Servlet 有个最大缺点就是在 Servlet 类中编写大量繁杂的 HTML 代码，使得Java代码与HTML代码糅杂在一起。</p>
 <p>JSP 本质也是 Servelt，然而其不需要编译，JSP page 是一个以<code>.jsp</code>扩展名的文本文件。当 JSP page 被用到时，JSP 容器会将 JSP page 转换成 Servlet。</p>
-<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p><strong>Web Container(JSP container)</strong><br>为 JSP page 和 servlet 组件提供生命周期管理和运行时支持。</p>
-<p><strong>JSP Page</strong><br>JSP Page 是基于文本的文档，描述了如何处理请求并创建响应。</p>
-<p><strong>JSP Document</strong><br>JSP文档是使用 XML 语法编写的 JSP page，文件的后缀名是：<code>.jspx</code>。<br>专门用于动态生成 XML 内容。</p>
-<h1 id="JSP-page内容"><a href="#JSP-page内容" class="headerlink" title="JSP page内容"></a>JSP page内容</h1><p>JSP page 包含两部分：</p>
+<h1>基本概念</h1>
+<p><strong>Web Container(JSP container)</strong>
+为 JSP page 和 servlet 组件提供生命周期管理和运行时支持。</p>
+<p><strong>JSP Page</strong>
+JSP Page 是基于文本的文档，描述了如何处理请求并创建响应。</p>
+<p><strong>JSP Document</strong>
+JSP文档是使用 XML 语法编写的 JSP page，文件的后缀名是：<code>.jspx</code>。
+专门用于动态生成 XML 内容。</p>
+<h1>JSP page内容</h1>
+<p>JSP page 包含两部分：</p>
 <ul>
 <li>模板数据（基于文本格式的文本，比如：HTML和XML等，是页面的静态部分）</li>
 <li>JSP 元素（这部分需要 JSP 容器进行相应的处理，是页面的动态部分）</li>
@@ -463,7 +470,9 @@
 <li>动作（Actions）</li>
 <li>脚本元素（Scripting Elements）</li>
 </ul>
-<h2 id="指令（Directives）"><a href="#指令（Directives）" class="headerlink" title="指令（Directives）"></a>指令（Directives）</h2><p>指令用来配置  JSP 页面的一些基本属性，它们不会产生输出。指令的语法如下：<br><code>&lt;%@ directive { attr=”value” }* %&gt;</code></p>
+<h2>指令（Directives）</h2>
+<p>指令用来配置  JSP 页面的一些基本属性，它们不会产生输出。指令的语法如下：
+<code>&lt;%@ directive { attr=”value” }* %&gt;</code></p>
 <table>
 <thead>
 <tr>
@@ -485,15 +494,15 @@
 </tr>
 <tr>
 <td>Taglib</td>
-<td>&lt;%@ taglib ( uri=”tagLibraryURI” \</td>
-<td>tagdir=”tagDir” ) prefix=”tagPrefix” %&gt;</td>
+<td>&lt;%@ taglib ( uri=”tagLibraryURI” | tagdir=”tagDir” ) prefix=”tagPrefix” %&gt;</td>
 <td>声明JSP使用的标签库或标签文件</td>
 </tr>
 </tbody>
 </table>
 <p><em>示例：</em></p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--引入copyright.html文件的内容--&gt;</span><br><span class="line">&lt;%@ include file=<span class="string">"copyright.html"</span> %&gt;</span><br><span class="line">&lt;!--指定page内容和response的编码--&gt;</span><br><span class="line">&lt;%@ page contentType=<span class="string">"text/html; charset=UTF-8"</span> %&gt;</span><br><span class="line">&lt;!--指定JSP page本身的编码--&gt;</span><br><span class="line">&lt;%@ page pageEncoding=<span class="string">"UTF-8"</span> %&gt;</span><br><span class="line">&lt;!--指定标签库--&gt;</span><br><span class="line">&lt;%@ taglib uri=”http:<span class="comment">//www.mycorp/supertags” prefix=”super” %&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="动作（Actions）"><a href="#动作（Actions）" class="headerlink" title="动作（Actions）"></a>动作（Actions）</h2><p>动作元素遵循 XML 元素的语法，分为两种：</p>
+<p><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--引入copyright.html文件的内容--&gt;</span><br><span class="line">&lt;%@ include file=<span class="string">"copyright.html"</span> %&gt;</span><br><span class="line">&lt;!--指定page内容和response的编码--&gt;</span><br><span class="line">&lt;%@ page contentType=<span class="string">"text/html; charset=UTF-8"</span> %&gt;</span><br><span class="line">&lt;!--指定JSP page本身的编码--&gt;</span><br><span class="line">&lt;%@ page pageEncoding=<span class="string">"UTF-8"</span> %&gt;</span><br><span class="line">&lt;!--指定标签库--&gt;</span><br><span class="line">&lt;%@ taglib uri=”http:<span class="comment">//www.mycorp/supertags” prefix=”super” %&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2>动作（Actions）</h2>
+<p>动作元素遵循 XML 元素的语法，分为两种：</p>
 <ul>
 <li>标准动作元素（由JSP规范提供，由 JSP 容器实现）</li>
 <li>自定义动作元素（通过tag扩展机制提供）</li>
@@ -509,40 +518,72 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="jsp:useBean" target="_blank" rel="noopener">jsp:useBean</a></td>
+<td>&lt;jsp:useBean&gt;</td>
 <td>id, scope, class, beanName, type</td>
 <td>指定使用的bean对象</td>
 </tr>
 <tr>
-<td><a href="jsp:setProperty" target="_blank" rel="noopener">jsp:setProperty</a></td>
+<td>&lt;jsp:setProperty&gt;</td>
 <td>name, property, param, value</td>
 <td>设置bean对象的属性</td>
 </tr>
 <tr>
-<td><a href="jsp:getProperty" target="_blank" rel="noopener">jsp:getProperty</a></td>
+<td>&lt;jsp:getProperty&gt;</td>
 <td>name, property</td>
 <td>获取bean对象的属性</td>
 </tr>
 <tr>
-<td><a href="jsp:include" target="_blank" rel="noopener">jsp:include</a></td>
+<td>&lt;jsp:include&gt;</td>
 <td>page, flush</td>
 <td>引入静态或动态资源</td>
 </tr>
 <tr>
-<td><a href="jsp:forward" target="_blank" rel="noopener">jsp:forward</a></td>
+<td>&lt;jsp:forward&gt;</td>
 <td>page</td>
 <td>将当前请求发送到静态资源，JSP 页面或者Servlet。</td>
 </tr>
 </tbody>
 </table>
 <p>标准动作元素的前缀是：jsp，该前缀只能用在标准动作元素上。</p>
-<h2 id="脚本元素（Scripting-Elements）"><a href="#脚本元素（Scripting-Elements）" class="headerlink" title="脚本元素（Scripting Elements）"></a>脚本元素（Scripting Elements）</h2><p>在脚本元素中可以编写代码以生成动态内容。</p>
-<p>脚本元素有以下三类：<br>| 脚本元素     | 语法                                  | 用途                                                         |<br>| ———— | ————————————- | ———————————————————— |<br>| Declarations | &lt;%! scripting-language-declaration %&gt; | 声明变量或者方法                                             |<br>| Scriptlets   | &lt;% scripting-language-statements %&gt;   | 存放代码（比如：Java代码）                                   |<br>| Expressions  | &lt;%= scripting-language-expression %&gt;  | 将表达式结果转换为字符串并输出。若使用Java语言，则会将字符串通过隐含对象out输出到客户端。 |</p>
-<p>使用脚本之前可能需要指定脚本语言（默认是Java），导入所需要的包。<br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"scripting-language"</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"fully-qualified-classname, packagename.*"</span> %&gt;</span><br></pre></td></tr></table></figure></p>
-<p><em>示例：</em><br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--声明变量和方法--&gt;</span><br><span class="line">&lt;%! <span class="keyword">int</span> i; %&gt;</span><br><span class="line">&lt;%! <span class="keyword">int</span> i = <span class="number">0</span>; %&gt;</span><br><span class="line">&lt;%! <span class="function"><span class="keyword">public</span> String <span class="title">f</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123; <span class="keyword">if</span> (i&lt;<span class="number">3</span>) <span class="keyword">return</span>(“...”); ... &#125; %&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--java 代码--&gt;</span><br><span class="line">&lt;% <span class="keyword">if</span> (Calendar.getInstance().get(Calendar.AM_PM) == Calendar.AM) &#123;%&gt;</span><br><span class="line">Good Morning</span><br><span class="line">&lt;% &#125; <span class="keyword">else</span> &#123; %&gt;</span><br><span class="line">Good Afternoon</span><br><span class="line">&lt;% &#125; %&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--表达式--&gt;</span><br><span class="line">&lt;%= (<span class="keyword">new</span> java.util.Date()).toLocaleString() %&gt;</span><br></pre></td></tr></table></figure></p>
-<p><em>缺点：</em><br>将业务逻辑和表示逻辑混在一起，增加了JSP page维护的难度，降低了可读性。</p>
+<h2>脚本元素（Scripting Elements）</h2>
+<p>在脚本元素中可以编写代码以生成动态内容。</p>
+<p>脚本元素有以下三类：</p>
+<table>
+<thead>
+<tr>
+<th>脚本元素</th>
+<th>语法</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Declarations</td>
+<td>&lt;%! scripting-language-declaration %&gt;</td>
+<td>声明变量或者方法</td>
+</tr>
+<tr>
+<td>Scriptlets</td>
+<td>&lt;% scripting-language-statements %&gt;</td>
+<td>存放代码（比如：Java代码）</td>
+</tr>
+<tr>
+<td>Expressions</td>
+<td>&lt;%= scripting-language-expression %&gt;</td>
+<td>将表达式结果转换为字符串并输出。若使用Java语言，则会将字符串通过隐含对象out输出到客户端。</td>
+</tr>
+</tbody>
+</table>
+<p>使用脚本之前可能需要指定脚本语言（默认是Java），导入所需要的包。
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"scripting-language"</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"fully-qualified-classname, packagename.*"</span> %&gt;</span><br></pre></td></tr></table></figure></p>
+<p><em>示例：</em>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--声明变量和方法--&gt;</span><br><span class="line">&lt;%! <span class="keyword">int</span> i; %&gt;</span><br><span class="line">&lt;%! <span class="keyword">int</span> i = <span class="number">0</span>; %&gt;</span><br><span class="line">&lt;%! <span class="function"><span class="keyword">public</span> String <span class="title">f</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123; <span class="keyword">if</span> (i&lt;<span class="number">3</span>) <span class="keyword">return</span>(“...”); ... &#125; %&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--java 代码--&gt;</span><br><span class="line">&lt;% <span class="keyword">if</span> (Calendar.getInstance().get(Calendar.AM_PM) == Calendar.AM) &#123;%&gt;</span><br><span class="line">Good Morning</span><br><span class="line">&lt;% &#125; <span class="keyword">else</span> &#123; %&gt;</span><br><span class="line">Good Afternoon</span><br><span class="line">&lt;% &#125; %&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--表达式--&gt;</span><br><span class="line">&lt;%= (<span class="keyword">new</span> java.util.Date()).toLocaleString() %&gt;</span><br></pre></td></tr></table></figure></p>
+<p><em>缺点：</em>
+将业务逻辑和表示逻辑混在一起，增加了JSP page维护的难度，降低了可读性。</p>
 <p>JSP 2.0新增的EL表达式可以用来替代脚本元素。</p>
-<h1 id="EL表达式"><a href="#EL表达式" class="headerlink" title="EL表达式"></a>EL表达式</h1><p><strong>Unified Expression Language(EL 2.1)</strong><br>从JSP 2.1开始，JSP 2.0和JSF 1.1的表达式语言（Expression Language）被合并到了一起。</p>
+<h1>EL表达式</h1>
+<p><strong>Unified Expression Language(EL 2.1)</strong>
+从JSP 2.1开始，JSP 2.0和JSF 1.1的表达式语言（Expression Language）被合并到了一起。</p>
 <p>包含两部分：</p>
 <ul>
 <li>JSP 2.0提供的Expression Language</li>
@@ -555,27 +596,31 @@
 <li>Invoke arbitrary static and public methods</li>
 <li>Dynamically perform arithmetic operations</li>
 </ul>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>提供了两种语法：</p>
+<h2>语法</h2>
+<p>提供了两种语法：</p>
 <ul>
-<li>${} – 立即计算</li>
-<li>#{} – 延迟计算</li>
+<li>${} -- 立即计算</li>
+<li>#{} -- 延迟计算</li>
 </ul>
-<h2 id="隐含对象"><a href="#隐含对象" class="headerlink" title="隐含对象"></a>隐含对象</h2><p>在 JSP page 中，EL 表达式可以访问下面这些隐含的对象，这些对象是 JSP 容器负责创建的：</p>
+<h2>隐含对象</h2>
+<p>在 JSP page 中，EL 表达式可以访问下面这些隐含的对象，这些对象是 JSP 容器负责创建的：</p>
 <ul>
-<li><strong>pageContext</strong> – the PageContext object</li>
-<li><strong>pageScope</strong> – a Map that maps page-scoped attribute names to their values</li>
-<li><strong>requestScope</strong> – a Map that maps request-scoped attribute names to their values</li>
-<li><strong>sessionScope</strong> – a Map that maps session-scoped attribute names to their values</li>
-<li><strong>applicationScope</strong> – a Map that maps application-scoped attribute names to their values</li>
-<li><strong>param</strong> – a Map that maps parameter names to a single String parameter value(obtained by calling ServletRequest.getParameter(String name) )</li>
-<li><strong>paramValues</strong> – a Map that maps parameter names to a  String[] of all values for that parameter (obtained by calling  ServletRequest.getParameterValues(Stringname) )</li>
-<li><strong>header</strong> – a Map that maps header names to a single String header value (obtained by calling  HttpServletRequest.getHeader(String name) )</li>
-<li><strong>headerValues</strong> – a Map that maps header names to a  String[] of all values for that header (obtained by calling  HttpervletRequest.getHeaders(String) )</li>
-<li><strong>cookie</strong> – a  Map that maps cookie names to a single  Cookie object. Cookies are retrieved according to the semantics of  HttpServletRequest.getCookies(). If the same name is shared by multiple cookies, an implementation must use the first one encountered in the array of Cookie objects returned by the  getCookies() method. However, users of the cookie implicit object must be aware that the ordering of cookies is currently unspecified in the servlet specification.</li>
-<li><strong>initParam</strong> – a  Map that maps context initialization parameter names to their String parameter value (obtained by calling  ServletContext.getInitParameter(String name) )</li>
+<li><strong>pageContext</strong> -- the PageContext object</li>
+<li><strong>pageScope</strong> -- a Map that maps page-scoped attribute names to their values</li>
+<li><strong>requestScope</strong> -- a Map that maps request-scoped attribute names to their values</li>
+<li><strong>sessionScope</strong> -- a Map that maps session-scoped attribute names to their values</li>
+<li><strong>applicationScope</strong> -- a Map that maps application-scoped attribute names to their values</li>
+<li><strong>param</strong> -- a Map that maps parameter names to a single String parameter value(obtained by calling ServletRequest.getParameter(String name) )</li>
+<li><strong>paramValues</strong> -- a Map that maps parameter names to a  String[] of all values for that parameter (obtained by calling  ServletRequest.getParameterValues(Stringname) )</li>
+<li><strong>header</strong> -- a Map that maps header names to a single String header value (obtained by calling  HttpServletRequest.getHeader(String name) )</li>
+<li><strong>headerValues</strong> -- a Map that maps header names to a  String[] of all values for that header (obtained by calling  HttpervletRequest.getHeaders(String) )</li>
+<li><strong>cookie</strong> -- a  Map that maps cookie names to a single  Cookie object. Cookies are retrieved according to the semantics of  HttpServletRequest.getCookies(). If the same name is shared by multiple cookies, an implementation must use the first one encountered in the array of Cookie objects returned by the  getCookies() method. However, users of the cookie implicit object must be aware that the ordering of cookies is currently unspecified in the servlet specification.</li>
+<li><strong>initParam</strong> -- a  Map that maps context initialization parameter names to their String parameter value (obtained by calling  ServletContext.getInitParameter(String name) )</li>
 </ul>
-<h1 id="标签扩展"><a href="#标签扩展" class="headerlink" title="标签扩展"></a>标签扩展</h1><p>JSP 规范提供了一种标签扩展机制，通过这种机制可以自定义动作元素，使用自定义的动作元素，可以减少对脚本元素的使用，使 JSP page 更简洁。</p>
-<h2 id="标准标签库"><a href="#标准标签库" class="headerlink" title="标准标签库"></a>标准标签库</h2><p>JSP标准标签库（JSTL）是一个JSP标签集合，它封装了 JSP 应用的通用核心功能。标准标签库由 JSP 容器负责实现。</p>
+<h1>标签扩展</h1>
+<p>JSP 规范提供了一种标签扩展机制，通过这种机制可以自定义动作元素，使用自定义的动作元素，可以减少对脚本元素的使用，使 JSP page 更简洁。</p>
+<h2>标准标签库</h2>
+<p>JSP标准标签库（JSTL）是一个JSP标签集合，它封装了 JSP 应用的通用核心功能。标准标签库由 JSP 容器负责实现。</p>
 <p>JSTL支持通用的、结构化的任务，比如迭代，条件判断，XML文档操作，国际化标签，SQL标签。 除了这些，它还提供了一个框架来使用集成JSTL的自定义标签。</p>
 <p>根据JSTL标签所提供的功能，可以将其分为5个类别。</p>
 <ul>
@@ -585,7 +630,8 @@
 <li>XML 标签</li>
 <li>JSTL 函数</li>
 </ul>
-<h2 id="自定义标签"><a href="#自定义标签" class="headerlink" title="自定义标签"></a>自定义标签</h2><p>自定义标签是用户定义的 JSP 语言元素。当一个包含自定义标签的 JSP page 被转换为 Servlet 时，这些标签会被转化为 tag handler 对象的操作，即当 Servlet 执行时 Web 容器会调用这些操作。</p>
+<h2>自定义标签</h2>
+<p>自定义标签是用户定义的 JSP 语言元素。当一个包含自定义标签的 JSP page 被转换为 Servlet 时，这些标签会被转化为 tag handler 对象的操作，即当 Servlet 执行时 Web 容器会调用这些操作。</p>
 <p>通过继承<code>javax.servlet.jsp.tagext.SimpleTagSupport</code>工具类，并重写<code>doTag()</code>方法来开发一个最简单的自定义标签。</p>
 <p>自定义步骤：</p>
 <ol>
@@ -593,17 +639,31 @@
 <li>创建 TLD 文件（文件名以.tld结尾），将写好的类映射成 JSP 标签。</li>
 </ol>
 <p>TLD（taglib description）是JSP的标签库描述文件。</p>
-<p><em>示例：</em><br>1、创建一个HelloTag类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.servlet.jsp.tagext.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.jsp.*;</span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloTag</span> <span class="keyword">extends</span> <span class="title">SimpleTagSupport</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doTag</span><span class="params">()</span> <span class="keyword">throws</span> JspException, IOException </span>&#123;</span><br><span class="line">    JspWriter out = getJspContext().getOut();</span><br><span class="line">    out.println(<span class="string">"Hello Custom Tag!"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>2、创建 TLD文件：custom.tld，将其放在 Web 应用的<code>WEB-INF</code>目录下。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">taglib</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tlib-version</span>&gt;</span>1.0<span class="tag">&lt;/<span class="name">tlib-version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">jsp-version</span>&gt;</span>2.0<span class="tag">&lt;/<span class="name">jsp-version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">short-name</span>&gt;</span>Example TLD<span class="tag">&lt;/<span class="name">short-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tag</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tag-class</span>&gt;</span>com.runoob.HelloTag<span class="tag">&lt;/<span class="name">tag-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body-content</span>&gt;</span>empty<span class="tag">&lt;/<span class="name">body-content</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tag</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">taglib</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>3、在 JSP page 中使用自定义标签。<br>我们就可以在JSP文件中使用Hello标签：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib prefix=<span class="string">"ex"</span> uri=<span class="string">"WEB-INF/custom.tld"</span>%&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;A sample custom tag&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;ex:Hello/&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
-<h1 id="标签文件（Tag-File）"><a href="#标签文件（Tag-File）" class="headerlink" title="标签文件（Tag File）"></a>标签文件（Tag File）</h1><p>JSP 2.0提供了一种仅用 JSP 语法实现标签扩展的方法，即：使用标签文件来创建标签库。<br>标签文件的后缀名为：<code>.tag</code>或者<code>.tagx</code>。</p>
+<p><em>示例：</em>
+1、创建一个HelloTag类
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.servlet.jsp.tagext.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.jsp.*;</span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloTag</span> <span class="keyword">extends</span> <span class="title">SimpleTagSupport</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doTag</span><span class="params">()</span> <span class="keyword">throws</span> JspException, IOException </span>&#123;</span><br><span class="line">    JspWriter out = getJspContext().getOut();</span><br><span class="line">    out.println(<span class="string">"Hello Custom Tag!"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2、创建 TLD文件：custom.tld，将其放在 Web 应用的<code>WEB-INF</code>目录下。
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">taglib</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tlib-version</span>&gt;</span>1.0<span class="tag">&lt;/<span class="name">tlib-version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">jsp-version</span>&gt;</span>2.0<span class="tag">&lt;/<span class="name">jsp-version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">short-name</span>&gt;</span>Example TLD<span class="tag">&lt;/<span class="name">short-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tag</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tag-class</span>&gt;</span>com.runoob.HelloTag<span class="tag">&lt;/<span class="name">tag-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body-content</span>&gt;</span>empty<span class="tag">&lt;/<span class="name">body-content</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tag</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">taglib</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>3、在 JSP page 中使用自定义标签。
+我们就可以在JSP文件中使用Hello标签：
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib prefix=<span class="string">"ex"</span> uri=<span class="string">"WEB-INF/custom.tld"</span>%&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;A sample custom tag&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;ex:Hello/&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<h1>标签文件（Tag File）</h1>
+<p>JSP 2.0提供了一种仅用 JSP 语法实现标签扩展的方法，即：使用标签文件来创建标签库。
+标签文件的后缀名为：<code>.tag</code>或者<code>.tagx</code>。</p>
 <p>标签文件存放目录：</p>
 <ul>
 <li>jar包的<code>/META-INF/tags/</code>目录或其子目录。</li>
 <li>war包的<code>/WEB-INF/tags/</code>目录或其子目录。</li>
 </ul>
-<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><p>教程：<br><a href="https://docs.oracle.com/javaee/5/tutorial/doc/" target="_blank" rel="noopener">https://docs.oracle.com/javaee/5/tutorial/doc/</a><br><a href="https://www.tutorialspoint.com/jsp/index.htm" target="_blank" rel="noopener">https://www.tutorialspoint.com/jsp/index.htm</a></p>
-<p>JSP 规范：<br>JSR 245: JavaServerTM Pages 2.1<br><a href="https://jcp.org/en/jsr/detail?id=245" target="_blank" rel="noopener">https://jcp.org/en/jsr/detail?id=245</a><br>JSR 52: A Standard Tag Library for JavaServer Pages<br><a href="https://jcp.org/en/jsr/detail?id=52" target="_blank" rel="noopener">https://jcp.org/en/jsr/detail?id=52</a></p>
+<h1>相关资料</h1>
+<p>教程：
+https://docs.oracle.com/javaee/5/tutorial/doc/
+https://www.tutorialspoint.com/jsp/index.htm</p>
+<p>JSP 规范：
+JSR 245: JavaServerTM Pages 2.1
+https://jcp.org/en/jsr/detail?id=245
+JSR 52: A Standard Tag Library for JavaServer Pages
+https://jcp.org/en/jsr/detail?id=52</p>
 
       
     </div>
@@ -804,7 +864,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP-技术"><span class="nav-number">1.</span> <span class="nav-text">JSP 技术</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本概念"><span class="nav-number">2.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSP-page内容"><span class="nav-number">3.</span> <span class="nav-text">JSP page内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#指令（Directives）"><span class="nav-number">3.1.</span> <span class="nav-text">指令（Directives）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动作（Actions）"><span class="nav-number">3.2.</span> <span class="nav-text">动作（Actions）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脚本元素（Scripting-Elements）"><span class="nav-number">3.3.</span> <span class="nav-text">脚本元素（Scripting Elements）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EL表达式"><span class="nav-number">4.</span> <span class="nav-text">EL表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">4.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐含对象"><span class="nav-number">4.2.</span> <span class="nav-text">隐含对象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标签扩展"><span class="nav-number">5.</span> <span class="nav-text">标签扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#标准标签库"><span class="nav-number">5.1.</span> <span class="nav-text">标准标签库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义标签"><span class="nav-number">5.2.</span> <span class="nav-text">自定义标签</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标签文件（Tag-File）"><span class="nav-number">6.</span> <span class="nav-text">标签文件（Tag File）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相关资料"><span class="nav-number">7.</span> <span class="nav-text">相关资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">JSP 技术</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">JSP page内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">指令（Directives）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">动作（Actions）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.</span> <span class="nav-text">脚本元素（Scripting Elements）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">EL表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.2.</span> <span class="nav-text">隐含对象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">标签扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.1.</span> <span class="nav-text">标准标签库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.2.</span> <span class="nav-text">自定义标签</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">标签文件（Tag File）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">相关资料</span></a></li></ol></div>
             
 
           </div>
@@ -1016,7 +1076,24 @@
     }
   });
 </script>
-<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
     
   

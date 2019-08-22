@@ -448,35 +448,54 @@
       
         <p>构建Web应用时，把请求转发给另一个servlet处理、或在response中包含另一个servlet的输出通常是很有用的。<code>RequestDispatcher</code>接口提供了一种机制来实现这种功能。</p>
 <p>此接口的主要目的是包装 Servlet，但 Servlet 容器可以创建 RequestDispatcher 对象来包装任何类型的资源。被包装的 Servlet 也被称为目标 Servlet。</p>
-<h1 id="获取RequestDispatcher"><a href="#获取RequestDispatcher" class="headerlink" title="获取RequestDispatcher"></a>获取RequestDispatcher</h1><p>使用<code>ServletContext</code>接口的下面两个方法获取 RequestDispatcher：</p>
+<h1>获取RequestDispatcher</h1>
+<p>使用<code>ServletContext</code>接口的下面两个方法获取 RequestDispatcher：</p>
 <ul>
-<li><strong>getRequestDispatcher(String path)</strong>  – path 需是基于 ServletContext 根路径的</li>
-<li><strong>getNamedDispatcher(String name)</strong> – name 是一个 Servlet 名称，即在web.xml中<code>&lt;servlet-name&gt;</code>标签指定的名称或<code>@WebServlet</code>注解指定的名称。</li>
+<li><strong>getRequestDispatcher(String path)</strong>  -- path 需是基于 ServletContext 根路径的</li>
+<li><strong>getNamedDispatcher(String name)</strong> -- name 是一个 Servlet 名称，即在web.xml中<code>&lt;servlet-name&gt;</code>标签指定的名称或<code>@WebServlet</code>注解指定的名称。</li>
 </ul>
 <p>另外，也可以使用<code>ServletRequest</code>接口的<code>getRequestDispatcher(String path)</code>方法。这个方法的 path 参数指定的路径需是相对于当前 Servlet 的。</p>
-<h1 id="Include-方法"><a href="#Include-方法" class="headerlink" title="Include 方法"></a>Include 方法</h1><p>用途：将目标 Servlet 输出的内容添加到当前 Servlet 对象的输出中。</p>
+<h1>Include 方法</h1>
+<p>用途：将目标 Servlet 输出的内容添加到当前 Servlet 对象的输出中。</p>
 <p>该方法可在任何时间被调用，目标 Servlet 可以访问 Request 对象中的所有内容，但它只能把信息写到 Request 对象的<code>ServletOutputStream</code>或<code>Writer</code>中，或提交在最后写保留在response缓冲区中的内容，或通过显式地调用<code>ServletResponse</code>接口的<code>flushBuffer</code>方法。它不能设置响应头部信息或调用任何影响响应头部信息的方法，<code>HttpServletRequest.getSession()</code>和<code>HttpServletRequest.getSession(boolean)</code>方法除外。</p>
 <p>当使用<code>getRequestDispatcher(String path)</code>方法获取 RequestDispatcher 对象时，传入入目标 Servlet 的 Request 对象必需设置下面这些属性：</p>
 <blockquote>
-<p>javax.servlet.include.request_uri<br>javax.servlet.include.context_path<br>javax.servlet.include.servlet_path<br>javax.servlet.include.mapping<br>javax.servlet.include.path_info<br>javax.servlet.include.query_string</p>
+<p>javax.servlet.include.request_uri
+javax.servlet.include.context_path
+javax.servlet.include.servlet_path
+javax.servlet.include.mapping
+javax.servlet.include.path_info
+javax.servlet.include.query_string</p>
 </blockquote>
 <p>这些属性有什么用？？？</p>
-<h1 id="Forward-方法"><a href="#Forward-方法" class="headerlink" title="Forward 方法"></a>Forward 方法</h1><p>用途： 将 Request 对象转发给目标 Servlet 处理。</p>
+<h1>Forward 方法</h1>
+<p>用途： 将 Request 对象转发给目标 Servlet 处理。</p>
 <p>如果已经访问了 ServletOutputStream 对象或者 PrintWriter 对象，那么就不能调用该方法了。</p>
 <p>当使用<code>getRequestDispatcher(String path)</code>方法获取 RequestDispatcher 对象时，传入入目标 Servlet 的 Request 对象必需设置下面这些属性：</p>
 <blockquote>
-<p>javax.servlet.forward.mapping<br>javax.servlet.forward.request_uri<br>javax.servlet.forward.context_path<br>javax.servlet.forward.servlet_path<br>javax.servlet.forward.path_info<br>javax.servlet.forward.query_string</p>
+<p>javax.servlet.forward.mapping
+javax.servlet.forward.request_uri
+javax.servlet.forward.context_path
+javax.servlet.forward.servlet_path
+javax.servlet.forward.path_info
+javax.servlet.forward.query_string</p>
 </blockquote>
 <p>通过这些属性，目标 Servlet 可以访问<strong>原始</strong> Request 对象中的请求路径。</p>
-<h1 id="Dispatch方法"><a href="#Dispatch方法" class="headerlink" title="Dispatch方法"></a>Dispatch方法</h1><p><code>AsyncContext</code>接口提供了 dispatch 方法，使用该方法可以对请求进行分发。</p>
+<h1>Dispatch方法</h1>
+<p><code>AsyncContext</code>接口提供了 dispatch 方法，使用该方法可以对请求进行分发。</p>
 <ul>
-<li><strong>dispatch(path)</strong> – path 需是基于 ServletContext 根路径的</li>
+<li><strong>dispatch(path)</strong> -- path 需是基于 ServletContext 根路径的</li>
 <li><strong>dispatch(servletContext, path)</strong></li>
 <li><strong>dispatch()</strong></li>
 </ul>
 <p>目标 Servlet 可以通过下面这些属性名访问原始 Request 中的路径信息。</p>
 <blockquote>
-<p>javax.servlet.async.mapping<br>javax.servlet.async.request_uri<br>javax.servlet.async.context_path<br>javax.servlet.async.servlet_path<br>javax.servlet.async.path_info<br>javax.servlet.async.query_string</p>
+<p>javax.servlet.async.mapping
+javax.servlet.async.request_uri
+javax.servlet.async.context_path
+javax.servlet.async.servlet_path
+javax.servlet.async.path_info
+javax.servlet.async.query_string</p>
 </blockquote>
 
       
@@ -682,7 +701,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#获取RequestDispatcher"><span class="nav-number">1.</span> <span class="nav-text">获取RequestDispatcher</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Include-方法"><span class="nav-number">2.</span> <span class="nav-text">Include 方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Forward-方法"><span class="nav-number">3.</span> <span class="nav-text">Forward 方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dispatch方法"><span class="nav-number">4.</span> <span class="nav-text">Dispatch方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">获取RequestDispatcher</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Include 方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Forward 方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Dispatch方法</span></a></li></ol></div>
             
 
           </div>
@@ -894,7 +913,24 @@
     }
   });
 </script>
-<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
     
   

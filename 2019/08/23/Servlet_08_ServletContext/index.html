@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="javax.servlet.ServletContext接口由 Servlet 容器提供者实现。利用ServletContext对象，Servlet 可以记录事件日志，获取 URL，存放属性以供 Context 中的其它 Servlet 访问。 每个部署在容器中的 Web 应用都有一个ServletContext实例与之关联。如果容器是分布式的，那么 Web 应用在每个 JVM 中都有一个Serv">
+  <meta name="description" content="javax.servlet.ServletContext接口由 Servlet 容器提供者实现。 利用ServletContext对象，Servlet 可以记录事件日志，获取 URL，存放属性以供 Context 中的其它 Servlet 访问。 每个部署在容器中的 Web 应用都有一个ServletContext实例与之关联。 如果容器是分布式的，那么 Web 应用在每个 JVM 中都有一个Se">
 <meta property="og:type" content="article">
 <meta property="og:title" content="08_ServletContext">
 <meta property="og:url" content="http://yoursite.com/2019/08/23/Servlet_08_ServletContext/index.html">
 <meta property="og:site_name" content="wangzk1900&#39;s site">
-<meta property="og:description" content="javax.servlet.ServletContext接口由 Servlet 容器提供者实现。利用ServletContext对象，Servlet 可以记录事件日志，获取 URL，存放属性以供 Context 中的其它 Servlet 访问。 每个部署在容器中的 Web 应用都有一个ServletContext实例与之关联。如果容器是分布式的，那么 Web 应用在每个 JVM 中都有一个Serv">
+<meta property="og:description" content="javax.servlet.ServletContext接口由 Servlet 容器提供者实现。 利用ServletContext对象，Servlet 可以记录事件日志，获取 URL，存放属性以供 Context 中的其它 Servlet 访问。 每个部署在容器中的 Web 应用都有一个ServletContext实例与之关联。 如果容器是分布式的，那么 Web 应用在每个 JVM 中都有一个Se">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-08-22T02:51:54.869Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="08_ServletContext">
-<meta name="twitter:description" content="javax.servlet.ServletContext接口由 Servlet 容器提供者实现。利用ServletContext对象，Servlet 可以记录事件日志，获取 URL，存放属性以供 Context 中的其它 Servlet 访问。 每个部署在容器中的 Web 应用都有一个ServletContext实例与之关联。如果容器是分布式的，那么 Web 应用在每个 JVM 中都有一个Serv">
+<meta name="twitter:description" content="javax.servlet.ServletContext接口由 Servlet 容器提供者实现。 利用ServletContext对象，Servlet 可以记录事件日志，获取 URL，存放属性以供 Context 中的其它 Servlet 访问。 每个部署在容器中的 Web 应用都有一个ServletContext实例与之关联。 如果容器是分布式的，那么 Web 应用在每个 JVM 中都有一个Se">
 
 
 
@@ -446,14 +446,18 @@
       
 
       
-        <p><code>javax.servlet.ServletContext</code>接口由 Servlet 容器提供者实现。<br>利用<code>ServletContext</code>对象，Servlet 可以记录事件日志，获取 URL，存放属性以供 Context 中的其它 Servlet 访问。</p>
-<p>每个部署在容器中的 Web 应用都有一个<code>ServletContext</code>实例与之关联。<br>如果容器是分布式的，那么 Web 应用在每个 JVM 中都有一个<code>ServletContext</code>实例。</p>
-<p><strong>初始化参数</strong><br><code>ServletContext</code>接口提供了下面两个方法获取初始化参数信息：</p>
+        <p><code>javax.servlet.ServletContext</code>接口由 Servlet 容器提供者实现。
+利用<code>ServletContext</code>对象，Servlet 可以记录事件日志，获取 URL，存放属性以供 Context 中的其它 Servlet 访问。</p>
+<p>每个部署在容器中的 Web 应用都有一个<code>ServletContext</code>实例与之关联。
+如果容器是分布式的，那么 Web 应用在每个 JVM 中都有一个<code>ServletContext</code>实例。</p>
+<p><strong>初始化参数</strong>
+<code>ServletContext</code>接口提供了下面两个方法获取初始化参数信息：</p>
 <ul>
-<li><strong>getInitParameter</strong>  – 根据参数名称获取参数值。</li>
-<li><strong>getInitParameterNames</strong>  – 获取 ServletContext 中可用的参数名称，不包含在web.xml配置的参数。</li>
+<li><strong>getInitParameter</strong>  -- 根据参数名称获取参数值。</li>
+<li><strong>getInitParameterNames</strong>  -- 获取 ServletContext 中可用的参数名称，不包含在web.xml配置的参数。</li>
 </ul>
-<p><strong>配置方法</strong><br>下面这些方法是从 Servlet 3.0 开始引入的：</p>
+<p><strong>配置方法</strong>
+下面这些方法是从 Servlet 3.0 开始引入的：</p>
 <ul>
 <li><code>ServletContextListener</code>的<code>contexInitialized</code></li>
 <li><code>ServletContainerInitializer</code>的<code>onStartup</code></li>
@@ -461,9 +465,12 @@
 <p>用来定义 Servlet、Filter和 URL pattern，只能在应用被初始化时调用这些方法。</p>
 <p>另外，<code>ServletContext</code>接口还提供了添加 Servlet、Filter和 Listener 对象的方法。比如：</p>
 <blockquote>
-<p>addServlet(String servletName, String className)<br>addFilter(String filterName, String className)<br>void addListener(String className)</p>
+<p>addServlet(String servletName, String className)
+addFilter(String filterName, String className)
+void addListener(String className)</p>
 </blockquote>
-<p><strong>Context 属性</strong><br>Servlet 可以在 Context 中绑定属性，Context 中的其它 Servlet 也可以访问这些属性。</p>
+<p><strong>Context 属性</strong>
+Servlet 可以在 Context 中绑定属性，Context 中的其它 Servlet 也可以访问这些属性。</p>
 <p>相关的方法：</p>
 <ul>
 <li>setAttribute</li>
@@ -471,7 +478,8 @@
 <li>getAttributeNames</li>
 <li>removeAttribute</li>
 </ul>
-<p><strong>资源</strong><br><code>ServletContext</code>接口提供了访问 Web 应用中静态内容文档的方法。</p>
+<p><strong>资源</strong>
+<code>ServletContext</code>接口提供了访问 Web 应用中静态内容文档的方法。</p>
 <p>相关的方法：</p>
 <ul>
 <li>getResource</li>
@@ -867,7 +875,24 @@
     }
   });
 </script>
-<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
     
   

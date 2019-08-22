@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="线性表（List）线性表ADT的定义ADT 线性表（List） Data  线性表的数据对象集合为{a1,a2,…,an}，每个元素的类型均为DataType。其中，除第一个元素a1外，每一个元素有且只有一个直接前驱元素，除了最后一个元素an外，每一个元素有且只有一个直接后继元素。数据元素之间的关系是一对一的关系。  Operation  判断List是否为空 获取表中元素的个数 访问第 k 个元">
+  <meta name="description" content="线性表（List） 线性表ADT的定义 ADT 线性表（List） Data  线性表的数据对象集合为{a1,a2,…,an}，每个元素的类型均为DataType。其中，除第一个元素a1外，每一个元素有且只有一个直接前驱元素，除了最后一个元素an外，每一个元素有且只有一个直接后继元素。数据元素之间的关系是一对一的关系。  Operation  判断List是否为空 获取表中元素的个数 访问第 k">
 <meta property="og:type" content="article">
 <meta property="og:title" content="05_基于线性结构的ADT">
 <meta property="og:url" content="http://yoursite.com/2019/05/25/数据结构和算法_05_基于线性结构的ADT/index.html">
 <meta property="og:site_name" content="wangzk1900&#39;s site">
-<meta property="og:description" content="线性表（List）线性表ADT的定义ADT 线性表（List） Data  线性表的数据对象集合为{a1,a2,…,an}，每个元素的类型均为DataType。其中，除第一个元素a1外，每一个元素有且只有一个直接前驱元素，除了最后一个元素an外，每一个元素有且只有一个直接后继元素。数据元素之间的关系是一对一的关系。  Operation  判断List是否为空 获取表中元素的个数 访问第 k 个元">
+<meta property="og:description" content="线性表（List） 线性表ADT的定义 ADT 线性表（List） Data  线性表的数据对象集合为{a1,a2,…,an}，每个元素的类型均为DataType。其中，除第一个元素a1外，每一个元素有且只有一个直接前驱元素，除了最后一个元素an外，每一个元素有且只有一个直接后继元素。数据元素之间的关系是一对一的关系。  Operation  判断List是否为空 获取表中元素的个数 访问第 k">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-05-25T14:39:06.269Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="05_基于线性结构的ADT">
-<meta name="twitter:description" content="线性表（List）线性表ADT的定义ADT 线性表（List） Data  线性表的数据对象集合为{a1,a2,…,an}，每个元素的类型均为DataType。其中，除第一个元素a1外，每一个元素有且只有一个直接前驱元素，除了最后一个元素an外，每一个元素有且只有一个直接后继元素。数据元素之间的关系是一对一的关系。  Operation  判断List是否为空 获取表中元素的个数 访问第 k 个元">
+<meta name="twitter:description" content="线性表（List） 线性表ADT的定义 ADT 线性表（List） Data  线性表的数据对象集合为{a1,a2,…,an}，每个元素的类型均为DataType。其中，除第一个元素a1外，每一个元素有且只有一个直接前驱元素，除了最后一个元素an外，每一个元素有且只有一个直接后继元素。数据元素之间的关系是一对一的关系。  Operation  判断List是否为空 获取表中元素的个数 访问第 k">
 
 
 
@@ -427,7 +427,9 @@
       
 
       
-        <h1 id="线性表（List）"><a href="#线性表（List）" class="headerlink" title="线性表（List）"></a>线性表（List）</h1><h2 id="线性表ADT的定义"><a href="#线性表ADT的定义" class="headerlink" title="线性表ADT的定义"></a>线性表ADT的定义</h2><p><strong>ADT</strong> 线性表（List）</p>
+        <h1>线性表（List）</h1>
+<h2>线性表ADT的定义</h2>
+<p><strong>ADT</strong> 线性表（List）</p>
 <p><strong>Data</strong></p>
 <ul>
 <li>线性表的数据对象集合为{a1,a2,…,an}，每个元素的类型均为<strong>Data</strong>Type。其中，除第一个元素a1外，每一个元素有且只有一个直接前驱元素，除了最后一个元素an外，每一个元素有且只有一个直接后继元素。数据元素之间的关系是一对一的关系。</li>
@@ -444,10 +446,14 @@
 <li>复制一个线性表</li>
 </ul>
 <p>这里只列举了一些基本的操作，在实际编程过程中，需要根据不同的业务需求选择合适的操作。</p>
-<h2 id="线性表ADT的实现"><a href="#线性表ADT的实现" class="headerlink" title="线性表ADT的实现"></a>线性表ADT的实现</h2><p>既可以用数组实现也可以使用链表实现。</p>
-<p>我的练习：<br><a href="https://github.com/wangzk1900/Data-structures-and-algorithms/tree/master/list" target="_blank" rel="noopener">线性表ADT的实现</a></p>
-<h1 id="栈（Stack）"><a href="#栈（Stack）" class="headerlink" title="栈（Stack）"></a>栈（Stack）</h1><p>栈（Stack）是一个后进先出（Last in first out,LIFO）的线性表，它只允许在表的一端（栈顶）进行删除和插入操作。</p>
-<h2 id="栈ADT的定义"><a href="#栈ADT的定义" class="headerlink" title="栈ADT的定义"></a>栈ADT的定义</h2><p><strong>ADT</strong> 栈（Stack）</p>
+<h2>线性表ADT的实现</h2>
+<p>既可以用数组实现也可以使用链表实现。</p>
+<p>我的练习：
+<a href="https://github.com/wangzk1900/Data-structures-and-algorithms/tree/master/list" target="_blank" rel="noopener">线性表ADT的实现</a></p>
+<h1>栈（Stack）</h1>
+<p>栈（Stack）是一个后进先出（Last in first out,LIFO）的线性表，它只允许在表的一端（栈顶）进行删除和插入操作。</p>
+<h2>栈ADT的定义</h2>
+<p><strong>ADT</strong> 栈（Stack）</p>
 <p><strong>Data</strong></p>
 <ul>
 <li>与线性表相同</li>
@@ -457,9 +463,14 @@
 <li>入栈——在栈顶插入一个元素</li>
 <li>出栈——在栈顶删除一个元素，并返回</li>
 </ul>
-<h2 id="栈ADT的实现"><a href="#栈ADT的实现" class="headerlink" title="栈ADT的实现"></a>栈ADT的实现</h2><p>我的练习：<br><a href="https://github.com/wangzk1900/Data-structures-and-algorithms/tree/master/list" target="_blank" rel="noopener">栈ADT的实现</a></p>
-<h2 id="栈的应用"><a href="#栈的应用" class="headerlink" title="栈的应用"></a>栈的应用</h2><h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><p>队列（Queue）是一种先进先出（First In First Out, FIFO）的线性表，它只允许在一端进行插入操作，而在另一端进行删除操作。</p>
-<h2 id="队列ADT的定义"><a href="#队列ADT的定义" class="headerlink" title="队列ADT的定义"></a>队列ADT的定义</h2><p><strong>ADT</strong> 队列（Queue）</p>
+<h2>栈ADT的实现</h2>
+<p>我的练习：
+<a href="https://github.com/wangzk1900/Data-structures-and-algorithms/tree/master/list" target="_blank" rel="noopener">栈ADT的实现</a></p>
+<h2>栈的应用</h2>
+<h1>队列</h1>
+<p>队列（Queue）是一种先进先出（First In First Out, FIFO）的线性表，它只允许在一端进行插入操作，而在另一端进行删除操作。</p>
+<h2>队列ADT的定义</h2>
+<p><strong>ADT</strong> 队列（Queue）</p>
 <p><strong>Data</strong></p>
 <ul>
 <li>与线性表相同</li>
@@ -469,9 +480,13 @@
 <li>入队——在表的一端插入一个元素</li>
 <li>出队——在表的另一端删除一个元素，并返回该元素</li>
 </ul>
-<h2 id="队列ADT的实现"><a href="#队列ADT的实现" class="headerlink" title="队列ADT的实现"></a>队列ADT的实现</h2><p>我的练习：<br><a href="https://github.com/wangzk1900/Data-structures-and-algorithms/tree/master/queue" target="_blank" rel="noopener">队列ADT的实现</a></p>
-<h1 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h1><p>双端队列（Deque）是一种前端和后端都支持插入和删除操作的队列。</p>
-<h2 id="双端队列ADT的定义"><a href="#双端队列ADT的定义" class="headerlink" title="双端队列ADT的定义"></a>双端队列ADT的定义</h2><p><strong>ADT</strong> 双端队列（Deque）</p>
+<h2>队列ADT的实现</h2>
+<p>我的练习：
+<a href="https://github.com/wangzk1900/Data-structures-and-algorithms/tree/master/queue" target="_blank" rel="noopener">队列ADT的实现</a></p>
+<h1>双端队列</h1>
+<p>双端队列（Deque）是一种前端和后端都支持插入和删除操作的队列。</p>
+<h2>双端队列ADT的定义</h2>
+<p><strong>ADT</strong> 双端队列（Deque）</p>
 <p><strong>Data</strong></p>
 <ul>
 <li>与线性表相同</li>
@@ -483,7 +498,9 @@
 <li>后端插入——在表的后端插入一个元素</li>
 <li>后端删除——在表的后端删除一个元素，并返回该元素</li>
 </ul>
-<h2 id="双端队列ADT的实现"><a href="#双端队列ADT的实现" class="headerlink" title="双端队列ADT的实现"></a>双端队列ADT的实现</h2><p>我的练习：<br><a href="https://github.com/wangzk1900/Data-structures-and-algorithms/tree/master/deque" target="_blank" rel="noopener">双端队列ADT的实现</a></p>
+<h2>双端队列ADT的实现</h2>
+<p>我的练习：
+<a href="https://github.com/wangzk1900/Data-structures-and-algorithms/tree/master/deque" target="_blank" rel="noopener">双端队列ADT的实现</a></p>
 
       
     </div>
@@ -688,7 +705,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线性表（List）"><span class="nav-number">1.</span> <span class="nav-text">线性表（List）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性表ADT的定义"><span class="nav-number">1.1.</span> <span class="nav-text">线性表ADT的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性表ADT的实现"><span class="nav-number">1.2.</span> <span class="nav-text">线性表ADT的实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#栈（Stack）"><span class="nav-number">2.</span> <span class="nav-text">栈（Stack）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#栈ADT的定义"><span class="nav-number">2.1.</span> <span class="nav-text">栈ADT的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈ADT的实现"><span class="nav-number">2.2.</span> <span class="nav-text">栈ADT的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈的应用"><span class="nav-number">2.3.</span> <span class="nav-text">栈的应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#队列"><span class="nav-number">3.</span> <span class="nav-text">队列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#队列ADT的定义"><span class="nav-number">3.1.</span> <span class="nav-text">队列ADT的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#队列ADT的实现"><span class="nav-number">3.2.</span> <span class="nav-text">队列ADT的实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#双端队列"><span class="nav-number">4.</span> <span class="nav-text">双端队列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#双端队列ADT的定义"><span class="nav-number">4.1.</span> <span class="nav-text">双端队列ADT的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双端队列ADT的实现"><span class="nav-number">4.2.</span> <span class="nav-text">双端队列ADT的实现</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">线性表（List）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">线性表ADT的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">线性表ADT的实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">栈（Stack）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">栈ADT的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">栈ADT的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">栈的应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">队列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">队列ADT的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">队列ADT的实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">双端队列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.</span> <span class="nav-text">双端队列ADT的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.2.</span> <span class="nav-text">双端队列ADT的实现</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -900,7 +917,24 @@
     }
   });
 </script>
-<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
     
   

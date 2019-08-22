@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="什么是树？树是一种非线性结构，节点之间是一对多的关系。如下图所示： 树中的节点分为三类：  根节点——只有子节点，没有父节点。上图中 A 是根节点。 中间节点——既有父节点，又有子节点。例如上图中的 D、E、G、H。 叶（子）节点——只有父节点，没有子节点。例如上图中的 K、J、F。  节点之间的关系：  父节点——若一个节点有子节点，则这个节点是其子节点的父节点。在上图中，A 是 B 和 C 的">
+  <meta name="description" content="什么是树？ 树是一种非线性结构，节点之间是一对多的关系。如下图所示：  树中的节点分为三类：  根节点——只有子节点，没有父节点。上图中 A 是根节点。 中间节点——既有父节点，又有子节点。例如上图中的 D、E、G、H。 叶（子）节点——只有父节点，没有子节点。例如上图中的 K、J、F。  节点之间的关系：  父节点——若一个节点有子节点，则这个节点是其子节点的父节点。在上图中，A 是 B 和 C">
 <meta property="og:type" content="article">
 <meta property="og:title" content="06_树形结构">
 <meta property="og:url" content="http://yoursite.com/2019/05/26/数据结构和算法_06_树形结构/index.html">
 <meta property="og:site_name" content="wangzk1900&#39;s site">
-<meta property="og:description" content="什么是树？树是一种非线性结构，节点之间是一对多的关系。如下图所示： 树中的节点分为三类：  根节点——只有子节点，没有父节点。上图中 A 是根节点。 中间节点——既有父节点，又有子节点。例如上图中的 D、E、G、H。 叶（子）节点——只有父节点，没有子节点。例如上图中的 K、J、F。  节点之间的关系：  父节点——若一个节点有子节点，则这个节点是其子节点的父节点。在上图中，A 是 B 和 C 的">
+<meta property="og:description" content="什么是树？ 树是一种非线性结构，节点之间是一对多的关系。如下图所示：  树中的节点分为三类：  根节点——只有子节点，没有父节点。上图中 A 是根节点。 中间节点——既有父节点，又有子节点。例如上图中的 D、E、G、H。 叶（子）节点——只有父节点，没有子节点。例如上图中的 K、J、F。  节点之间的关系：  父节点——若一个节点有子节点，则这个节点是其子节点的父节点。在上图中，A 是 B 和 C">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/450px-Treedatastructure.png">
 <meta property="og:updated_time" content="2019-05-28T05:45:14.502Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="06_树形结构">
-<meta name="twitter:description" content="什么是树？树是一种非线性结构，节点之间是一对多的关系。如下图所示： 树中的节点分为三类：  根节点——只有子节点，没有父节点。上图中 A 是根节点。 中间节点——既有父节点，又有子节点。例如上图中的 D、E、G、H。 叶（子）节点——只有父节点，没有子节点。例如上图中的 K、J、F。  节点之间的关系：  父节点——若一个节点有子节点，则这个节点是其子节点的父节点。在上图中，A 是 B 和 C 的">
+<meta name="twitter:description" content="什么是树？ 树是一种非线性结构，节点之间是一对多的关系。如下图所示：  树中的节点分为三类：  根节点——只有子节点，没有父节点。上图中 A 是根节点。 中间节点——既有父节点，又有子节点。例如上图中的 D、E、G、H。 叶（子）节点——只有父节点，没有子节点。例如上图中的 K、J、F。  节点之间的关系：  父节点——若一个节点有子节点，则这个节点是其子节点的父节点。在上图中，A 是 B 和 C">
 <meta name="twitter:image" content="http://yoursite.com/images/450px-Treedatastructure.png">
 
 
@@ -441,7 +441,9 @@
       
 
       
-        <h1 id="什么是树？"><a href="#什么是树？" class="headerlink" title="什么是树？"></a>什么是树？</h1><p>树是一种非线性结构，节点之间是一对多的关系。如下图所示：<br><img src="/images/450px-Treedatastructure.png" alt="一棵树"></p>
+        <h1>什么是树？</h1>
+<p>树是一种非线性结构，节点之间是一对多的关系。如下图所示：
+<img src="/images/450px-Treedatastructure.png" alt="一棵树"></p>
 <p>树中的节点分为三类：</p>
 <ul>
 <li>根节点——只有子节点，没有父节点。上图中 A 是根节点。</li>
@@ -461,7 +463,8 @@
 <li>节点的层数——节点深度 + 1。</li>
 </ul>
 <p>树的高度 = 根节点的高度</p>
-<h1 id="树的分类"><a href="#树的分类" class="headerlink" title="树的分类"></a>树的分类</h1><p>根据节点之间有无顺序进行分类：</p>
+<h1>树的分类</h1>
+<p>根据节点之间有无顺序进行分类：</p>
 <ul>
 <li>无序树：树中任意节点的子节点之间没有顺序关系，这种树称为无序树，也称为自由树。</li>
 <li>有序树：树中任意节点的子节点之间有顺序关系，这种树称为有序树。</li>
@@ -482,7 +485,9 @@
 <li>B树：一种对读写操作进行优化的自平衡的二叉查找树，能够保持数据有序，拥有多于两个子树。</li>
 </ul>
 <hr>
-<p>参考资料：<br><a href="https://zh.wikipedia.org/wiki/%E6%A0%91_(%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84" target="_blank" rel="noopener">维基百科</a>)<br><a href="https://time.geekbang.org/column/intro/126" target="_blank" rel="noopener">《数据结构与算法之美》–王争</a></p>
+<p>参考资料：
+<a href="https://zh.wikipedia.org/wiki/%E6%A0%91_(%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)" target="_blank" rel="noopener">维基百科</a>
+<a href="https://time.geekbang.org/column/intro/126" target="_blank" rel="noopener">《数据结构与算法之美》--王争</a></p>
 
       
     </div>
@@ -687,7 +692,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是树？"><span class="nav-number">1.</span> <span class="nav-text">什么是树？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#树的分类"><span class="nav-number">2.</span> <span class="nav-text">树的分类</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">什么是树？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">树的分类</span></a></li></ol></div>
             
 
           </div>
@@ -899,7 +904,24 @@
     }
   });
 </script>
-<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
     
   
