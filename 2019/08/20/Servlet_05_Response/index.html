@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="wangzk1900&#39;s site">
 <meta property="og:description" content="所有的 Response 类都要实现ServletResponse接口。与 Request 对象一样，Response 对象是由 Servlet 容器负责创建和维护的，并将其传入 Servlet 对象的 service()方法。利用 Response 对象中的方法，我们可以编写响应给客户端的内容，做一些相关的配置。 缓冲（Buffering）为了提高效率，可以利用ServletResponse接口">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-19T06:10:38.646Z">
+<meta property="og:updated_time" content="2019-08-22T07:15:01.493Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="05_Response">
 <meta name="twitter:description" content="所有的 Response 类都要实现ServletResponse接口。与 Request 对象一样，Response 对象是由 Servlet 容器负责创建和维护的，并将其传入 Servlet 对象的 service()方法。利用 Response 对象中的方法，我们可以编写响应给客户端的内容，做一些相关的配置。 缓冲（Buffering）为了提高效率，可以利用ServletResponse接口">
@@ -387,7 +387,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-19 14:10:38" itemprop="dateModified" datetime="2019-08-19T14:10:38+08:00">2019-08-19</time>
+                <time title="修改时间：2019-08-22 15:15:01" itemprop="dateModified" datetime="2019-08-22T15:15:01+08:00">2019-08-22</time>
               
             
           </span>
@@ -448,8 +448,24 @@
       
         <p>所有的 Response 类都要实现<code>ServletResponse</code>接口。<br>与 Request 对象一样，Response 对象是由 Servlet 容器负责创建和维护的，并将其传入 Servlet 对象的 <code>service()</code>方法。<br>利用 Response 对象中的方法，我们可以编写响应给客户端的内容，做一些相关的配置。</p>
 <h1 id="缓冲（Buffering）"><a href="#缓冲（Buffering）" class="headerlink" title="缓冲（Buffering）"></a>缓冲（Buffering）</h1><p>为了提高效率，可以利用<code>ServletResponse</code>接口提供的一些方法设置缓冲。</p>
-<p>相关的方法：<br>■ getBufferSize<br>■ setBufferSize<br>■ isCommitted<br>■ reset<br>■ resetBuffer<br>■ flushBuffer</p>
-<h1 id="响应头（Headers）"><a href="#响应头（Headers）" class="headerlink" title="响应头（Headers）"></a>响应头（Headers）</h1><p>利用<code>HttpServletResponse</code>接口提供的方法可以设置响应头中的信息：<br>■ setHeader<br>■ addHeader<br>■ setIntHeader<br>■ setDateHeader<br>■ addIntHeader<br>■ addDateHeader</p>
+<p>相关的方法：</p>
+<ul>
+<li>getBufferSize</li>
+<li>setBufferSize</li>
+<li>isCommitted</li>
+<li>reset</li>
+<li>resetBuffer</li>
+<li>flushBuffer</li>
+</ul>
+<h1 id="响应头（Headers）"><a href="#响应头（Headers）" class="headerlink" title="响应头（Headers）"></a>响应头（Headers）</h1><p>利用<code>HttpServletResponse</code>接口提供的方法可以设置响应头中的信息：</p>
+<ul>
+<li>setHeader</li>
+<li>addHeader</li>
+<li>setIntHeader</li>
+<li>setDateHeader</li>
+<li>addIntHeader</li>
+<li>addDateHeader</li>
+</ul>
 <h1 id="便利方法"><a href="#便利方法" class="headerlink" title="便利方法"></a>便利方法</h1><p><strong>重定向（Redirect）</strong><br>利用<code>HttpServletResponse</code>接口的<code>sendRedirect</code>方法设置适当的响应信息，可以将客户端重定向到不同的URL。</p>
 <p><strong>错误信息</strong><br>利用<code>HttpServletResponse</code>接口的<code>sendError</code>方法可以在响应中设置错误信息。</p>
 <h1 id="国际化"><a href="#国际化" class="headerlink" title="国际化"></a>国际化</h1><p>编写 Servlet 时，根据不同的地区和语言，应该设置 Response 的区域（locale）和字符编码。<br>区域的默认值由 Servlet 容器默认设置有关，字符编码的默认值是：ISO-8859-1。</p>
