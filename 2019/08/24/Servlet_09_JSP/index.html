@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="wangzk1900&#39;s site">
 <meta property="og:description" content="JSP 技术JavaServer Pages(JSP) 技术是 Java EE 的一部分，用来生成动态 web 内容（比如：HTML, DHTML, XHTML和XML）。 虽然 Servlet 技术也可以生成动态 web 内容，但是 Servlet 有个最大缺点就是在 Servlet 类中编写大量繁杂的 HTML 代码，使得Java代码与HTML代码糅杂在一起。 JSP 本质也是 Servelt">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-23T01:25:11.413Z">
+<meta property="og:updated_time" content="2019-08-23T01:40:16.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="08_JSP">
 <meta name="twitter:description" content="JSP 技术JavaServer Pages(JSP) 技术是 Java EE 的一部分，用来生成动态 web 内容（比如：HTML, DHTML, XHTML和XML）。 虽然 Servlet 技术也可以生成动态 web 内容，但是 Servlet 有个最大缺点就是在 Servlet 类中编写大量繁杂的 HTML 代码，使得Java代码与HTML代码糅杂在一起。 JSP 本质也是 Servelt">
@@ -387,7 +387,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-23 09:25:11" itemprop="dateModified" datetime="2019-08-23T09:25:11+08:00">2019-08-23</time>
+                <time title="修改时间：2019-08-23 09:40:16" itemprop="dateModified" datetime="2019-08-23T09:40:16+08:00">2019-08-23</time>
               
             
           </span>
@@ -533,7 +533,31 @@
 </tbody></table>
 <p>标准动作元素的前缀是：jsp，该前缀只能用在标准动作元素上。</p>
 <h2 id="脚本元素（Scripting-Elements）"><a href="#脚本元素（Scripting-Elements）" class="headerlink" title="脚本元素（Scripting Elements）"></a>脚本元素（Scripting Elements）</h2><p>在脚本元素中可以编写代码以生成动态内容。</p>
-<p>脚本元素有以下三类：<br>| 脚本元素     | 语法                                  | 用途                                                         |<br>| ———— | ————————————- | ———————————————————— |<br>| Declarations | &lt;%! scripting-language-declaration %&gt; | 声明变量或者方法                                             |<br>| Scriptlets   | &lt;% scripting-language-statements %&gt;   | 存放代码（比如：Java代码）                                   |<br>| Expressions  | &lt;%= scripting-language-expression %&gt;  | 将表达式结果转换为字符串并输出。若使用Java语言，则会将字符串通过隐含对象out输出到客户端。 |</p>
+<p>脚本元素有以下三类：<br>| 脚本元素     | 语法                                  | 用途                                                         |<br>| ———— | ————————————- | ———————————————————— |<br>| Declarations | &lt;%! scripting-language-declaration %&gt; | 声明变量或者方法                                             |<br>| Declarations | &lt;% scripting-language-statements %&gt;   | 存放代码（比如：Java代码）                                   |<br>| Expressions  | &lt;%= scripting-language-expression %&gt;  | 将表达式结果转换为字符串并输出。若使用Java语言，则会将字符串通过隐含对象out输出到客户端。 |</p>
+<table>
+<thead>
+<tr>
+<th>脚本元素</th>
+<th>语法</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Declarations</td>
+<td>&lt;%! scripting-language-declaration %&gt;</td>
+<td>声明变量或者方法</td>
+</tr>
+<tr>
+<td>Declarations</td>
+<td>&lt;% scripting-language-statements %&gt;</td>
+<td>存放代码（比如：Java代码）</td>
+</tr>
+<tr>
+<td>Expressions</td>
+<td>&lt;%= scripting-language-expression %&gt;</td>
+<td>将表达式结果转换为字符串并输出。若使用Java语言，则会将字符串通过隐含对象out输出到客户端。</td>
+</tr>
+</tbody></table>
 <p>使用脚本之前可能需要指定脚本语言（默认是Java），导入所需要的包。</p>
 <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"scripting-language"</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"fully-qualified-classname, packagename.*"</span> %&gt;</span><br></pre></td></tr></table></figure>
 
