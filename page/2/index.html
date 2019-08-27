@@ -327,6 +327,772 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/29/Spring Framework_02_IoC容器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangzk1900">
+      <meta itemprop="description" content="记录学习总结和思考">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangzk1900's site">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/29/Spring Framework_02_IoC容器/" class="post-title-link" itemprop="url">未命名</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-29 14:49:18" itemprop="dateCreated datePublished" datetime="2019-07-29T14:49:18+08:00">2019-07-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-26 14:38:19" itemprop="dateModified" datetime="2019-08-26T14:38:19+08:00">2019-08-26</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>控制反转（IoC）</strong><br>Spring 通过依赖注入（Dependency Injection, DI）的方式来实现控制反转。假如对象 A 依赖对象 B，传统的方式是对象 A 自己使用<code>new</code>关键字进行新建。若使用依赖注入的方式，则对象 A 就不需要自己创建了，而是由一个专门的容器来创建并提供对象 B。换句话说，对象 A 从容器获取所需的对象 B。当然，容器也是要创建的。这些由容器进行管理的对象被称之为<code>Bean</code>。</p>
+<h1 id="容器的分类"><a href="#容器的分类" class="headerlink" title="容器的分类"></a>容器的分类</h1><p>Spring 提供了两类容器：</p>
+<ul>
+<li><strong>Bean 工厂</strong>(org.springframework.Beans.factory.BeanFactory)，提供基本的 DI 支持。</li>
+<li><strong>应用上下文</strong>(org.springframework.context.ApplicationContext)，基于 BeanFactory 构建，并提供框架级服务。</li>
+</ul>
+<p>常用的<strong>ApplicationContext</strong>接口实现：</p>
+<ul>
+<li><strong>FileSystemXmlApplicationContext</strong>：该容器从 XML 文件中加载已被定义的 Bean。需要提供 XML 文件的在文件系统中的绝对路径。</li>
+<li><strong>ClassPathXmlApplicationContext</strong>：该容器从 XML 文件中加载已被定义的 Bean。不需要提供 XML 文件的完整路径，只需正确配置 CLASSPATH 环境变量即可，因为容器会从 CLASSPATH 中搜索 Bean 配置文件。</li>
+<li><strong>XmlWebApplicationContext</strong>：该容器会在一个 web 应用程序的范围内加载在 XML 文件中已被定义的 Bean。</li>
+<li><strong>AnnotationConfigApplicationContext</strong>：从 Java 配置类中加载被定义的 Bean。</li>
+<li><strong>AnnotationConfigWebApplicationContext</strong></li>
+</ul>
+<h1 id="容器的配置"><a href="#容器的配置" class="headerlink" title="容器的配置"></a>容器的配置</h1><p>在创建和使用容器之前，我们需要进行一些配置。告诉 IoC 容器如何实例化、配置和组装对象。<br>主要包含两个方面：</p>
+<ul>
+<li>Bean 的定义，包括 Bean 的名称，Bean 如何初始化，Bean 的作用范围等等。IoC容器根据这些配置创建和管理 Bean 对象。</li>
+<li>Bean 的依赖，依赖注入的方式，包括构造器注入、Setter 方法注入等。</li>
+</ul>
+<p>Bean 的定义包含下面这些属性：</p>
+<table>
+<thead>
+<tr>
+<th align="left">Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Class</td>
+<td>全限定类名</td>
+</tr>
+<tr>
+<td align="left">Name</td>
+<td>名称</td>
+</tr>
+<tr>
+<td align="left">Scope</td>
+<td>作用域</td>
+</tr>
+<tr>
+<td align="left">Constructor arguments</td>
+<td>构造器参数</td>
+</tr>
+<tr>
+<td align="left">Properties</td>
+<td>属性</td>
+</tr>
+<tr>
+<td align="left">Autowiring mode</td>
+<td>自动装配模式</td>
+</tr>
+<tr>
+<td align="left">Lazy initialization mode</td>
+<td>是否延迟初始化</td>
+</tr>
+<tr>
+<td align="left">Initialization method</td>
+<td>初始化方法</td>
+</tr>
+<tr>
+<td align="left">Destruction method</td>
+<td>容器销毁时，调用的方法</td>
+</tr>
+</tbody></table>
+<p>Spring 提供了三种配置方式：</p>
+<ul>
+<li><strong>XML-based configuration</strong>，使用 XML 文件进行配置，只能定义当前应用中的<code>Bean</code>。</li>
+<li><strong>Annotation-based configuration</strong>，基于注解进行配置，Spring 2.5 引入。</li>
+<li><strong>Java-based configuration</strong>，从 Spring 3.0 开始，<code>Spring JavaConfig</code>项目的许多特性被加入到了<code>Spring Framework</code>。因此，我们可以基于 java 来定义当前应用之外的 Bean。</li>
+</ul>
+<p>另外，也可以使用 Spring’s Groovy Bean Definition DSL 来配置 Bean。</p>
+<h1 id="基于-XML-进行配置"><a href="#基于-XML-进行配置" class="headerlink" title="基于 XML 进行配置"></a>基于 XML 进行配置</h1><h2 id="Bean-的实例化"><a href="#Bean-的实例化" class="headerlink" title="Bean 的实例化"></a>Bean 的实例化</h2><p>指定 Bean 如何被实例化。</p>
+<p>1、使用无参构造器：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--id 需是惟一的，name 是别名，可以有多个--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"exampleBean"</span> <span class="attr">class</span>=<span class="string">"examples.ExampleBean"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">name</span>=<span class="string">"anotherExample,anotherName"</span> <span class="attr">class</span>=<span class="string">"examples.ExampleBeanTwo"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2、使用普通工厂方法：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"serviceLocator"</span> <span class="attr">class</span>=<span class="string">"examples.DefaultServiceLocator"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- inject any dependencies required by this locator Bean --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- the Bean to be created via the factory Bean --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"clientService"</span></span></span><br><span class="line"><span class="tag"><span class="attr">factory-Bean</span>=<span class="string">"serviceLocator"</span></span></span><br><span class="line"><span class="tag"><span class="attr">factory-method</span>=<span class="string">"createClientServiceInstance"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"accountService"</span></span></span><br><span class="line"><span class="tag"><span class="attr">factory-Bean</span>=<span class="string">"serviceLocator"</span></span></span><br><span class="line"><span class="tag"><span class="attr">factory-method</span>=<span class="string">"createAccountServiceInstance"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>3、使用静态工厂方法：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"clientService"</span></span></span><br><span class="line"><span class="tag"><span class="attr">class</span>=<span class="string">"examples.ClientService"</span></span></span><br><span class="line"><span class="tag"><span class="attr">factory-method</span>=<span class="string">"createInstance"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h2><p>将依赖传递给被依赖对象的方式。</p>
+<h3 id="构造器注入"><a href="#构造器注入" class="headerlink" title="构造器注入"></a>构造器注入</h3><p>通过构造器的参数将依赖传递给对象。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 传递引用 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Beans</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"BeanOne"</span> <span class="attr">class</span>=<span class="string">"x.y.ThingOne"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">ref</span>=<span class="string">"BeanTwo"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">ref</span>=<span class="string">"BeanThree"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"BeanTwo"</span> <span class="attr">class</span>=<span class="string">"x.y.ThingTwo"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"BeanThree"</span> <span class="attr">class</span>=<span class="string">"x.y.ThingThree"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Beans</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 传递值，通过指定参数类型 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"exampleBean"</span> <span class="attr">class</span>=<span class="string">"examples.ExampleBean"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">type</span>=<span class="string">"int"</span> <span class="attr">value</span>=<span class="string">"7500000"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">type</span>=<span class="string">"java.lang.String"</span> <span class="attr">value</span>=<span class="string">"42"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--传递值，通过指定参数索引，即参数的顺序--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"exampleBean"</span> <span class="attr">class</span>=<span class="string">"examples.ExampleBean"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"0"</span> <span class="attr">value</span>=<span class="string">"7500000"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">"1"</span> <span class="attr">value</span>=<span class="string">"42"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--通过构造器参数名称传递依赖（编译代码时需要启用debug标识）--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"exampleBean"</span> <span class="attr">class</span>=<span class="string">"examples.ExampleBean"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"years"</span> <span class="attr">value</span>=<span class="string">"7500000"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"ultimateAnswer"</span> <span class="attr">value</span>=<span class="string">"42"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>构造器注入的变体，通过静态工厂方法：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"exampleBean"</span> <span class="attr">class</span>=<span class="string">"examples.ExampleBean"</span> <span class="attr">factory-method</span>=<span class="string">"createInstance"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">ref</span>=<span class="string">"anotherExampleBean"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">ref</span>=<span class="string">"yetAnotherBean"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">"1"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"anotherExampleBean"</span> <span class="attr">class</span>=<span class="string">"examples.AnotherBean"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"yetAnotherBean"</span> <span class="attr">class</span>=<span class="string">"examples.YetAnotherBean"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Setter方法注入"><a href="#Setter方法注入" class="headerlink" title="Setter方法注入"></a>Setter方法注入</h3><p>在对象初始化之后，容器调用对象的 Setter 方法，将依赖注入。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"exampleBean"</span> <span class="attr">class</span>=<span class="string">"examples.ExampleBean"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- setter injection using the nested ref element --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"BeanOne"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ref</span> <span class="attr">Bean</span>=<span class="string">"anotherExampleBean"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- setter injection using the neater ref attribute --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"BeanTwo"</span> <span class="attr">ref</span>=<span class="string">"yetAnotherBean"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"integerProperty"</span> <span class="attr">value</span>=<span class="string">"1"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"anotherExampleBean"</span> <span class="attr">class</span>=<span class="string">"examples.AnotherBean"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"yetAnotherBean"</span> <span class="attr">class</span>=<span class="string">"examples.YetAnotherBean"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExampleBean</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> AnotherBean BeanOne;</span><br><span class="line">    <span class="keyword">private</span> YetAnotherBean BeanTwo;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> i;</span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBeanOne</span><span class="params">(AnotherBean BeanOne)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.BeanOne = BeanOne;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBeanTwo</span><span class="params">(YetAnotherBean BeanTwo)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.BeanTwo = BeanTwo;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setIntegerProperty</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.i = i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-depends-on"><a href="#使用-depends-on" class="headerlink" title="使用 depends-on"></a>使用 depends-on</h2><p>如果一个 Bean 间接依赖于其它的 Bean，可以使用<code>depends-on</code>。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"BeanOne"</span> <span class="attr">class</span>=<span class="string">"ExampleBean"</span> <span class="attr">depends-on</span>=<span class="string">"manager,accountDao"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"manager"</span> <span class="attr">ref</span>=<span class="string">"manager"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"manager"</span> <span class="attr">class</span>=<span class="string">"ManagerBean"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"accountDao"</span> <span class="attr">class</span>=<span class="string">"x.y.jdbc.JdbcAccountDao"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="延迟初始化"><a href="#延迟初始化" class="headerlink" title="延迟初始化"></a>延迟初始化</h2><p>在用到的时候再初始化。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"lazy"</span> <span class="attr">class</span>=<span class="string">"com.something.ExpensiveToCreateBean"</span> <span class="attr">lazy-init</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">name</span>=<span class="string">"not.lazy"</span> <span class="attr">class</span>=<span class="string">"com.something.AnotherBean"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在容器层面配置延迟初始化：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Beans</span> <span class="attr">default-lazy-init</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- no Beans will be pre-instantiated... --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="自动装配"><a href="#自动装配" class="headerlink" title="自动装配"></a>自动装配</h2><p>Spring 容器提供了自动装配 Bean 的功能，该功能默认是未被启用的。</p>
+<p>自动装配有 4 中模式：</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>no</td>
+<td>默认值，不启用自动装配。必须使用<code>ref</code>元素指定引用。</td>
+</tr>
+<tr>
+<td>byName</td>
+<td>根据属性（property）名称进行装配。</td>
+</tr>
+<tr>
+<td>byType</td>
+<td>根据属性数据类型进行装配。</td>
+</tr>
+<tr>
+<td>constructor</td>
+<td>与<code>byType</code>类似，应用于构造器的参数。</td>
+</tr>
+</tbody></table>
+<p>自动装配不如显式装配精确，所以如果可能的话尽可能使用显式装配。</p>
+<h2 id="Bean的作用域"><a href="#Bean的作用域" class="headerlink" title="Bean的作用域"></a>Bean的作用域</h2><table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>singleton</td>
+<td>（默认值）范围是：Spring IoC容器，即每个容器对应一个Bean，所有对象共享这一个Bean</td>
+</tr>
+<tr>
+<td>prototype</td>
+<td>范围是：每个对象实例，即每个对象拥有自己的 Bean</td>
+</tr>
+<tr>
+<td>request</td>
+<td>范围是：HTTP 请求的生命周期内，仅在与 web 相关的 ApplicationContext 中有效</td>
+</tr>
+<tr>
+<td>application</td>
+<td>范围是：ServletContext 的生命周期内，仅在与 web 相关的 ApplicationContext 中有效</td>
+</tr>
+<tr>
+<td>websocket</td>
+<td>范围是：WebSocket 的生命周期内</td>
+</tr>
+</tbody></table>
+<p>示例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"accountService"</span> <span class="attr">class</span>=<span class="string">"com.something.DefaultAccountService"</span> <span class="attr">scope</span>=<span class="string">"singleton"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"accountService"</span> <span class="attr">class</span>=<span class="string">"com.something.DefaultAccountService"</span> <span class="attr">scope</span>=<span class="string">"prototype"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"loginAction"</span> <span class="attr">class</span>=<span class="string">"com.something.LoginAction"</span> <span class="attr">scope</span>=<span class="string">"request"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Bean的定制"><a href="#Bean的定制" class="headerlink" title="Bean的定制"></a>Bean的定制</h2><p>生命周期管理</p>
+<h3 id="Initialization-Callbacks"><a href="#Initialization-Callbacks" class="headerlink" title="Initialization Callbacks"></a>Initialization Callbacks</h3><p>可通过实现<code>org.springframework.Beans.factory.InitializingBean</code>接口来指派一些初始化任务，在 Bean 实例化之后，这些任务会被执行。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AnotherExampleBean</span> <span class="keyword">implements</span> <span class="title">InitializingBean</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">         <span class="comment">// do some initialization work</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"exampleInitBean"</span> <span class="attr">class</span>=<span class="string">"examples.AnotherExampleBean"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>但是，这样做的话我们的代码和Spring的代码就产生了耦合，不建议这样做。可以在 XML 文件中进行配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"exampleInitBean"</span> <span class="attr">class</span>=<span class="string">"examples.ExampleBean"</span> <span class="attr">init-method</span>=<span class="string">"init"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExampleBean</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// do some initialization work</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Destruction-Callbacks"><a href="#Destruction-Callbacks" class="headerlink" title="Destruction Callbacks"></a>Destruction Callbacks</h3><p>同样地，可以通过实现<code>org.springframework.Beans.factory.DisposableBean</code>接口，在 Bean 被销毁之前调用<code>destroy()</code>方法。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"exampleInitBean"</span> <span class="attr">class</span>=<span class="string">"examples.AnotherExampleBean"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AnotherExampleBean</span> <span class="keyword">implements</span> <span class="title">DisposableBean</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// do some destruction work (like releasing pooled connections)</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同样地，不推荐这种方式，可以在 XML 文件中进行配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"exampleInitBean"</span> <span class="attr">class</span>=<span class="string">"examples.ExampleBean"</span> <span class="attr">destroy-method</span>=<span class="string">"cleanup"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExampleBean</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cleanup</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// do some destruction work (like releasing pooled connections)</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Default-Initialization-and-Destroy-Methods"><a href="#Default-Initialization-and-Destroy-Methods" class="headerlink" title="Default Initialization and Destroy Methods"></a>Default Initialization and Destroy Methods</h3><p>指定默认的初始化和销毁方法。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Beans</span> <span class="attr">default-init-method</span>=<span class="string">"init"</span> <span class="attr">default-destroy-method</span>=<span class="string">"destroy"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"blogService"</span> <span class="attr">class</span>=<span class="string">"com.something.DefaultBlogService"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"blogDao"</span> <span class="attr">ref</span>=<span class="string">"blogDao"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="基于注解进行配置"><a href="#基于注解进行配置" class="headerlink" title="基于注解进行配置"></a>基于注解进行配置</h1><p>除了基于 XML 文件配置依赖注入，还可以基于注解进行依赖注入。<br>基于注解注入先于基于 XML 文件注入执行，因此，如果同时使用了这两种方式，XML 中的配置会覆盖掉基于注解的配置。</p>
+<p>要使用注解注入，需要在 XML 文件中注册解析注解的<code>BeanPostProcessor</code>类，如下所示：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--使用@Autowired注解，需要注册AutowiredAnnotationBeanPostProcessor类--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--使用@PersistenceContext注解，需要注册PersistenceAnnotationBeanPostProcessor类--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.beans.factory.annotation.PersistenceAnnotationBeanPostProcessor"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--使用@Required注解，需要注册RequiredAnnotationBeanPostProcessor类--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--使用@Resource、@PostConstruct、@PreDestroy等注解，需要注册CommonAnnotationBeanPostProcessor类--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.beans.factory.annotation.CommonAnnotationBeanPostProcessor"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>但是这样配置太过繁琐，Spring 提供了一个简单的方式，只需要在 XML 文件中声明<code>&lt;context:annotation-config/&gt;</code>，上面的四个<code>BeanPostProcessor</code>会被隐式地被注册到容器中。</p>
+<h2 id="Required"><a href="#Required" class="headerlink" title="@Required"></a>@Required</h2><p>Spring 2.0 引入，可应用在 Bean 的 setter 方法上。<br>从Spring Framework 5.1开始，<code>@Required</code>注释正式被弃用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleMovieLister</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> MovieFinder movieFinder;</span><br><span class="line">    <span class="meta">@Required</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMovieFinder</span><span class="params">(MovieFinder movieFinder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.movieFinder = movieFinder;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Autowired"><a href="#Autowired" class="headerlink" title="@Autowired"></a>@Autowired</h2><p>自动装配，可应用在 Bean 的构造器、setter 方法、普通方法和 field 上。<br>JSR 330 的<code>@Inject</code>可以替代<code>@Autowired</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构造器</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MovieRecommender</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> CustomerPreferenceDao customerPreferenceDao;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MovieRecommender</span><span class="params">(CustomerPreferenceDao customerPreferenceDao)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.customerPreferenceDao = customerPreferenceDao;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 从 Spring Framework 4.3 开始，如果 Bean 中仅有一个构造器，那么`@Autowired`注解可以省略。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// setter 方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleMovieLister</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> MovieFinder movieFinder;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMovieFinder</span><span class="params">(MovieFinder movieFinder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.movieFinder = movieFinder;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 带有多个参数的普通方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MovieRecommender</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> MovieCatalog movieCatalog;</span><br><span class="line">    <span class="keyword">private</span> CustomerPreferenceDao customerPreferenceDao;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">(MovieCatalog movieCatalog,</span></span></span><br><span class="line"><span class="function"><span class="params">                        CustomerPreferenceDao customerPreferenceDao)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.movieCatalog = movieCatalog;</span><br><span class="line">        <span class="keyword">this</span>.customerPreferenceDao = customerPreferenceDao;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Bean 的field</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MovieRecommender</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> CustomerPreferenceDao customerPreferenceDao;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> MovieCatalog movieCatalog;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MovieRecommender</span><span class="params">(CustomerPreferenceDao customerPreferenceDao)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.customerPreferenceDao = customerPreferenceDao;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>默认情况下，当容器没有找到合适的 Bean 时，自动装配将会失败。<br>但是可以通过将<code>@Autowired</code>注解的<code>required</code>属性值设置为<code>false</code>，指明这个依赖不是必需的。因此，当容器没有找到合适的 Bean 时，不会报错。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleMovieLister</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> MovieFinder movieFinder;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span>(required = <span class="keyword">false</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMovieFinder</span><span class="params">(MovieFinder movieFinder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.movieFinder = movieFinder;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Primary"><a href="#Primary" class="headerlink" title="@Primary"></a>@Primary</h2><p>根据类型自动装配时，可能会有多个合适的对象。一种解决方案就是使用<code>@Primary</code>注解指定一个 Bean。当有多个合适的对象时，Spring 容器会自动装配<code>@Primary</code>注解指定的 Bean。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MovieConfiguration</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@Primary</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MovieCatalog <span class="title">firstMovieCatalog</span><span class="params">()</span> </span>&#123; ... &#125;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MovieCatalog <span class="title">secondMovieCatalog</span><span class="params">()</span> </span>&#123; ... &#125;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用 XML 进行相应的配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/Beans"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/Beans</span></span></span><br><span class="line"><span class="tag"><span class="string">        https://www.springframework.org/schema/Beans/spring-Beans.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/context</span></span></span><br><span class="line"><span class="tag"><span class="string">        https://www.springframework.org/schema/context/spring-context.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:annotation-config</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Bean</span> <span class="attr">class</span>=<span class="string">"example.SimpleMovieCatalog"</span> <span class="attr">primary</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- inject any dependencies required by this Bean --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Bean</span> <span class="attr">class</span>=<span class="string">"example.SimpleMovieCatalog"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- inject any dependencies required by this Bean --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"movieRecommender"</span> <span class="attr">class</span>=<span class="string">"example.MovieRecommender"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Qualifier"><a href="#Qualifier" class="headerlink" title="@Qualifier"></a>@Qualifier</h2><p>除了使用<code>@Primary</code>注解，Spring 还提供了<code>@Qualifier</code>注解。使用该注解可以在构造器或者方法中直接限定所需的 Bean。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MovieRecommender</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> MovieCatalog movieCatalog;</span><br><span class="line">    <span class="keyword">private</span> CustomerPreferenceDao customerPreferenceDao;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">(@Qualifier(<span class="string">"main"</span>)</span> MovieCatalog movieCatalog,</span></span><br><span class="line"><span class="function">                        CustomerPreferenceDao customerPreferenceDao) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.movieCatalog = movieCatalog;</span><br><span class="line">        <span class="keyword">this</span>.customerPreferenceDao = customerPreferenceDao;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>相关的 XML 定义：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/Beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/Beans</span></span></span><br><span class="line"><span class="tag"><span class="string">                https://www.springframework.org/schema/Beans/spring-Beans.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">                http://www.springframework.org/schema/context</span></span></span><br><span class="line"><span class="tag"><span class="string">                https://www.springframework.org/schema/context/spring-context.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:annotation-config</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Bean</span> <span class="attr">class</span>=<span class="string">"example.SimpleMovieCatalog"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">qualifier</span> <span class="attr">value</span>=<span class="string">"main"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- inject any dependencies required by this Bean --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Bean</span> <span class="attr">class</span>=<span class="string">"example.SimpleMovieCatalog"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">qualifier</span> <span class="attr">value</span>=<span class="string">"action"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- inject any dependencies required by this Bean --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"movieRecommender"</span> <span class="attr">class</span>=<span class="string">"example.MovieRecommender"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用泛型隐式限定"><a href="#使用泛型隐式限定" class="headerlink" title="使用泛型隐式限定"></a>使用泛型隐式限定</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// StringStore和IntegerStore实现了泛型接口Store&lt;&gt;</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyConfiguration</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> StringStore <span class="title">stringStore</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> StringStore();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IntegerStore <span class="title">integerStore</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> IntegerStore();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>容器根据<code>&lt;&gt;</code>中指定的类型自动进行装配：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> Store&lt;String&gt; s1; <span class="comment">// &lt;String&gt; qualifier, injects the stringStore Bean</span></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> Store&lt;Integer&gt; s2; <span class="comment">// &lt;Integer&gt; qualifier, injects the integerStore Bean</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="JSR-250-注解"><a href="#JSR-250-注解" class="headerlink" title="JSR-250 注解"></a>JSR-250 注解</h2><p>Spring 2.5 增加了对  JSR-250 注解的支持，它包括<code>@PostConstruct</code>， <code>@PreDestroy</code>和<code>@Resource</code>。<br>这些注解由<code>org.springframework.context.annotation.CommonAnnotationBeanPostProcessor</code>解析。</p>
+<p><code>@Resource</code>注解有个属性 name，IoC容器是根据指定的 name 进行依赖注入的，如果没有显式指定 name，那么 name 的默认值就是 field 名称或者参数名称。假如下面的例子没有指定 name 的话，<code>@Resource</code>注解的属性 name 的值就是 movieFinder。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleMovieLister</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> MovieFinder movieFinder;</span><br><span class="line">    <span class="meta">@Resource</span>(name=<span class="string">"myMovieFinder"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMovieFinder</span><span class="params">(MovieFinder movieFinder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.movieFinder = movieFinder;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果没有显式指定属性 name，那么与<code>@Autowired</code>类似，IoC 容器是根据依赖类型来进行依赖注入的。</p>
+<blockquote>
+<p>从 JDK6 到 JDK 8，这些注解定义在<code>javax.annotation</code>包下，是标准 java 库的一部分。<br>在 JDK 9， <code>javax.annotation</code>包从核心java模块移到了<code>java.xml.ws.annotation</code>模块下。<br>从 JDK 11 开始，这些注解彻底从java模块中移除，若要使用这些注解，则需从Maven仓库下载<code>javax.annotation-api</code>。</p>
+</blockquote>
+<h2 id="JSR-330-注解"><a href="#JSR-330-注解" class="headerlink" title="JSR-330 注解"></a>JSR-330 注解</h2><p>Spring 3.0 增加了对 JSR-330 注解的支持，包括<code>@Inject</code>和<code>@Named</code>等。</p>
+<h1 id="Classpath扫描"><a href="#Classpath扫描" class="headerlink" title="Classpath扫描"></a>Classpath扫描</h1><p>之前基于注解的配置只能配置依赖注入，Bean 的注册还得在 XML 文件中配置。<br>Spring 提供了一种自动扫描 classpath 获取 Bean 定义的方式。该种方式主要通过注解（比如：<code>@Component</code>）、AspectJ 类型表达式或者自定义过滤规则将指定的组件（类）注册到容器中。</p>
+<h2 id="相关注解"><a href="#相关注解" class="headerlink" title="相关注解"></a>相关注解</h2><p><code>@Component</code>注解是通用的类型，可用作元注解。<br><code>@Repository</code>，<code>@Service</code>和<code>@Controller</code>是特殊化的<code>@Component</code>注解，它们分别有各自用途：</p>
+<ul>
+<li><code>@Repository</code> – 一般用在持久层</li>
+<li><code>@Service</code> – 一般用在业务层</li>
+<li><code>@Controller</code> – 一般用在表现层</li>
+</ul>
+<h2 id="自动扫描和注册"><a href="#自动扫描和注册" class="headerlink" title="自动扫描和注册"></a>自动扫描和注册</h2><p>1、在 XML 配置文件中启用自动扫描</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">            https://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">            http://www.springframework.org/schema/context</span></span></span><br><span class="line"><span class="tag"><span class="string">            https://www.springframework.org/schema/context/spring-context.xsd"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"org.example"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用<code>&lt;context:component-scan&gt;</code>会隐式地启用<code>&lt;context:annotation-config&gt;</code>。</p>
+<p>2、在 java 配置类中启用自动扫描</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(basePackages = <span class="string">"org.example"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppConfig</span> </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义扫描"><a href="#自定义扫描" class="headerlink" title="自定义扫描"></a>自定义扫描</h2><p>可以使用<code>@Filter</code>注解配置扫描范围。</p>
+<p>过滤器类型：</p>
+<table>
+<thead>
+<tr>
+<th>Filter Type</th>
+<th>Example Expression</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>annotation (default)</td>
+<td>org.example.SomeAnnotation</td>
+<td>An annotation to be present at the type level in target components.</td>
+</tr>
+<tr>
+<td>assignable</td>
+<td>org.example.SomeClass</td>
+<td>A class (or interface) that the target components are assignable to (extend or implement).</td>
+</tr>
+<tr>
+<td>aspectj</td>
+<td>org.example..*Service+</td>
+<td>An AspectJ type expression to be matched by the target components.</td>
+</tr>
+<tr>
+<td>regex</td>
+<td>org.example.Default.*</td>
+<td>A regex expression to be matched by the target components class names.</td>
+</tr>
+<tr>
+<td>custom</td>
+<td>org.example.MyTypeFilter</td>
+<td>A custom implementation of the org.springframework.core.type.TypeFilter interface.</td>
+</tr>
+</tbody></table>
+<p><em>示例：</em></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">beans</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"org.example"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">context:include-filter</span> <span class="attr">type</span>=<span class="string">"regex"</span> <span class="attr">expression</span>=<span class="string">".*Stub.*Repository"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">context:exclude-filter</span> <span class="attr">type</span>=<span class="string">"annotation"</span> <span class="attr">expression</span>=<span class="string">"org.springframework.stereotype.Repository"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(basePackages = <span class="string">"org.example"</span>,</span><br><span class="line"> includeFilters = <span class="meta">@Filter</span>(type = FilterType.REGEX, pattern =<span class="string">".*Stub.*Repository"</span>),</span><br><span class="line"> excludeFilters = <span class="meta">@Filter</span>(Repository.class))</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppConfig</span> </span>&#123;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="组件名称"><a href="#组件名称" class="headerlink" title="组件名称"></a>组件名称</h2><p><code>@Component</code>注解修饰的类，默认的 Bean 名称是首字母小写的类名。<br>也可以不使用默认的名称，自行指定 Bean 的名称，如下面的示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span>(<span class="string">"myMovieLister"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleMovieLister</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另外，也可以通过实现<code>org.springframework.beans.factory.support.BeanNameGenerator</code>接口，自定义 Bean 名称的生成策略。在启用组件扫描时，指定实现的类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(basePackages = <span class="string">"org.example"</span>, nameGenerator = MyNameGenerator.</span><br><span class="line"><span class="class"><span class="keyword">class</span>)</span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">AppConfig</span> </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">beans</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"org.example"</span></span></span><br><span class="line"><span class="tag">                            <span class="attr">name-generator</span>=<span class="string">"org.example.MyNameGenerator"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="指定组件的作用范围"><a href="#指定组件的作用范围" class="headerlink" title="指定组件的作用范围"></a>指定组件的作用范围</h2><p>使用<code>@Scope</code>注解指定组件的作用范围。</p>
+<p><em>示例：</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Scope</span>(<span class="string">"prototype"</span>)</span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MovieFinderImpl</span> <span class="keyword">implements</span> <span class="title">MovieFinder</span> </span>&#123;</span><br><span class="line"> <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="基于-Java-的配置"><a href="#基于-Java-的配置" class="headerlink" title="基于 Java 的配置"></a>基于 Java 的配置</h1><h2 id="容器实例化"><a href="#容器实例化" class="headerlink" title="容器实例化"></a>容器实例化</h2><p><strong>简单构造</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ApplicationContext ctx = <span class="keyword">new</span> AnnotationConfigApplicationContext(AppConfig.class);</span><br><span class="line">    MyService myService = ctx.getBean(MyService.class);</span><br><span class="line">    myService.doStuff();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>任何<code>@Component</code>或 JSR-330注解的类都可以添加到<code>AnnotationConfigApplicationContext</code>的构造器的参数列表中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ApplicationContext ctx = <span class="keyword">new</span> AnnotationConfigApplicationContext(MyServiceImpl</span><br><span class="line">            .class, Dependency1.class, Dependency2.class);</span><br><span class="line">    MyService myService = ctx.getBean(MyService.class);</span><br><span class="line">    myService.doStuff();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>先构造再注册</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    AnnotationConfigApplicationContext ctx = <span class="keyword">new</span></span><br><span class="line">            AnnotationConfigApplicationContext();</span><br><span class="line">    ctx.register(AppConfig.class, OtherConfig.class);</span><br><span class="line">    ctx.register(AdditionalConfig.class);</span><br><span class="line">    ctx.refresh();</span><br><span class="line">    MyService myService = ctx.getBean(MyService.class);</span><br><span class="line">    myService.doStuff();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>启用组件扫描</strong><br>在指定的包下查找所有带<code>@Component</code>注解的类，并将这些类注册为容器中的 Spring Bean 定义。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// @Component是@Configuration的元注解</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(basePackages = <span class="string">"com.acme"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppConfig</span> </span>&#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另外，也可以使用<code>scan()</code>方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    AnnotationConfigApplicationContext ctx = <span class="keyword">new</span></span><br><span class="line">            AnnotationConfigApplicationContext();</span><br><span class="line">    ctx.scan(<span class="string">"com.acme"</span>);</span><br><span class="line">    ctx.refresh();</span><br><span class="line">    MyService myService = ctx.getBean(MyService.class);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-Bean注解"><a href="#使用-Bean注解" class="headerlink" title="使用@Bean注解"></a>使用<code>@Bean</code>注解</h2><p>带有<code>@Configuration</code>注解的类表示这个类可作为 Bean 定义的来源。<br><code>@Bean</code>是一个方法级注解，应用在方法上。表明这个方法实例化、配置和初始化一个对象，这个对象由 Spring IoC 容器管理。</p>
+<p><strong>声明一个Bean</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MyService <span class="title">myService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MyServiceImpl();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的配置等同于下面的 XML 配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Beans</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Bean</span> <span class="attr">id</span>=<span class="string">"myService"</span> <span class="attr">class</span>=<span class="string">"com.acme.services.MyServiceImpl"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Bean的依赖</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppConfig</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TransferService <span class="title">transferService</span><span class="params">(AccountRepository accountRepository)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> TransferServiceImpl(accountRepository);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>生命周期回调</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeanOne</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// initialization logic</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeanTwo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cleanup</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// destruction logic</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>方式一：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppConfig</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span>(initMethod = <span class="string">"init"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> BeanOne <span class="title">BeanOne</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BeanOne();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span>(destroyMethod = <span class="string">"cleanup"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> BeanTwo <span class="title">BeanTwo</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BeanTwo();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>方式二：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppConfig</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> BeanOne <span class="title">BeanOne</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        BeanOne BeanOne = <span class="keyword">new</span> BeanOne();</span><br><span class="line">        BeanOne.init();</span><br><span class="line">        <span class="keyword">return</span> BeanOne;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>指定Bean的作用域</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyConfiguration</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@Scope</span>(<span class="string">"prototype"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Encryptor <span class="title">encryptor</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>自定义Bean名称</strong><br>默认是方法的名称。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppConfig</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span>(name = <span class="string">"myThing"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Thing <span class="title">thing</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Thing();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Bean的别名</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppConfig</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span>(&#123;<span class="string">"dataSource"</span>, <span class="string">"subsystemA-dataSource"</span>, <span class="string">"subsystemB-dataSource"</span>&#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSource</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// instantiate, configure and return DataSource Bean...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Bean的描述</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppConfig</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@Description</span>(<span class="string">"Provides a basic example of a Bean"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Thing <span class="title">thing</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Thing();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-Configuration注解"><a href="#使用-Configuration注解" class="headerlink" title="使用@Configuration注解"></a>使用<code>@Configuration</code>注解</h2><p><code>@Configuration</code>是一个类级别的注解，用来指定一个对象作为 Bean定义 的来源。</p>
+<p><strong>内部Bean依赖注入</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppConfig</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> BeanOne <span class="title">BeanOne</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BeanOne(BeanTwo());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> BeanTwo <span class="title">BeanTwo</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BeanTwo();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="组合配置"><a href="#组合配置" class="headerlink" title="组合配置"></a>组合配置</h2><p><strong>使用<code>@Import</code>注解</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConfigA</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> A <span class="title">a</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> A();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@Import</span>(ConfigA.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConfigB</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> B <span class="title">b</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> B();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>从Spring Framework 4.2开始，<code>@Import</code>也支持引用常规的组件类，与<code>AnnotationConfigApplicationContext.register</code>作用相同。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/24/MySQL安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangzk1900">
+      <meta itemprop="description" content="记录学习总结和思考">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wangzk1900's site">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/24/MySQL安装/" class="post-title-link" itemprop="url">MySQL安装</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-24 00:00:00 / 修改时间：14:42:15" itemprop="dateCreated datePublished" datetime="2019-07-24T00:00:00+08:00">2019-07-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>实验环境</strong><br>虚拟机软件：VMware Workstation 15 Pro<br>虚拟机系统：CentOS Linux release 7.2.1511 (Core)<br>虚拟机内存：4G</p>
+<p>MySQL 在 CentOS 上有三种安装方式：</p>
+<ul>
+<li>使用通用的二进制包进行安装</li>
+<li>使用 rpm 包安装</li>
+<li>使用源码自行编译安装</li>
+</ul>
+<h1 id="通用的二进制包"><a href="#通用的二进制包" class="headerlink" title="通用的二进制包"></a>通用的二进制包</h1><p>下载地址：<a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/</a><br>操作系统选择：Linux - Generic</p>
+<p>首先，将二进制包上传到/tmp目录下，然后按照下面的步骤进行安装。其中5.7之前和之后的版本在初始化时稍有不同。</p>
+<h2 id="版本5-7之前"><a href="#版本5-7之前" class="headerlink" title="版本5.7之前"></a>版本5.7之前</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 卸载系统自带的mariadb</span><br><span class="line">rpm -qa | grep mariadb</span><br><span class="line">rpm -evh --nodeps mariadb-libs-5.5.44-2.el7.centos.x86_64</span><br><span class="line"><span class="meta">#</span># 或者使用yum</span><br><span class="line">yum list installed | grep mariadb</span><br><span class="line">yum -y remove mariadb-libs.x86_64</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 创建用户和组</span><br><span class="line">groupadd mysql</span><br><span class="line">useradd -r -g mysql -s /bin/false mysql</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 切换到/tmp目录，解压</span><br><span class="line">cd /tmp</span><br><span class="line">tar zxvf mysql-5.5.62-linux-glibc2.12-x86_64.tar.gz</span><br><span class="line"><span class="meta">#</span>tar zxvf mysql-5.6.44-linux-glibc2.12-x86_64.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 将解压后的目录移动到/usr/local目录下</span><br><span class="line">mv mysql-5.5.62-linux-glibc2.12-x86_64 /usr/local/mysql</span><br><span class="line"><span class="meta">#</span>mv mysql-5.6.44-linux-glibc2.12-x86_64 /usr/local/mysql</span><br><span class="line">chown mysql:mysql -R /usr/local/mysql</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 初始化数据目录</span><br><span class="line">cd /usr/local/mysql/</span><br><span class="line">scripts/mysql_install_db --user=mysql</span><br><span class="line">chown -R root .</span><br><span class="line">chown -R mysql data</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 启动和关闭</span><br><span class="line">cp support-files/my-medium.cnf /etc/my.cnf # 版本5.5</span><br><span class="line">bin/mysqld_safe --user=mysql &amp;</span><br><span class="line">bin/mysqladmin shutdown</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span> 配置MySQL开机自动启动</span><br><span class="line">cp support-files/mysql.server /etc/init.d/mysql.server</span><br><span class="line">chmod 755 /etc/init.d/mysql.server</span><br><span class="line">systemctl enable mysql.server</span><br></pre></td></tr></table></figure>
+
+<h2 id="版本5-7之后"><a href="#版本5-7之后" class="headerlink" title="版本5.7之后"></a>版本5.7之后</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 卸载系统自带的mariadb</span><br><span class="line">rpm -qa | grep mariadb</span><br><span class="line">rpm -evh --nodeps mariadb-libs-5.5.44-2.el7.centos.x86_64</span><br><span class="line"><span class="meta">#</span># 或者使用yum</span><br><span class="line">yum list installed | grep mariadb</span><br><span class="line">yum -y remove mariadb-libs.x86_64</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 创建用户和组</span><br><span class="line">groupadd mysql</span><br><span class="line">useradd -r -g mysql -s /bin/false mysql</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 切换到/tmp目录，解压</span><br><span class="line">cd /tmp</span><br><span class="line">tar zxvf mysql-5.7.26-linux-glibc2.12-x86_64.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 将解压后的目录移动到/usr/local目录下</span><br><span class="line">mv mysql-5.7.26-linux-glibc2.12-x86_64 /usr/local/mysql</span><br><span class="line">chown mysql:mysql -R /usr/local/mysql</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 初始化数据目录</span><br><span class="line">cd /usr/local/mysql/</span><br><span class="line">mkdir mysql-files</span><br><span class="line">chmod 750 mysql-files</span><br><span class="line">bin/mysqld --initialize --user=mysql #初始化时会为root@localhost账号生成一个临时密码</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 启动和关闭（关闭时需要输入密码）</span><br><span class="line">bin/mysqld_safe --user=mysql &amp;</span><br><span class="line">bin/mysqladmin shutdown -p</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 配置MySQL开机自动启动</span><br><span class="line">cp support-files/mysql.server /etc/init.d/mysql.server</span><br><span class="line">chmod 755 /etc/init.d/mysql.server</span><br><span class="line">systemctl enable mysql.server</span><br></pre></td></tr></table></figure>
+
+<h2 id="自定义配置"><a href="#自定义配置" class="headerlink" title="自定义配置"></a>自定义配置</h2><p>我们可以自己创建数据库和日志存放目录，配置文件等。在初始化时通过参数指定这些自定义的目录和文件。<br>首先，将安装包上传到<code>/tmp</code>目录，将准备好的配置文件（比如：my3306.cnf）上传到<code>/etc</code>目录下。然后，按照下面的步骤进行安装。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 创建用户和组</span><br><span class="line">groupadd mysql</span><br><span class="line">useradd -r -g mysql -s /bin/false mysql</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 切换到/tmp目录，解压</span><br><span class="line">cd /tmp</span><br><span class="line">tar zxvf mysql-5.6.44-linux-glibc2.12-x86_64.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 将解压后的目录移动到/usr/local目录下</span><br><span class="line">cp -rf mysql-5.6.44-linux-glibc2.12-x86_64 /usr/local/mysql</span><br><span class="line">chown mysql:mysql -R /usr/local/mysql</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 创建数据库目录和日志目录</span><br><span class="line">mkdir -p /data/mysql3306/mysql3306</span><br><span class="line">mkdir -p /data/mysql3306/logs</span><br><span class="line">chown mysql:mysql -R /data</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 初始化数据目录</span><br><span class="line">/usr/local/mysql/scripts/mysql_install_db --basedir=/usr/local/mysql/ --datadir=/data/mysql3306/mysql3306 --defaults-file=/etc/my3306.cnf --user=mysql</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 启动服务</span><br><span class="line">/usr/local/mysql/bin/mysqld_safe --defaults-file=/etc/my3306.cnf --user=mysql &amp;</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span> 连接数据库</span><br><span class="line">/usr/local/mysql/bin/mysql -S /tmp/mysql3306.sock</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 配置环境变量</span><br><span class="line">vim /etc/profile</span><br><span class="line"><span class="meta">#</span> 添加内容：</span><br><span class="line">export PATH=$PATH:/usr/local/mysql/bin</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span> 配置MySQL开机自动启动</span><br><span class="line">cp support-files/mysql.server /etc/init.d/mysql.server</span><br><span class="line">chmod 755 /etc/init.d/mysql.server</span><br><span class="line">systemctl enable mysql.server</span><br></pre></td></tr></table></figure>
+
+<p><code>my3306.cnf</code>文件的内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">port= 3306</span><br><span class="line">socket= /tmp/mysql3306.sock</span><br><span class="line">secure_auth= false</span><br><span class="line"> </span><br><span class="line">[mysqld]</span><br><span class="line">port= 3306</span><br><span class="line">socket= /tmp/mysql3306.sock</span><br><span class="line">datadir= /data/mysql3306/mysql3306</span><br><span class="line"><span class="meta">#</span>read_only= on</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span>--- GLOBAL ---#</span><br><span class="line">character_set_server    = utf8</span><br><span class="line">lower_case_table_names  = 1</span><br><span class="line">log-output              = FILE</span><br><span class="line">log-error               = /data/mysql3306/logs/mysql-error.log</span><br><span class="line"><span class="meta">#</span>general_log</span><br><span class="line">general_log_file        = /data/mysql3306/logs/mysql.log</span><br><span class="line">pid-file                = /data/mysql3306/mysql.pid</span><br><span class="line">slow-query-log          = 1</span><br><span class="line">slow_query_log_file     = /data/mysql3306/logs/mysql-slow.log</span><br><span class="line">tmpdir                  = /tmp/</span><br><span class="line">long_query_time         = 2</span><br><span class="line">innodb_force_recovery   = 0</span><br><span class="line"><span class="meta">#</span>innodb_buffer_pool_dump_at_shutdown = 1</span><br><span class="line"><span class="meta">#</span>innodb_buffer_pool_load_at_startup = 1</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span>--------------#</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span>thread_concurrency      = 8</span><br><span class="line">thread_cache_size       = 51</span><br><span class="line">table_open_cache        = 16384</span><br><span class="line">open_files_limit        = 65535</span><br><span class="line">table_definition_cache  = 16384</span><br><span class="line">sort_buffer_size        = 2M</span><br><span class="line">join_buffer_size        = 2M</span><br><span class="line">read_buffer_size        = 2M</span><br><span class="line">read_rnd_buffer_size    = 8M</span><br><span class="line">key_buffer_size         = 32M</span><br><span class="line">bulk_insert_buffer_size = 16M</span><br><span class="line">myisam_sort_buffer_size = 64M</span><br><span class="line">tmp_table_size      = 32M</span><br><span class="line">max_heap_table_size     = 16M</span><br><span class="line">query_cache_size       = 32MB</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span>gtid_mode=on</span><br><span class="line"><span class="meta">#</span>log_slave_updates=1</span><br><span class="line"><span class="meta">#</span>enforce_gtid_consistency=1</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span>--- NETWORK ---#</span><br><span class="line">back_log                = 103</span><br><span class="line">max-connections         = 512</span><br><span class="line">max_connect_errors   = 100000</span><br><span class="line">max_allowed_packet      = 32M</span><br><span class="line">interactive_timeout     = 600</span><br><span class="line">wait_timeout            = 600</span><br><span class="line">skip-external-locking</span><br><span class="line"><span class="meta">#</span>max_user_connections    = 0</span><br><span class="line">external-locking        = FALSE</span><br><span class="line"><span class="meta">#</span>skip-name-resolve</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span>--- REPL ---#</span><br><span class="line">server-id               = 28703306</span><br><span class="line">sync_binlog             = 1</span><br><span class="line">log-bin                 = mysql-bin</span><br><span class="line">binlog_format           = row</span><br><span class="line">expire_logs_days        = 10</span><br><span class="line">relay-log               = relay-log</span><br><span class="line">replicate-ignore-db     = test</span><br><span class="line">log_slave_updates       =1</span><br><span class="line"><span class="meta">#</span>skip-slave-start</span><br><span class="line">binlog_cache_size       =4M</span><br><span class="line">max_binlog_cache_size   =8M</span><br><span class="line">max_binlog_size         =1024M</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span>--- INNODB ---#</span><br><span class="line">default_storage_engine          = InnoDB</span><br><span class="line">innodb_data_file_path           = ibdata1:1024M:autoextend</span><br><span class="line">innodb_buffer_pool_size         = 1040M</span><br><span class="line">innodb_buffer_pool_instances    = 1</span><br><span class="line">innodb_additional_mem_pool_size = 16M</span><br><span class="line">innodb_log_files_in_group       = 2</span><br><span class="line">innodb_log_file_size            = 256MB</span><br><span class="line">innodb_log_buffer_size          = 16M</span><br><span class="line">innodb_flush_log_at_trx_commit  = 2</span><br><span class="line">innodb_lock_wait_timeout        = 30</span><br><span class="line">innodb_flush_method             = O_DIRECT</span><br><span class="line">innodb_max_dirty_pages_pct      = 75</span><br><span class="line">innodb_io_capacity              = 200</span><br><span class="line">innodb_thread_concurrency       = 32</span><br><span class="line">innodb_open_files               = 65535</span><br><span class="line">innodb_file_per_table           = 1</span><br><span class="line">transaction_isolation           = REPEATABLE-READ</span><br><span class="line">innodb_locks_unsafe_for_binlog  = 0</span><br><span class="line"><span class="meta">#</span>innodb_purge_thread             = 4</span><br><span class="line">[mysqldump]</span><br><span class="line">quick</span><br><span class="line">max_allowed_packet = 32M</span><br><span class="line"> </span><br><span class="line">[mysql]</span><br><span class="line">auto-rehash</span><br><span class="line"><span class="meta">#</span> Remove the next comment character if you are not familiar with SQL</span><br><span class="line"><span class="meta">#</span>safe-updates</span><br><span class="line">default_character_set=utf8</span><br><span class="line"> </span><br><span class="line">[mysqlhotcopy]</span><br><span class="line">interactive-timeout</span><br></pre></td></tr></table></figure>
+
+<h1 id="使用RPM包安装"><a href="#使用RPM包安装" class="headerlink" title="使用RPM包安装"></a>使用RPM包安装</h1><p>既可以下载 RPM 安装包进行手动安装，也可以通过 yum 工具进行安装。</p>
+<h2 id="使用-yum-工具"><a href="#使用-yum-工具" class="headerlink" title="使用 yum 工具"></a>使用 yum 工具</h2><p>前提：虚拟机能够访问互联网。<br>特点：不需要手动卸载系统自带的 MariaDB，yum 工具会自动帮我们卸载。</p>
+<h3 id="配置-Yum-Repository"><a href="#配置-Yum-Repository" class="headerlink" title="配置 Yum Repository"></a>配置 Yum Repository</h3><p>首先，下载配置 yum 仓库的 rpm 包：<code>mysql80-community-release-el7-3.noarch.rpm</code><br>下载地址：<a href="https://dev.mysql.com/downloads/repo/yum/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/repo/yum/</a></p>
+<p>然后将其上传到虚拟机的<code>/tmp</code>目录进行安装。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum localinstall mysql80-community-release-el7-3.noarch.rpm</span><br><span class="line"><span class="meta">#</span> 确认</span><br><span class="line">yum repolist enabled | grep "mysql.*-community.*"</span><br></pre></td></tr></table></figure>
+
+<p>安装成功后，可以在<code>/etc/yum.repos.d/</code>目录下找到两个新增的的 <code>repo</code> 文件：<code>mysql-community.repo</code> 和 <code>mysql-community-source.repo</code>。<br>默认启用的是最新版本 MySQL 的 Yum Repository，如下所示，是<code>mysql-community.repo</code>文件中的部分内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[mysql57-community]</span><br><span class="line">name=MySQL 5.7 Community Server</span><br><span class="line">baseurl=http://repo.mysql.com/yum/mysql-5.7-community/el/7/$basearch/</span><br><span class="line">enabled=0</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql</span><br><span class="line"></span><br><span class="line">[mysql80-community]</span><br><span class="line">name=MySQL 8.0 Community Server</span><br><span class="line">baseurl=http://repo.mysql.com/yum/mysql-8.0-community/el/7/$basearch/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql</span><br></pre></td></tr></table></figure>
+
+<p>国外的yum源可能会比较慢，最好可以修改为国内的。比如可以将上面5.7的<code>baseurl</code>修改为网易的地址：<a href="http://mirrors.163.com/mysql/Downloads/MySQL-5.7/" target="_blank" rel="noopener">http://mirrors.163.com/mysql/Downloads/MySQL-5.7/</a></p>
+<p>若要安装其它版本的 MySQL ，则需要需改上面的配置文件，也可以使用下面的命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum-config-manager --disable mysql80-community</span><br><span class="line">yum-config-manager --enable mysql57-community</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装并启动"><a href="#安装并启动" class="headerlink" title="安装并启动"></a>安装并启动</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 用yum安装</span><br><span class="line">yum -y install mysql-community-server</span><br><span class="line"><span class="meta">#</span> 启动MySQL服务</span><br><span class="line">systemctl start mysqld.service</span><br><span class="line"><span class="meta">#</span> 查看服务状态</span><br><span class="line">systemctl status mysqld.service</span><br></pre></td></tr></table></figure>
+
+<p>若查看服务状态时，是下面的结果，说明 MySQL 服务没有设置为开机启动。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# systemctl status mysqld.service</span><br><span class="line">● mysqld.service - MySQL Community Server</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/mysqld.service; disabled; vendor preset: disabled)</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<p>可使用下面的命令将 MySQL 服务设置为开机启动。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable mysqld.service</span><br></pre></td></tr></table></figure>
+
+<h2 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h2><h3 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h3><p>下载地址：<a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/</a><br>操作系统：Red Hat Enterprise Linux / Oracle Linux<br>系统版本：Red Hat Enterprise Linux 7 / Oracle Linux 7 (x86, 64-bit)</p>
+<p>可下载的 RPM Bundle：</p>
+<blockquote>
+<p>MySQL-5.5.62-1.el7.x86_64.rpm-bundle.tar<br>MySQL-5.6.44-1.el7.x86_64.rpm-bundle.tar<br>mysql-5.7.26-1.el7.x86_64.rpm-bundle.tar<br>mysql-8.0.16-2.el7.x86_64.rpm-bundle.tar</p>
+</blockquote>
+<h3 id="安装并启动-1"><a href="#安装并启动-1" class="headerlink" title="安装并启动"></a>安装并启动</h3><p>首先卸载系统自带的 MariaDB：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 使用rpm卸载</span><br><span class="line">rpm -qa | grep mariadb</span><br><span class="line">rpm -evh --nodeps mariadb-libs-5.5.44-2.el7.centos.x86_64</span><br></pre></td></tr></table></figure>
+
+<p>将下载的安装包上传到虚拟机，并安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 版本5.5</span><br><span class="line">tar -xvf MySQL-5.5.62-1.el7.x86_64.rpm-bundle.tar</span><br><span class="line">rpm -ivh MySQL-server-5.5.62-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh MySQL-client-5.5.62-1.el7.x86_64.rpm</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 版本5.6</span><br><span class="line">tar xvf MySQL-5.6.44-1.el7.x86_64.rpm-bundle.tar</span><br><span class="line">rpm -ivh MySQL-server-5.6.44-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh MySQL-client-5.6.44-1.el7.x86_64.rpm</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 版本5.7</span><br><span class="line">tar xvf mysql-5.7.26-1.el7.x86_64.rpm-bundle.tar</span><br><span class="line">rpm -ivh mysql-community-common-5.7.26-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-libs-5.7.26-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-client-5.7.26-1.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-server-5.7.26-1.el7.x86_64.rpm</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 版本5.8</span><br><span class="line">tar xvf mysql-8.0.16-2.el7.x86_64.rpm-bundle.tar</span><br><span class="line">rpm -ivh mysql-community-common-8.0.16-2.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-libs-8.0.16-2.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-client-8.0.16-2.el7.x86_64.rpm</span><br><span class="line">rpm -ivh mysql-community-server-8.0.16-2.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+<p>启动服务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 5.7之前的版本</span><br><span class="line">mysqld_safe --user=mysql &amp;</span><br><span class="line"><span class="meta">#</span> 5.7版本，及之后的版本</span><br><span class="line">systemctl start mysqld.service</span><br></pre></td></tr></table></figure>
+
+<h1 id="通过源码安装"><a href="#通过源码安装" class="headerlink" title="通过源码安装"></a>通过源码安装</h1><p>有两种方法来使用源码安装MySQL:</p>
+<ul>
+<li>使用一种标准的MySQL源码安装。标准的可用源码文件被压缩成tar文件，zip文件或RPM包。文件名的格式为mysql-version.tar.gz,mysql-version.zip或mysql-version.rpm。其中version是版本号比例如5.7.25。</li>
+<li>使用MySQL开发树。</li>
+</ul>
+<p>使用源码安装所需的前提条件：</p>
+<ul>
+<li><code>CMake</code>，用来在所有平台上构建框架，可以从 <a href="http://www.cmake.org" target="_blank" rel="noopener">http://www.cmake.org</a> 来下载<code>CMake</code>。</li>
+<li>一个好的make程序，强烈建议使用GNU make 3.75或更高版本。可以从<a href="http://www.gnu.org/software/make/" target="_blank" rel="noopener">http://www.gnu.org/software/make/</a> 下载GNU make。</li>
+<li><code>ANSI C++</code>编译器。可以对force_unsupported_compiler的描述。</li>
+<li><code>ncurses</code>库，可从 <a href="https://www.gnu.org/software/ncurses/ncurses.html" target="_blank" rel="noopener">https://www.gnu.org/software/ncurses/ncurses.html</a> 下载。</li>
+<li>为了构建MySQL需要Boost C++库(但不使用它)。Boost 1.59.0必须被安装。为了获得Boost与它的安装指令，可以访问 <a href="https://www.boost.org/" target="_blank" rel="noopener">https://www.boost.org/</a> 网址。（MySQL 5.7）</li>
+<li>足够的空闲内存。</li>
+<li>如果要运行测试脚本那么就需要安装<code>perl</code>。大多数类Unix的系统已经包含了<code>perl</code>。在windows上可以使用 ActiveState Perl。</li>
+</ul>
+<p>如果使用标准源码安装，还需要下面的工具来解压源码文件：</p>
+<ul>
+<li>对于一个<code>.tar.gz</code>的压缩tar文件，<code>GNU gunzip</code>命令可以用来解压，<code>tar</code>命令用来unpack。如果你的<code>tar</code>命令支持z选项，它可以用来解压与 unpack文件。</li>
+<li>对于一个<code>.zip</code>归档文件，winzip或另外的工具可以读取.zip文件。</li>
+<li>对于一个<code>.rpm</code>的RPM包，<code>rpmbuild</code>命令用来对构建的发布版本进行unpack操作。</li>
+</ul>
+<p>若使用开发源码树来安装MySQL，需要安装以下额外的工具:</p>
+<ul>
+<li>需要Git版本控制系统来获得开发源代码。<a href="https://help.github.com/en" target="_blank" rel="noopener">https://help.github.com/en</a> 提供了指令在不同平台上下载与安装Git。MySQL官方组织已经于2014年9月加入了GitHub。</li>
+<li><code>bison 2.1</code>或更高版本，可以从 <a href="http://www.gnu.org/software/bison/" target="_blank" rel="noopener">http://www.gnu.org/software/bison/</a> 网址进行下载(1版本不再支持)，尽可能的使用最新版本。</li>
+<li>在Solaris平台上,除了<code>bison</code>之外<code>m4</code>必须被安装。<code>m4</code>可以从 <a href="http://www.gnu.org/software/m4/" target="_blank" rel="noopener">http://www.gnu.org/software/m4/</a> 网址下载。</li>
+</ul>
+<h2 id="使用标准源码安装"><a href="#使用标准源码安装" class="headerlink" title="使用标准源码安装"></a>使用标准源码安装</h2><p>将源码包<code>mysql-version.tar.gz</code>上传到虚拟机，然后按照下面的步骤进行安装。</p>
+<p><strong>5.7之前的版本</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 卸载系统自带的mariadb</span><br><span class="line">rpm -qa | grep mariadb</span><br><span class="line">rpm -evh --nodeps mariadb-libs-5.5.44-2.el7.centos.x86_64</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 安装所需的工具包</span><br><span class="line">yum -y install cmake* make* gcc* gcc-c++ ncurses* ncurses-devel* perl*</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 创建mysql用户</span><br><span class="line">groupadd mysql</span><br><span class="line">useradd -r -g mysql -s /bin/false mysql</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 解压并安装</span><br><span class="line">tar zxvf mysql-5.5.62.tar.gz</span><br><span class="line">cd mysql-5.5.62/</span><br><span class="line"><span class="meta">#</span>tar zxvf mysql-5.6.45.tar.gz</span><br><span class="line"><span class="meta">#</span>cd mysql-5.6.45/</span><br><span class="line">mkdir bld</span><br><span class="line">cd bld</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 初始化</span><br><span class="line">cd /usr/local/mysql</span><br><span class="line"></span><br><span class="line">chown -R mysql:mysql .</span><br><span class="line">scripts/mysql_install_db --user=mysql</span><br><span class="line">chown -R root .</span><br><span class="line">chown -R mysql data</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 启动服务</span><br><span class="line">cp support-files/my-medium.cnf /etc/my.cnf #5.5</span><br><span class="line">bin/mysqld_safe --user=mysql &amp;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 配置开机启动</span><br><span class="line">cp support-files/mysql.server /etc/init.d/mysql.server</span><br><span class="line">chmod 755 /etc/init.d/mysql.server</span><br><span class="line">systemctl enable mysql.server</span><br></pre></td></tr></table></figure>
+
+<p><strong>5.7版本</strong></p>
+<p>下载<code>boost_1_59_0.tar.gz</code>并上传到虚拟机的<code>/tmp</code>目录。<br>下载地址：<a href="https://jaist.dl.sourceforge.net/project/boost/boost/1.59.0/boost_1_59_0.tar.gz" target="_blank" rel="noopener">https://jaist.dl.sourceforge.net/project/boost/boost/1.59.0/boost_1_59_0.tar.gz</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 卸载系统自带的mariadb</span><br><span class="line">rpm -qa | grep mariadb</span><br><span class="line">rpm -evh --nodeps mariadb-libs-5.5.44-2.el7.centos.x86_64</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 安装所需的工具包</span><br><span class="line">yum -y install cmake* make* gcc* gcc-c++ ncurses* ncurses-devel* perl*</span><br><span class="line">cd /tmp</span><br><span class="line">tar zxvf boost_1_59_0.tar.gz</span><br><span class="line">mv boost_1_59_0 /usr/local/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 创建mysql用户</span><br><span class="line">groupadd mysql</span><br><span class="line">useradd -r -g mysql -s /bin/false mysql</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 解压并安装</span><br><span class="line">tar zxvf mysql-5.7.27.tar.gz</span><br><span class="line">cd mysql-5.7.27/</span><br><span class="line">mkdir bld</span><br><span class="line">cd bld</span><br><span class="line">cmake .. -DWITH_BOOST=/usr/local/boost_1_59_0</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 初始化</span><br><span class="line">cd /usr/local/mysql</span><br><span class="line">mkdir mysql-files</span><br><span class="line">chown mysql:mysql mysql-files</span><br><span class="line">bin/mysqld --initialize --user=mysql</span><br><span class="line">bin/mysql_ssl_rsa_setup</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 启动服务</span><br><span class="line">bin/mysqld_safe --user=mysql &amp;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 配置开机启动</span><br><span class="line">cp support-files/mysql.server /etc/init.d/mysql.server</span><br><span class="line">chmod 755 /etc/init.d/mysql.server</span><br><span class="line">systemctl enable mysql.server</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用开发树安装"><a href="#使用开发树安装" class="headerlink" title="使用开发树安装"></a>使用开发树安装</h2><p>从GitHub获取源码进行安装，与使用标准源码安装类似，只是获取源码的方式不一样。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 安装Git</span><br><span class="line">yum -y install git</span><br><span class="line"><span class="meta">#</span> 克隆MySQL仓库到本地</span><br><span class="line">git clone https://github.com/mysql/mysql-server.git</span><br><span class="line"><span class="meta">#</span> 切换到mysql-server目录</span><br><span class="line">cd mysql-server</span><br></pre></td></tr></table></figure>
+
+<h1 id="连接-MySQL"><a href="#连接-MySQL" class="headerlink" title="连接 MySQL"></a>连接 MySQL</h1><p>启动成功之后就可以使用<code>mysql</code>命令进行连接了。<br>MySQL 5.7之前的版本可以在本地直接连接，不需要输入密码。如下所示：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mysql</span><br><span class="line">Welcome to the MySQL monitor. Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 2</span><br><span class="line">Server version: 5.5.62 MySQL Community Server (GPL)</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.</span><br><span class="line"></span><br><span class="line"><span class="meta">mysql&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>对于5.7及之后的版本：<br><strong>a)</strong> 若MySQL是通过rpm包安装的，服务在启动时会创建超级账户<code>&#39;root&#39;@&#39;localhost&#39;</code>，并为其生成一个临时的密码，可通过下面的命令进行查看：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 直接连接会报错</span><br><span class="line">[root@localhost ~]# mysql</span><br><span class="line">ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)</span><br><span class="line"><span class="meta">#</span> 查看临时密码</span><br><span class="line">[root@localhost ~]# grep 'temporary password' /var/log/mysqld.log</span><br><span class="line"><span class="meta">#</span> 用root账户连接，需输入密码</span><br><span class="line">[root@localhost ~]# mysql -uroot -p</span><br></pre></td></tr></table></figure>
+
+<p><strong>b)</strong> 若MySQL是通过通用的二进制包或者源码安装的，在初始化的时候会生成一个临时密码，在终端输出的日志中可以看到，如下所示：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]# bin/mysqld --initialize --user=mysql</span><br><span class="line">2019-07-22T08:51:10.366309Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).</span><br><span class="line">2019-07-22T08:51:11.141264Z 0 [Warning] InnoDB: New log files created, LSN=45790</span><br><span class="line">2019-07-22T08:51:11.245915Z 0 [Warning] InnoDB: Creating foreign key constraint system tables.</span><br><span class="line">2019-07-22T08:51:11.319143Z 0 [Warning] No existing UUID has been found, so we assume that this is the first time that this server has been started. Generating a new UUID: dabbd8fc-ac5d-11e9-8579-000c29562563.</span><br><span class="line">2019-07-22T08:51:11.324567Z 0 [Warning] Gtid table is not ready to be used. Table 'mysql.gtid_executed' cannot be opened.</span><br><span class="line">2019-07-22T08:51:11.329523Z 1 [Note] A temporary password is generated for root@localhost: Zyreghpk3n_s</span><br></pre></td></tr></table></figure>
+
+<p>连接之后，需要将临时密码改掉之后才能进行其它操作：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show databases;</span><br><span class="line">ERROR 1820 (HY000): You must <span class="keyword">reset</span> your <span class="keyword">password</span> <span class="keyword">using</span> <span class="keyword">ALTER</span> <span class="keyword">USER</span> <span class="keyword">statement</span> <span class="keyword">before</span> executing this statement.</span><br><span class="line">mysql&gt; <span class="keyword">ALTER</span> <span class="keyword">USER</span> <span class="string">'root'</span>@<span class="string">'localhost'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'MyNewPass4!'</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a href="https://dev.mysql.com/doc/refman/5.5/en/" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/5.5/en/</a><br><a href="https://dev.mysql.com/doc/refman/5.6/en/" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/5.6/en/</a><br><a href="https://dev.mysql.com/doc/refman/5.7/en/" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/5.7/en/</a><br><a href="https://dev.mysql.com/doc/refman/8.0/en/" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/8.0/en/</a><br><a href="http://www.jydba.net/linux%E4%BD%BF%E7%94%A8%E6%BA%90%E7%A0%81%E6%9D%A5%E5%AE%89%E8%A3%85mysql-5-7/" target="_blank" rel="noopener">http://www.jydba.net/linux%E4%BD%BF%E7%94%A8%E6%BA%90%E7%A0%81%E6%9D%A5%E5%AE%89%E8%A3%85mysql-5-7/</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/08/SICP笔记_03_模块化、对象和状态/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3437,437 +4203,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/26/数据结构和算法_06_树形结构/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wangzk1900">
-      <meta itemprop="description" content="记录学习总结和思考">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wangzk1900's site">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/26/数据结构和算法_06_树形结构/" class="post-title-link" itemprop="url">06_树形结构</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-26 00:00:00" itemprop="dateCreated datePublished" datetime="2019-05-26T00:00:00+08:00">2019-05-26</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-05-28 13:45:14" itemprop="dateModified" datetime="2019-05-28T13:45:14+08:00">2019-05-28</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构和算法/" itemprop="url" rel="index"><span itemprop="name">数据结构和算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="什么是树？"><a href="#什么是树？" class="headerlink" title="什么是树？"></a>什么是树？</h1><p>树是一种非线性结构，节点之间是一对多的关系。如下图所示：<br><img src="/images/450px-Treedatastructure.png" alt="一棵树"></p>
-<p>树中的节点分为三类：</p>
-<ul>
-<li>根节点——只有子节点，没有父节点。上图中 A 是根节点。</li>
-<li>中间节点——既有父节点，又有子节点。例如上图中的 D、E、G、H。</li>
-<li>叶（子）节点——只有父节点，没有子节点。例如上图中的 K、J、F。</li>
-</ul>
-<p>节点之间的关系：</p>
-<ul>
-<li>父节点——若一个节点有子节点，则这个节点是其子节点的父节点。在上图中，A 是 B 和 C 的父节点。</li>
-<li>子节点——若一个节点有父节点，则这个节点是其父节点的子节点。在上图中，B 和 C 是 A 的子节点。</li>
-<li>兄弟节点——具有相同父节点的节点互称为兄弟节点。在上图中， B 和 C 是互为对方的兄弟节点。</li>
-</ul>
-<p>节点的性质：</p>
-<ul>
-<li>节点的高度——节点到叶子节点的最长路径（边数）。</li>
-<li>节点的深度——根节点到这个节点所经历的的边的个数。</li>
-<li>节点的层数——节点深度 + 1。</li>
-</ul>
-<p>树的高度 = 根节点的高度</p>
-<h1 id="树的分类"><a href="#树的分类" class="headerlink" title="树的分类"></a>树的分类</h1><p>根据节点之间有无顺序进行分类：</p>
-<ul>
-<li>无序树：树中任意节点的子节点之间没有顺序关系，这种树称为无序树，也称为自由树。</li>
-<li>有序树：树中任意节点的子节点之间有顺序关系，这种树称为有序树。</li>
-</ul>
-<p>根据节点子树的数量进行分类：</p>
-<ul>
-<li>m叉树（m&gt;2）</li>
-<li>二叉树：每个节点最多含有两个子树的树称为二叉树，这是应用最多的一种树形结构。</li>
-</ul>
-<p>二叉树的分类：</p>
-<ul>
-<li>完全二叉树：对于一棵二叉树，假设其深度为d（d&gt;1）。除了第d层外，其它各层的节点数目均已达最大值，且第d层所有节点从左向右连续地紧密排列，这样的二叉树被称为完全二叉树。</li>
-<li>满二叉树：所有叶节点都在最底层的完全二叉树。</li>
-<li>平衡二叉树：当且仅当任何节点的两棵子树的高度差不大于1的二叉树。</li>
-<li>二叉查找树：也称二叉搜索树、有序二叉树，树中任何节点的的值大于其左子树所有节点的值，并且小于其右子树所有节点的值。</li>
-<li>平衡二叉查找树（AVL树和红黑树）：满足平衡二叉树要求的二叉查找树。</li>
-<li>霍夫曼树：带权路径最短的二叉树称为哈夫曼树或最优二叉树。</li>
-<li>B树：一种对读写操作进行优化的自平衡的二叉查找树，能够保持数据有序，拥有多于两个子树。</li>
-</ul>
-<hr>
-<p>参考资料：<br><a href="https://zh.wikipedia.org/wiki/%E6%A0%91_(%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)" target="_blank" rel="noopener">维基百科</a><br><a href="https://time.geekbang.org/column/intro/126" target="_blank" rel="noopener">《数据结构与算法之美》–王争</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/25/数据结构和算法_05_基于线性结构的ADT/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wangzk1900">
-      <meta itemprop="description" content="记录学习总结和思考">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wangzk1900's site">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/25/数据结构和算法_05_基于线性结构的ADT/" class="post-title-link" itemprop="url">05_基于线性结构的ADT</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-25 00:00:00 / 修改时间：22:39:06" itemprop="dateCreated datePublished" datetime="2019-05-25T00:00:00+08:00">2019-05-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构和算法/" itemprop="url" rel="index"><span itemprop="name">数据结构和算法</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="线性表（List）"><a href="#线性表（List）" class="headerlink" title="线性表（List）"></a>线性表（List）</h1><h2 id="线性表ADT的定义"><a href="#线性表ADT的定义" class="headerlink" title="线性表ADT的定义"></a>线性表ADT的定义</h2><p><strong>ADT</strong> 线性表（List）</p>
-<p><strong>Data</strong></p>
-<ul>
-<li>线性表的数据对象集合为{a1,a2,…,an}，每个元素的类型均为<strong>Data</strong>Type。其中，除第一个元素a1外，每一个元素有且只有一个直接前驱元素，除了最后一个元素an外，每一个元素有且只有一个直接后继元素。数据元素之间的关系是一对一的关系。</li>
-</ul>
-<p><strong>Operation</strong></p>
-<ul>
-<li>判断List是否为空</li>
-<li>获取表中元素的个数</li>
-<li>访问第 k 个元素</li>
-<li>查找指定元素在表中的位置</li>
-<li>在第 k 个位置插入一个新元素</li>
-<li>追加一个元素</li>
-<li>删除第 k 个元素</li>
-<li>复制一个线性表</li>
-</ul>
-<p>这里只列举了一些基本的操作，在实际编程过程中，需要根据不同的业务需求选择合适的操作。</p>
-<h2 id="线性表ADT的实现"><a href="#线性表ADT的实现" class="headerlink" title="线性表ADT的实现"></a>线性表ADT的实现</h2><p>既可以用数组实现也可以使用链表实现。</p>
-<p>我的练习：<br><a href="https://github.com/wangzk1900/Data-structures-and-algorithms/tree/master/list" target="_blank" rel="noopener">线性表ADT的实现</a></p>
-<h1 id="栈（Stack）"><a href="#栈（Stack）" class="headerlink" title="栈（Stack）"></a>栈（Stack）</h1><p>栈（Stack）是一个后进先出（Last in first out,LIFO）的线性表，它只允许在表的一端（栈顶）进行删除和插入操作。</p>
-<h2 id="栈ADT的定义"><a href="#栈ADT的定义" class="headerlink" title="栈ADT的定义"></a>栈ADT的定义</h2><p><strong>ADT</strong> 栈（Stack）</p>
-<p><strong>Data</strong></p>
-<ul>
-<li>与线性表相同</li>
-</ul>
-<p><strong>Operation</strong></p>
-<ul>
-<li>入栈——在栈顶插入一个元素</li>
-<li>出栈——在栈顶删除一个元素，并返回</li>
-</ul>
-<h2 id="栈ADT的实现"><a href="#栈ADT的实现" class="headerlink" title="栈ADT的实现"></a>栈ADT的实现</h2><p>我的练习：<br><a href="https://github.com/wangzk1900/Data-structures-and-algorithms/tree/master/list" target="_blank" rel="noopener">栈ADT的实现</a></p>
-<h2 id="栈的应用"><a href="#栈的应用" class="headerlink" title="栈的应用"></a>栈的应用</h2><h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><p>队列（Queue）是一种先进先出（First In First Out, FIFO）的线性表，它只允许在一端进行插入操作，而在另一端进行删除操作。</p>
-<h2 id="队列ADT的定义"><a href="#队列ADT的定义" class="headerlink" title="队列ADT的定义"></a>队列ADT的定义</h2><p><strong>ADT</strong> 队列（Queue）</p>
-<p><strong>Data</strong></p>
-<ul>
-<li>与线性表相同</li>
-</ul>
-<p><strong>Operation</strong></p>
-<ul>
-<li>入队——在表的一端插入一个元素</li>
-<li>出队——在表的另一端删除一个元素，并返回该元素</li>
-</ul>
-<h2 id="队列ADT的实现"><a href="#队列ADT的实现" class="headerlink" title="队列ADT的实现"></a>队列ADT的实现</h2><p>我的练习：<br><a href="https://github.com/wangzk1900/Data-structures-and-algorithms/tree/master/queue" target="_blank" rel="noopener">队列ADT的实现</a></p>
-<h1 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h1><p>双端队列（Deque）是一种前端和后端都支持插入和删除操作的队列。</p>
-<h2 id="双端队列ADT的定义"><a href="#双端队列ADT的定义" class="headerlink" title="双端队列ADT的定义"></a>双端队列ADT的定义</h2><p><strong>ADT</strong> 双端队列（Deque）</p>
-<p><strong>Data</strong></p>
-<ul>
-<li>与线性表相同</li>
-</ul>
-<p><strong>Operation</strong></p>
-<ul>
-<li>前端插入——在表的前端插入一个元素</li>
-<li>前端删除——在表的前端删除一个元素，并返回该元素</li>
-<li>后端插入——在表的后端插入一个元素</li>
-<li>后端删除——在表的后端删除一个元素，并返回该元素</li>
-</ul>
-<h2 id="双端队列ADT的实现"><a href="#双端队列ADT的实现" class="headerlink" title="双端队列ADT的实现"></a>双端队列ADT的实现</h2><p>我的练习：<br><a href="https://github.com/wangzk1900/Data-structures-and-algorithms/tree/master/deque" target="_blank" rel="noopener">双端队列ADT的实现</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3914,7 +4249,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3941,7 +4276,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>

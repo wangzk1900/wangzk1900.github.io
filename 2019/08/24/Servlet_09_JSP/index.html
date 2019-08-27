@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="JSP 技术JavaServer Pages(JSP) 技术是 Java EE 的一部分，用来生成动态 web 内容（比如：HTML, DHTML, XHTML和XML）。 虽然 Servlet 技术也可以生成动态 web 内容，但是 Servlet 有个最大缺点就是在 Servlet 类中编写大量繁杂的 HTML 代码，使得Java代码与HTML代码糅杂在一起。 JSP 本质也是 Servelt">
+  <meta name="description" content="JSP 技术JavaServer Pages(JSP) 技术是 Java EE 的一部分，用来生成动态 web 内容（比如：HTML, DHTML, XHTML和XML）。 虽然 Servlet 技术也可以生成动态 web 内容，但是 Servlet 有个最大缺点就是在 Servlet 类中编写大量繁杂的 HTML 代码，使得 Java 代码与 HTML 代码糅杂在一起。 JSP 本质也是 Ser">
 <meta property="og:type" content="article">
 <meta property="og:title" content="08_JSP">
 <meta property="og:url" content="http://yoursite.com/2019/08/24/Servlet_09_JSP/index.html">
 <meta property="og:site_name" content="wangzk1900&#39;s site">
-<meta property="og:description" content="JSP 技术JavaServer Pages(JSP) 技术是 Java EE 的一部分，用来生成动态 web 内容（比如：HTML, DHTML, XHTML和XML）。 虽然 Servlet 技术也可以生成动态 web 内容，但是 Servlet 有个最大缺点就是在 Servlet 类中编写大量繁杂的 HTML 代码，使得Java代码与HTML代码糅杂在一起。 JSP 本质也是 Servelt">
+<meta property="og:description" content="JSP 技术JavaServer Pages(JSP) 技术是 Java EE 的一部分，用来生成动态 web 内容（比如：HTML, DHTML, XHTML和XML）。 虽然 Servlet 技术也可以生成动态 web 内容，但是 Servlet 有个最大缺点就是在 Servlet 类中编写大量繁杂的 HTML 代码，使得 Java 代码与 HTML 代码糅杂在一起。 JSP 本质也是 Ser">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-23T01:52:33.009Z">
+<meta property="og:updated_time" content="2019-08-27T01:24:52.428Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="08_JSP">
-<meta name="twitter:description" content="JSP 技术JavaServer Pages(JSP) 技术是 Java EE 的一部分，用来生成动态 web 内容（比如：HTML, DHTML, XHTML和XML）。 虽然 Servlet 技术也可以生成动态 web 内容，但是 Servlet 有个最大缺点就是在 Servlet 类中编写大量繁杂的 HTML 代码，使得Java代码与HTML代码糅杂在一起。 JSP 本质也是 Servelt">
+<meta name="twitter:description" content="JSP 技术JavaServer Pages(JSP) 技术是 Java EE 的一部分，用来生成动态 web 内容（比如：HTML, DHTML, XHTML和XML）。 虽然 Servlet 技术也可以生成动态 web 内容，但是 Servlet 有个最大缺点就是在 Servlet 类中编写大量繁杂的 HTML 代码，使得 Java 代码与 HTML 代码糅杂在一起。 JSP 本质也是 Ser">
 
 
 
@@ -387,7 +387,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-23 09:52:33" itemprop="dateModified" datetime="2019-08-23T09:52:33+08:00">2019-08-23</time>
+                <time title="修改时间：2019-08-27 09:24:52" itemprop="dateModified" datetime="2019-08-27T09:24:52+08:00">2019-08-27</time>
               
             
           </span>
@@ -447,12 +447,13 @@
 
       
         <h1 id="JSP-技术"><a href="#JSP-技术" class="headerlink" title="JSP 技术"></a>JSP 技术</h1><p>JavaServer Pages(JSP) 技术是 Java EE 的一部分，用来生成动态 web 内容（比如：HTML, DHTML, XHTML和XML）。</p>
-<p>虽然 Servlet 技术也可以生成动态 web 内容，但是 Servlet 有个最大缺点就是在 Servlet 类中编写大量繁杂的 HTML 代码，使得Java代码与HTML代码糅杂在一起。</p>
+<p>虽然 Servlet 技术也可以生成动态 web 内容，但是 Servlet 有个最大缺点就是在 Servlet 类中编写大量繁杂的 HTML 代码，使得 Java 代码与 HTML 代码糅杂在一起。</p>
 <p>JSP 本质也是 Servelt，然而其不需要编译，JSP page 是一个以<code>.jsp</code>扩展名的文本文件。当 JSP page 被用到时，JSP 容器会将 JSP page 转换成 Servlet。</p>
 <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p><strong>Web Container(JSP container)</strong><br>为 JSP page 和 servlet 组件提供生命周期管理和运行时支持。</p>
 <p><strong>JSP Page</strong><br>JSP Page 是基于文本的文档，描述了如何处理请求并创建响应。</p>
 <p><strong>JSP Document</strong><br>JSP文档是使用 XML 语法编写的 JSP page，文件的后缀名是：<code>.jspx</code>。<br>专门用于动态生成 XML 内容。</p>
-<h1 id="JSP-page内容"><a href="#JSP-page内容" class="headerlink" title="JSP page内容"></a>JSP page内容</h1><p>JSP page 包含两部分：</p>
+<h1 id="JSP-page内容"><a href="#JSP-page内容" class="headerlink" title="JSP page内容"></a>JSP page内容</h1><p>JSP page 本质上就是在 HTML、XML 等代码中嵌入 Java 代码。<br>因此，前端开发人员可以进行简单的页面风格等的设计与修改。</p>
+<p>JSP page 包含两部分：</p>
 <ul>
 <li>模板数据（基于文本格式的文本，比如：HTML和XML等，是页面的静态部分）</li>
 <li>JSP 元素（这部分需要 JSP 容器进行相应的处理，是页面的动态部分）</li>
@@ -548,7 +549,7 @@
 <td>声明变量或者方法</td>
 </tr>
 <tr>
-<td>Declarations</td>
+<td>Scriptlets</td>
 <td>&lt;% scripting-language-statements %&gt;</td>
 <td>存放代码（比如：Java代码）</td>
 </tr>
@@ -675,6 +676,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/08/26/Spring Framework_01_简介/" rel="prev" title="01_简介">
+                01_简介 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -742,7 +747,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -769,7 +774,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
