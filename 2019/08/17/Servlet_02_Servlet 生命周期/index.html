@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="wangzk1900&#39;s site">
 <meta property="og:description" content="生命周期Servlet 生命周期包括从它被加载、实例化到销毁的全过程：  加载 Servlet 类并实例化（时机：在 Servlet 被需要时加载，也可以指定在容器启动时加载） 调用init ()方法对 Servlet 进行初始化。 调用service()方法，传入 Request 和 Response 对象，处理来自客户端的请求。 调用destroy()方法释放 Servelet 占用的资源并进">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-16T04:25:26.083Z">
+<meta property="og:updated_time" content="2019-08-27T07:07:28.670Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="02_Servlet 生命周期">
 <meta name="twitter:description" content="生命周期Servlet 生命周期包括从它被加载、实例化到销毁的全过程：  加载 Servlet 类并实例化（时机：在 Servlet 被需要时加载，也可以指定在容器启动时加载） 调用init ()方法对 Servlet 进行初始化。 调用service()方法，传入 Request 和 Response 对象，处理来自客户端的请求。 调用destroy()方法释放 Servelet 占用的资源并进">
@@ -387,7 +387,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-16 12:25:26" itemprop="dateModified" datetime="2019-08-16T12:25:26+08:00">2019-08-16</time>
+                <time title="修改时间：2019-08-27 15:07:28" itemprop="dateModified" datetime="2019-08-27T15:07:28+08:00">2019-08-27</time>
               
             
           </span>
@@ -459,7 +459,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">  <span class="comment">// Initialization code...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="service-方法"><a href="#service-方法" class="headerlink" title="service() 方法"></a>service() 方法</h2><p>service() 方法是<code>javax.servlet</code>接口中定义的方法。</p>
-<p>另外，<code>javax.servlet.http.HttpServlet</code>抽象类中新增了下面这些方法：</p>
+<p>另外，在<code>javax.servlet.http.HttpServlet</code>抽象类中新增了下面这些方法：</p>
 <ul>
 <li><code>doGet()</code> for handling HTTP  GET requests</li>
 <li><code>doPost()</code> for handling HTTP  POST requests</li>
